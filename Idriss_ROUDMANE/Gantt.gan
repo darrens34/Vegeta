@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="UTF-8"?><project name="Untitled Gantt Project" company="" webLink="http://" view-date="2017-08-28" view-index="0" gantt-divider-location="353" resource-divider-location="300" version="2.7.2" locale="fr">
+<?xml version="1.0" encoding="UTF-8"?><project name="Untitled Gantt Project" company="" webLink="http://" view-date="2017-09-01" view-index="0" gantt-divider-location="429" resource-divider-location="300" version="2.7.2" locale="fr">
     <description/>
-    <view zooming-state="default:7" id="gantt-chart">
-        <field id="tpd3" name="Nom" width="57" order="0"/>
-        <field id="tpd4" name="Date de début" width="21" order="1"/>
-        <field id="tpd5" name="Date de fin" width="21" order="2"/>
-        <option id="color.recent"><![CDATA[#f4f4f4]]></option>
+    <view zooming-state="default:8" id="gantt-chart">
+        <field id="tpd3" name="Nom" width="61" order="0"/>
+        <field id="tpd4" name="Date de début" width="19" order="1"/>
+        <field id="tpd5" name="Date de fin" width="19" order="2"/>
+        <option id="color.recent"><![CDATA[#33ffff #999999 #ffff00 #ff3333 #ffcccc #006699 #9999ff #ccccff #33ff33 #00ff00]]></option>
     </view>
     <view id="resource-table">
         <field id="0" name="Nom" width="50" order="0"/>
@@ -34,23 +34,21 @@
             <taskproperty id="tpd8" name="coordinator" type="default" valuetype="text"/>
             <taskproperty id="tpd9" name="predecessorsr" type="default" valuetype="text"/>
         </taskproperties>
-        <task id="0" name="Chercher et lire les articles" color="#f4f4f4" meeting="false" start="2017-09-04" duration="80" complete="0" expand="true"/>
-        <task id="3" name="Organisation" meeting="false" start="2017-09-18" duration="10" complete="0" expand="true"/>
-        <task id="15" name="Travailler sur les données existantes" color="#000000" meeting="false" start="2017-09-18" duration="10" complete="0" expand="true">
+        <task id="0" name="Chercher et lire les articles" color="#ff0033" meeting="false" start="2017-09-04" duration="80" complete="0" expand="true"/>
+        <task id="3" name="Organisation" color="#ffff00" meeting="false" start="2017-09-18" duration="10" complete="0" expand="true"/>
+        <task id="15" name="Travailler sur les données existantes" color="#006699" meeting="false" start="2017-09-18" duration="25" complete="0" expand="true">
             <task id="16" name="Nettoyer les données" color="#8cb6ce" meeting="false" start="2017-09-18" duration="10" complete="0" expand="true"/>
-            <task id="19" name="Modéliser les données" color="#8cb6ce" meeting="false" start="2017-09-25" duration="4" complete="0" expand="true"/>
+            <task id="19" name="Modéliser les données" color="#8cb6ce" meeting="false" start="2017-09-25" duration="20" complete="0" expand="true"/>
         </task>
-        <task id="4" name="Completer les données" color="#8cb6ce" meeting="false" start="2017-10-16" duration="10" complete="0" expand="true">
-            <task id="7" name="Modéliser les données" meeting="false" start="2017-10-23" duration="5" complete="0" expand="true"/>
-            <task id="29" name="Nettoyer les données" color="#8cb6ce" meeting="false" start="2017-10-16" duration="5" complete="0" expand="true"/>
+        <task id="4" name="Completer les données" color="#33ff33" meeting="false" start="2017-10-16" duration="5" complete="0" expand="true"/>
+        <task id="10" name="Developpement interface web" color="#33ffff" meeting="false" start="2017-09-25" duration="50" complete="0" expand="true">
+            <task id="11" name="Choisir représentation graphique" color="#33ffff" meeting="false" start="2017-09-25" duration="5" complete="0" expand="true"/>
+            <task id="38" name="Réalisation des graphiques" color="#33ffff" meeting="false" start="2017-10-16" duration="10" complete="0" expand="true"/>
+            <task id="54" name="Développement back-end / serveur" color="#33ffff" meeting="false" start="2017-10-16" duration="10" complete="0" expand="true"/>
+            <task id="31" name="Interface web" color="#33ffff" meeting="false" start="2017-10-16" duration="35" complete="0" expand="true"/>
         </task>
-        <task id="9" name="Prédire les données manquantes" meeting="false" start="2017-10-23" duration="5" complete="0" expand="true"/>
-        <task id="10" name="Developpemnt interface web" meeting="false" start="2017-10-23" duration="25" complete="0" expand="true">
-            <task id="11" name="Choisir représentation graphique" meeting="false" start="2017-10-23" duration="23" complete="0" expand="true"/>
-            <task id="31" name="interfasse web" meeting="false" start="2017-10-23" duration="25" complete="0" expand="true"/>
-        </task>
-        <task id="12" name="Periode test" color="#8cb6ce" meeting="false" start="2017-11-27" duration="5" complete="0" expand="true"/>
-        <task id="14" name="Examen/Soutenance" color="#8cb6ce" meeting="false" start="2017-12-18" duration="5" complete="0" expand="true"/>
+        <task id="12" name="Periode test" color="#ffcccc" meeting="false" start="2017-11-27" duration="5" complete="0" expand="true"/>
+        <task id="14" name="Examen/Soutenance" color="#999999" meeting="false" start="2017-12-18" duration="5" complete="0" expand="true"/>
     </tasks>
     <resources/>
     <allocations/>
@@ -59,9 +57,9 @@
         <displaycolumn property-id="tpd2" order="-1" width="75" visible="false"/>
         <displaycolumn property-id="tpd7" order="-1" width="75" visible="false"/>
         <displaycolumn property-id="tpd12" order="-1" width="75" visible="false"/>
-        <displaycolumn property-id="tpd3" order="0" width="199" visible="true"/>
-        <displaycolumn property-id="tpd4" order="1" width="75" visible="true"/>
-        <displaycolumn property-id="tpd5" order="2" width="75" visible="true"/>
+        <displaycolumn property-id="tpd3" order="0" width="262" visible="true"/>
+        <displaycolumn property-id="tpd4" order="1" width="81" visible="true"/>
+        <displaycolumn property-id="tpd5" order="2" width="82" visible="true"/>
         <displaycolumn property-id="tpd6" order="-1" width="75" visible="false"/>
         <displaycolumn property-id="tpd10" order="-1" width="75" visible="false"/>
         <displaycolumn property-id="tpd11" order="-1" width="75" visible="false"/>
