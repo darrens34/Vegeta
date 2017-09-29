@@ -1,9 +1,10 @@
-<?xml version="1.0" encoding="UTF-8"?><project name="Untitled Gantt Project" company="" webLink="http://" view-date="2017-09-21" view-index="0" gantt-divider-location="353" resource-divider-location="300" version="2.7.2" locale="fr">
+<?xml version="1.0" encoding="UTF-8"?><project name="Untitled Gantt Project" company="" webLink="http://" view-date="2017-08-28" view-index="0" gantt-divider-location="353" resource-divider-location="300" version="2.7.2" locale="fr">
     <description/>
-    <view zooming-state="default:2" id="gantt-chart">
+    <view zooming-state="default:7" id="gantt-chart">
         <field id="tpd3" name="Nom" width="57" order="0"/>
         <field id="tpd4" name="Date de début" width="21" order="1"/>
         <field id="tpd5" name="Date de fin" width="21" order="2"/>
+        <option id="color.recent"><![CDATA[#f4f4f4]]></option>
     </view>
     <view id="resource-table">
         <field id="0" name="Nom" width="50" order="0"/>
@@ -33,20 +34,23 @@
             <taskproperty id="tpd8" name="coordinator" type="default" valuetype="text"/>
             <taskproperty id="tpd9" name="predecessorsr" type="default" valuetype="text"/>
         </taskproperties>
-        <task id="0" name="Chercher et lire les articles" color="#8cb6ce" meeting="false" start="2017-09-04" duration="80" complete="0" expand="true"/>
+        <task id="0" name="Chercher et lire les articles" color="#f4f4f4" meeting="false" start="2017-09-04" duration="80" complete="0" expand="true"/>
         <task id="3" name="Organisation" meeting="false" start="2017-09-18" duration="10" complete="0" expand="true"/>
-        <task id="15" name="Travailler sur les données existantes" color="#000000" meeting="false" start="2017-09-25" duration="1" complete="0" expand="true">
-            <task id="16" name="Nettoyer les données" color="#8cb6ce" meeting="false" start="2017-09-25" duration="1" complete="0" expand="true"/>
+        <task id="15" name="Travailler sur les données existantes" color="#000000" meeting="false" start="2017-09-18" duration="10" complete="0" expand="true">
+            <task id="16" name="Nettoyer les données" color="#8cb6ce" meeting="false" start="2017-09-18" duration="10" complete="0" expand="true"/>
+            <task id="19" name="Modéliser les données" color="#8cb6ce" meeting="false" start="2017-09-25" duration="4" complete="0" expand="true"/>
         </task>
-        <task id="4" name="Completer les données" color="#8cb6ce" meeting="false" start="2017-10-16" duration="10" complete="0" expand="true"/>
-        <task id="7" name="Modélisation" meeting="false" start="2017-09-22" duration="1" complete="0" expand="true"/>
-        <task id="8" name="Importer les données manquantes" meeting="false" start="2017-09-22" duration="1" complete="0" expand="true"/>
-        <task id="9" name="Prédire les données manquantes" meeting="false" start="2017-09-22" duration="1" complete="0" expand="true"/>
-        <task id="10" name="Developpemnt interface web" meeting="false" start="2017-09-22" duration="1" complete="0" expand="true"/>
-        <task id="11" name="Choisir représentation graphique" meeting="false" start="2017-09-22" duration="1" complete="0" expand="true"/>
-        <task id="12" name="Periode test" meeting="false" start="2017-09-22" duration="1" complete="0" expand="true"/>
-        <task id="13" name="Anglais/Alternance/vacances" meeting="false" start="2017-09-22" duration="1" complete="0" expand="true"/>
-        <task id="14" name="Examen/Soutenance" meeting="false" start="2017-09-22" duration="1" complete="0" expand="true"/>
+        <task id="4" name="Completer les données" color="#8cb6ce" meeting="false" start="2017-10-16" duration="10" complete="0" expand="true">
+            <task id="7" name="Modéliser les données" meeting="false" start="2017-10-23" duration="5" complete="0" expand="true"/>
+            <task id="29" name="Nettoyer les données" color="#8cb6ce" meeting="false" start="2017-10-16" duration="5" complete="0" expand="true"/>
+        </task>
+        <task id="9" name="Prédire les données manquantes" meeting="false" start="2017-10-23" duration="5" complete="0" expand="true"/>
+        <task id="10" name="Developpemnt interface web" meeting="false" start="2017-10-23" duration="25" complete="0" expand="true">
+            <task id="11" name="Choisir représentation graphique" meeting="false" start="2017-10-23" duration="23" complete="0" expand="true"/>
+            <task id="31" name="interfasse web" meeting="false" start="2017-10-23" duration="25" complete="0" expand="true"/>
+        </task>
+        <task id="12" name="Periode test" color="#8cb6ce" meeting="false" start="2017-11-27" duration="5" complete="0" expand="true"/>
+        <task id="14" name="Examen/Soutenance" color="#8cb6ce" meeting="false" start="2017-12-18" duration="5" complete="0" expand="true"/>
     </tasks>
     <resources/>
     <allocations/>
