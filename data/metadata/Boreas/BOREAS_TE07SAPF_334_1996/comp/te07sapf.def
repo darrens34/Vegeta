@@ -1,0 +1,243 @@
+BOREAS TE-07 Sapflow Data
+
+7.3 Data Characteristics                                                        
+                                                                                
+7.3.1 Parameter/Variable                                                        
+                                                                                
+The parameters contained in the data files on the CD-ROM are:                   
+                                                                                
+         Column Name                                                            
+------------------------------                                                  
+SITE_NAME                                                                       
+SUB_SITE                                                                        
+DATE_OBS                                                                        
+TIME_OBS                                                                        
+SPECIES                                                                         
+TREE_DESCR                                                                      
+MEASUREMENT_DESCR                                                               
+NUM_TREES                                                                       
+SAPFLOW_RATE                                                                    
+MEAN_SAPFLOW_RATE                                                               
+MEAN_TRANS_RATE                                                                 
+MEAN_AIR_TEMP_1HR_150CM                                                         
+MEAN_REL_HUM_1HR_150CM                                                          
+MEAN_AIR_TEMP_3HR_240CM                                                         
+MEAN_REL_HUM_3HR_240CM                                                          
+MEAN_AIR_TEMP_1HR_25M                                                           
+MEAN_VAPOR_PRESS_1HR_25M                                                        
+MEAN_DOWN_SHRTWAVE_RAD_3HR_4M                                                   
+MEAN_DOWN_SHRTWAVE_RAD_1HR_18M                                                  
+MEAN_WIND_VELOCITY_1HR_18M                                                      
+CRTFCN_CODE                                                                     
+REVISION_DATE                                                                   
+
+                                                                                
+
+7.3.2 Variable Description/Definition                                           
+                                                                                
+The descriptions of the parameters contained in the data files on               
+the CD-ROM are:                                                                 
+                                                                                
+         Column Name                             Description                    
+------------------------------ ------------------------------------------------ 
+SITE_NAME                      The identifier assigned to the site by BOREAS, in
+                               the format SSS-TTT-CCCCC, where SSS identifies 
+                               the portion of the study area: NSA, SSA, REG, 
+                               TRN, and TTT identifies the cover type for the 
+                               site, 999 if unknown, and CCCCC is the identifier  
+                               for site, exactly what it means will vary with  
+                               site type.                                        
+SUB_SITE                       The identifier assigned to the sub-site by 
+                               BOREAS, in the format GGGGG-IIIII, where GGGGG is 
+                               the group associated with the sub-site 
+                               instrument, e.g. HYD06 or STAFF, and IIIII is the 
+                               identifier for sub-site, often this will refer to 
+                               an instrument.                                           
+DATE_OBS                       The date on which the data were collected.       
+TIME_OBS                       The Greenwich Mean Time (GMT) when the data were 
+                               collected.                                      
+SPECIES                        Botanical (Latin) name of the species (Genus 
+                               species).                                           
+TREE_DESCR                     Description of the tree sampled.                 
+MEASUREMENT_DESCR              Description of the measurement taken.            
+NUM_TREES                      The number of trees that exist in a particular 
+                               plot.                                             
+SAPFLOW_RATE                   The sap flow rate of the sample tree.             
+MEAN_SAPFLOW_RATE              The mean sap flow rate from the sampled trees.    
+MEAN_TRANS_RATE                Mean stand transpiration rate estimated from sap 
+                               flux density.                                   
+MEAN_AIR_TEMP_1HR_150CM        The mean hourly air temperature measured at a 
+                               height of 150 centimeters above the ground.        
+MEAN_REL_HUM_1HR_150CM         The mean hourly relative humidity measured at a  
+                               height of 150 centimeters above the ground.      
+MEAN_AIR_TEMP_3HR_240CM        The air temperature averaged over three hours and 
+                               taken at a height of 240 centimeters above the 
+                               ground.                                         
+MEAN_REL_HUM_3HR_240CM         The relative humidity averaged over three hours  
+                               and taken 240 centimeters above the ground.      
+MEAN_AIR_TEMP_1HR_25M          The hourly mean air temperature measured at a 
+                               height of 25 meters above the ground.              
+MEAN_VAPOR_PRESS_1HR_25M       The mean hourly vapor pressure measured at a 
+                               height of 25 meters above the ground.               
+MEAN_DOWN_SHRTWAVE_RAD_3HR_4M  The three hour below canopy mean downwelling 
+                               shortwave radiation measured at a height of 400 
+                               centimeters above the ground.                       
+MEAN_DOWN_SHRTWAVE_RAD_1HR_18M The mean hourly downwelling shortwave radiation  
+                               measured above the canopy and 18 meters above the 
+                               ground.                                        
+MEAN_WIND_VELOCITY_1HR_18M     The mean hourly wind velocity measured at a 
+                               height of 18 meters above the ground.                
+CRTFCN_CODE                    The BOREAS certification level of the data.  
+                               Examples are CPI (Checked by PI), CGR (Certified 
+                               by Group), PRE (Preliminary), and CPI-??? (CPI 
+                               but questionable).                                  
+REVISION_DATE                  The most recent date when the information in the 
+                               referenced data base table record was revised.  
+                                                                                
+
+7.3.3 Unit of Measurement                                                       
+                                                                                
+The measurement units for the parameters contained in the data files on         
+the CD-ROM are:                                                                 
+                                                                                
+         Column Name                                Units                       
+------------------------------ ------------------------------------------------ 
+SITE_NAME                      [none]                                           
+SUB_SITE                       [none]                                           
+DATE_OBS                       [DD-MON-YYYY]                                      
+TIME_OBS                       [HHMM GMT]                                       
+SPECIES                        [none]                                           
+TREE_DESCR                     [unitless]                                       
+MEASUREMENT_DESCR              [unitless]                                       
+NUM_TREES                      [counts]                                         
+SAPFLOW_RATE                   [millimeters][hour^-1]                           
+MEAN_SAPFLOW_RATE              [millimeters][hour^-1]                           
+MEAN_TRANS_RATE                [millimeters][hour^-1]                           
+MEAN_AIR_TEMP_1HR_150CM        [degrees Celsius]                                
+MEAN_REL_HUM_1HR_150CM         [percent]                                        
+MEAN_AIR_TEMP_3HR_240CM        [degrees Celsius]                                
+MEAN_REL_HUM_3HR_240CM         [percent]                                        
+MEAN_AIR_TEMP_1HR_25M          [degrees Celsius]                                
+MEAN_VAPOR_PRESS_1HR_25M       [pascals]                                        
+MEAN_DOWN_SHRTWAVE_RAD_3HR_4M  [watts][meter^-2]                                
+MEAN_DOWN_SHRTWAVE_RAD_1HR_18M [watts][meter^-2]                                
+MEAN_WIND_VELOCITY_1HR_18M     [meters][second^-1]]                             
+CRTFCN_CODE                    [none]                                           
+REVISION_DATE                  [DD-MON-YYYY]                                      
+
+
+7.3.4 Data Source                                                               
+                                                                                
+The source of the parameter values contained in the data files on               
+the CD-ROM are:                                                                 
+                                                                                
+         Column Name                             Data Source                    
+------------------------------ ------------------------------------------------ 
+SITE_NAME                      [BORIS Designation]                                
+SUB_SITE                       [BORIS Designation]                                
+DATE_OBS                       [Human Observer]                                
+TIME_OBS                       [Human Observer]                                
+SPECIES                        [Human Observer]                                
+TREE_DESCR                     [Human Observer]                                
+MEASUREMENT_DESCR              [Human Observer]                                
+NUM_TREES                      [Human Observer]                                
+SAPFLOW_RATE                   [Laboratory Equipment]                                
+MEAN_SAPFLOW_RATE              [Laboratory Equipment]                                
+MEAN_TRANS_RATE                [Laboratory Equipment]                                
+MEAN_AIR_TEMP_1HR_150CM        [Thermometer]                                
+MEAN_REL_HUM_1HR_150CM         [Laboratory Equipment]                                
+MEAN_AIR_TEMP_3HR_240CM        [Thermometer]                                
+MEAN_REL_HUM_3HR_240CM         [Laboratory Equipment]                                
+MEAN_AIR_TEMP_1HR_25M          [Thermometer]                                
+MEAN_VAPOR_PRESS_1HR_25M       [Laboratory Equipment]                                
+MEAN_DOWN_SHRTWAVE_RAD_3HR_4M  [Laboratory Equipment]                                
+MEAN_DOWN_SHRTWAVE_RAD_1HR_18M [Laboratory Equipment]                                
+MEAN_WIND_VELOCITY_1HR_18M     [Laboratory Equipment]                                
+CRTFCN_CODE                    [BORIS Designation]                                
+REVISION_DATE                  [BORIS Designation]                                
+
+
+7.3.5  Data Range                                                               
+                                                                                
+The following table gives information about the parameter values found in       
+the data files on the CD-ROM.                                                   
+                                                                                
+                                                                                
+
+                     Minimum        Maximum        Missng  Unrel  Below   Data
+                     Data           Data           Data    Data   Detect  Not
+Column Name          Value          Value          Value   Value  Limit   Cllctd
+--------------------------------------------------------------------------------
+SITE_NAME            SSA-9OA-FLXTR  SSA-OBS-FLXTR  None    None   None    None 
+SUB_SITE             9TE07-SAP01    9TE07-SAP02    None    None   None    None 
+DATE_OBS             23-MAY-1994    23-OCT-1996    None    None   None    None 
+TIME_OBS             0              2300           None    None   None    None 
+SPECIES              N/A            N/A            None    None   None    None 
+TREE_DESCR           N/A            N/A            None    None   None    Blank
+MEASUREMENT_DESCR    N              xxxx           None    None   None    Blank
+NUM_TREES            0              4              None    None   None    None 
+SAPFLOW_RATE         -15            152            -999    None   None    Blank
+MEAN_SAPFLOW_RATE    -17.5          128            -999    None   None    Blank
+MEAN_TRANS_RATE      -.067          .391           -999    None   None    Blank
+MEAN_AIR_TEMP_1HR_   -14.6          33.3           -999    None   None    Blank
+150CM               
+MEAN_REL_HUM_1HR_    3.1            98.5           -999    None   None    Blank
+150CM               
+MEAN_AIR_TEMP_3HR_   -6.5           34.8           -999    None   None    Blank
+240CM               
+MEAN_REL_HUM_3HR_    11.5           99.1           -999    None   None    Blank
+240CM               
+MEAN_AIR_TEMP_1HR_   -7             272            -999    None   None    Blank
+25M                 
+MEAN_VAPOR_PRESS_1HR_ 166            2200           -999    None   None    Blank
+25M                 
+MEAN_DOWN_SHRTWAVE_  -1             662            -999    None   None    Blank
+RAD_3HR_4M          
+MEAN_DOWN_SHRTWAVE_  -5             863            None    None   None    Blank
+RAD_1HR_18M         
+MEAN_WIND_VELOCITY_  0              8              None    None   None    Blank
+1HR_18M             
+CRTFCN_CODE          CPI            CPI            None    None   None    None 
+REVISION_DATE        16-SEP-1998    17-SEP-1998    None    None   None    None 
+--------------------------------------------------------------------------------
+Minimum Data Value -- The minimum value found in the column.
+Maximum Data Value -- The maximum value found in the column.
+Missng Data Value  -- The value that indicates missing data. This is used to 
+                      indicate that an attempt was made to determine the 
+                      parameter value, but the attempt was unsuccessful.
+Unrel Data Value   -- The value that indicates unreliable data.  This is used 
+                      to indicate an attempt was made to determine the 
+                      parameter value, but the value was deemed to be 
+                      unreliable by the analysis personnel.
+Below Detect Limit -- The value that indicates parameter values below the 
+                      instruments detection limits.  This is used to 
+                      indicate that an attempt was made to determine the 
+                      parameter value, but the analysis personnel determined
+                      that the parameter value was below the detection
+                      limit of the instrumentation.
+Data Not Cllctd    -- This value indicates that no attempt was made to 
+                      determine the parameter value.  This usually 
+                      indicates that BORIS combined several similar but 
+                      not identical data sets into the same data base table
+                      but this particular science team did not 
+                      measure that parameter.
+
+Blank -- Indicates that blank spaces are used to denote that type of value.
+N/A   -- Indicates that the value is not applicable to the respective column.
+None  -- Indicates that no values of that sort were found in the column.
+--------------------------------------------------------------------------------
+
+                                                                                
+
+7.4 Sample Data Record                                                          
+
+SITE_NAME,SUB_SITE,DATE_OBS,TIME_OBS,SPECIES,TREE_DESCR,MEASUREMENT_DESCR,
+NUM_TREES,SAPFLOW_RATE,MEAN_SAPFLOW_RATE,MEAN_TRANS_RATE,
+MEAN_AIR_TEMP_1HR_150CM,MEAN_REL_HUM_1HR_150CM,MEAN_AIR_TEMP_3HR_240CM,
+MEAN_REL_HUM_3HR_240CM,MEAN_AIR_TEMP_1HR_25M,MEAN_VAPOR_PRESS_1HR_25M,
+MEAN_DOWN_SHRTWAVE_RAD_3HR_4M,MEAN_DOWN_SHRTWAVE_RAD_1HR_18M,
+MEAN_WIND_VELOCITY_1HR_18M,CRTFCN_CODE,REVISION_DATE
+'SSA-9OA-FLXTR','9TE07-SAP01',19-APR-1996,900,'Populus tremuloides','Clone A',
+'abx',3,,-2.0,-.006,-4.3,-999.0,,,,,,,,'CPI',16-SEP-1998
+'SSA-9OA-FLXTR','9TE07-SAP01',19-APR-1996,900,'Populus tremuloides','Clone B',
+'xxx',3,,-999.0,-.006,-4.3,-999.0,,,,,,,,'CPI',16-SEP-1998

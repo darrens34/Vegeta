@@ -1,0 +1,666 @@
+BOREAS TE-11 Sap Flow Data
+
+Summary
+
+The BOREAS TE-11 team collected several data sets in support of its efforts to 
+characterize and interpret information on the sap flow, gas exchange, and lichen 
+photosynthesis of boreal vegetation and meteorological data of the area studied.  
+This data set contains measurements of sap flow conducted at the SSA-OJP site in 
+the growing seasons of 1993 and 1994.  The data are stored in ASCII files.
+
+Table of Contents
+
+ 1 Data Set Overview
+ 2 Investigator(s)
+ 3 Theory of Measurements
+ 4 Equipment
+ 5 Data Acquisition Methods
+ 6 Observations
+ 7 Data Description
+ 8 Data Organization
+ 9 Data Manipulations
+10 Errors
+11 Notes
+12 Application of the Data Set
+13 Future Modifications and Plans
+14 Software
+15 Data Access
+16 Output Products and Availability
+17 References
+18 Glossary of Terms
+19 List of Acronyms
+20 Document Information
+
+1. Data Set Overview
+
+This data set describes the sap flow measurements collected by Terrestrial 
+Ecology (TE)-11 in the Southern Study Area (SSA).
+
+1.1 Data Set Identification
+
+BOREAS TE-11 Sap Flow Data
+
+1.2 Data Set Introduction
+
+The Terrestrial Ecology (TE)-11 team took measurements of sap flow were 
+conducted at the BOReal Ecosystem-Atmosphere Study (BOREAS) SSA Old Jack Pine 
+(OJP) site during the growing seasons of 1993 and 1994 using hand-made probes.
+
+1.3 Objective/Purpose
+
+The purposes of the work were to:
+
+1)  Measure the average sap flow velocity in six trees.
+
+2)  Calculate the sap flow from the velocity and the sapwood area.
+
+1.4 Summary of Parameters
+
+Sap flow measurements were taken at the SSA-OJP site on Julian days 236 to 245 
+in 1993 and Julian days 118 to 259 in 1994.  Stand transpiration is computed in 
+mm/hour for each of the measured trees.
+
+Sapwood area on TE-11's site was taken as 12.3 m2/ha. This figure may change 
+according to new biometric data.
+
+1.5 Discussion
+
+The TE-11 team's aim is to compare these data with a micrometeorological 
+(micormet) estimate of tree transpiration (H20 flux above the forest minus H2O 
+flux above the soil)  If the comparison is good, these data will be used to fill 
+out gaps that occurred when the micromet measurements were not operating.
+
+1.6 Related Data Sets
+
+BOREAS TE-11 Leaf Gas Exchange Measurements
+
+2. Investigator(s)
+
+2.1 Investigator(s) Name and Title
+
+Bernard Saugier
+Professor
+
+2.2 Title of Investigation
+
+Seasonal Variations of Net Photosynthesis and Transpiration at the Tree Level  
+
+2.3 Contact Information
+
+Contact 1:
+
+Bernard Saugier, Ecologie vegetale, bat. 362
+Universite Paris-Sud
+Orsay cedex
+France
+33.1.69.41.71.36
+33.1.69.41.72.38 (fax)
+saugier@psisun.u-psud.fr 
+
+Contact 2:
+Andrea Papagno
+Raytheon STX Corporation
+NASA GSFC
+Greenbelt, MD 
+(301) 286-3134
+(301) 286-0239 (fax)
+apapagno@pop900.gsfc.nasa.gov
+
+Contact 3:
+Shelaine Curd
+Raytheon STX Corporation
+NASA GSFC
+Greenbelt, MD 
+(301) 286-2447
+(301) 286-0239 (fax)
+shelaine.curd@gsfc.nasa.gov
+
+3. Theory of Measurements
+
+Two cylindrical probes were inserted perpendicular to the tree trunk; one was 
+continuously heated, while the other was not. Each probe contained a copper-
+constantan junction. The two constantan wires were connected together, and the 
+voltage between the two copper wires was measured proportional to the 
+temperature difference between the two probes. It was then transformed into an 
+averaged sap velocity using a formula that was independent of the tree species. 
+Then, sap flow was calculated as the product of sap velocity by the sapwood 
+area. 
+
+From these measurements, stand sapwood area was 12.3 m2/ha for a basal area of 
+22.5 m2/ha. 
+
+Diameter of the probes: 2 mm. Length of the probes: 20 mm (usually). 
+
+Resistance of the constantan wire: about 10 ohms.
+
+The temperature difference between the probes was about 12 °C during the night, 
+and it decreased during the day.                                               
+
+4. Equipment
+
+4.1 Sensor/Instrument Description
+
+The probes were made by Andre Granier, a coinvestigator, who went to the site in 
+1993 and in April 1994 to install the probes. They were connected to a CR10 data 
+logger, downloaded to a portable PC.
+
+4.1.1 Collection Environment
+
+None given.
+
+4.1.2 Source/Platform
+
+None given.
+
+4.1.3 Source/Platform Mission Objectives
+
+None given.
+
+4.1.4 Key Variables
+
+Sap flow velocity, temperature difference, resistance, sap flow area.
+
+4.1.5 Principles of Operation
+
+Two cylindrical probes were inserted perpendicular to the tree trunk;
+one was continuously heated, while the other was not. Each probe contained a 
+copper-constantan junction. The two constantan wires were connected together, 
+and we measured the voltage. between the two copper wires was measured 
+proportional to the temperature difference between the two probes. It was then 
+transformed into an averaged sap velocity using a formula that was independent 
+of the tree species. Finally, sap flow was calculated as the product of sap 
+velocity by the sapwood area. 
+
+4.1.6 Sensor/Instrument Measurement Geometry
+
+None given.
+
+4.1.7 Manufacturer of Sensor/Instrument
+
+CR10 Data Logger
+Campbell Scientific, Inc.
+815 West 1800 North 
+Logan, UT 84321-1784
+(435) 753-2342
+(435) 750-9540 (fax)
+support@campbellsci.com
+
+The probes were made by Andre Granier, a coinvestigator.
+
+4.2 Calibration
+
+No calibration was required in principle. The test will be the comparison with 
+the micromet measurements (see above).
+
+4.2.1 Specifications
+
+None given.
+
+4.2.1.1 Tolerance
+
+None given.
+
+4.2.2 Frequency of Calibration
+
+None given.
+
+4.2.3 Other Calibration Information
+
+None given.
+
+5. Data Acquisition Methods
+
+A Campbell Scientific, Inc., CR10 data logger was used for the acquisition and 
+storage of data.  Six channels were used in 1994. 
+
+6. Observations
+
+6.1 Data Notes
+
+None given.
+
+6.2 Field Notes
+
+The TE-11 team had fun and had no problems with this technique, which worked 
+very well unattended for long periods. The only problem was with sensor 1, as 
+mentioned in Section 10.1.
+
+7. Data Description
+
+7.1 Spatial Characteristics
+
+The six trees were about 20 m away from the TE scaffolding towers, in the 
+direction of the micromet tower. The following table gives, for each tree, its 
+circumference (C) at breast height (h) in mm and its approximate height in m.
+
+tree number     C, mm   h, m
+
+1               256     10.50 
+
+2               331     11.25 
+
+3               362     13.25 
+
+4               368     12.75 
+
+5               435     13.50 
+
+6               521     14.70 
+
+7.1.1 Spatial Coverage
+
+At SSA-OJP.  The six trees were about 20 m away from the TE scaffolding towers, 
+in the direction of the micromet tower.
+
+The SSA measurement site and its associated North American Datum of 1983 (NAD83) 
+coordinates are:
+
+OJP, site id G2L3T, Lat/Long: 53.91634° N, 104.69203° W, UTM Zone 13, N: 
+5974257.5, E: 520227.7.
+
+7.1.2 Spatial Coverage Map
+
+Not available.
+
+7.1.3 Spatial Resolution
+
+None given.
+
+7.1.4 Projection
+
+None given.
+
+7.1.5 Grid Description
+
+None given.
+
+7.2 Temporal Characteristics
+
+
+7.2.1 Temporal Coverage
+
+Measurements were taken every 15 minutes, from day 236 to day 245, in 1993, and 
+measurements were taken every 30 minutes, from day 118 to day 259, in 1994. 
+
+In 1994, the first data were not reliable because the sensors  took some time to 
+reach equilibrium and because alternating freezing and thawing gave strange 
+results.  In 1994, data were taken from day 120 and may not be very good until 
+day 125. 
+
+7.2.2 Temporal Coverage Map
+
+None given.
+
+7.2.3 Temporal Resolution
+
+None given.
+
+7.3 Data Characteristics                                                        
+                                                                                
+Data characteristics are defined in the companion data definition file 
+(te11sapf.def).
+
+
+7.4 Sample Data Record                                                          
+                                                                                
+Sample data format shown in the companion data definition file (te11sapf.def).
+
+8. Data Organization
+
+8.1 Data Granularity
+
+All of the Sap Flow Data are contained in one dataset.
+
+8.2 Data Format(s)
+
+The data files contain numerical and character fields of varying length 
+separated by commas. The character fields are enclosed with a single apostrophe 
+marks. There are no spaces between the fields. Sample data records are shown in 
+the companion data definition file (te11sapf.def).
+
+9. Data Manipulations
+
+9.1 Formulae
+
+None.
+
+9.1.1 Derivation Techniques and Algorithms
+
+The thermocouples gave an voltage representing the temperature difference DT. At 
+present, there is no record of the absolute temperature of the trunk, so a 
+constant factor was assumed for converting voltage to temperature difference: 
+voltage in mV was multiplied by 25 to obtain DT in degrees Celsius. DT was 
+called the actual temperature difference and DTM the maximum temperature 
+difference (for a transpiration assumed to be zero).  This was done directly in 
+the program of the data logger.
+
+U, the average sap velocity, is computed as:
+
+U = 119*(DTM/DT-1)1.23  and is expressed in micrometers/second              (1)
+\
+F, the sap flow, is computed as:
+
+F = U*SA*AK,                                                              (2)
+
+where SA (sapwood area) is 1.23E-3 m2/m2, m2 of trunk per m2 of ground
+
+AK = 3600*1E-3 transforms micrometers per second into mm/hour 
+
+9.2 Data Processing Sequence
+
+The raw data were stored by the data logger. The data were then downloaded on 
+the hard disk of a portable PC in a file named fluxseve.dat. This file was 
+edited with Word for Windows, resulting in a file called fsevexxx.dat. Then a 
+program called fsev94.bas produced an easy-to-read file called ojpstx_94.dat, 
+containing raw data. This file was checked for errors and edited if necessary.
+
+The data were then processed by a program called dtmse294.bas, which computed 
+the maximum nighttime values of DT (DTMAX), where DT is the temperature 
+difference between the sensors. Then another program, dtmm.bas, computed a new 
+set of DTMAX, in the following way. First, the local maxima of DTMAX were 
+calculated, and then the new DTMAX were calculated by linear interpolation 
+between these local maxima, and stored in a file called " dtmnx.dat". This 
+procedure has the advantage of not taking into account nights during which a 
+significant transpiration occurs, which leads to decreased (and erroneous) 
+values of DTMAX.
+
+Finally, a program called fsevf394.bas computed sap flows from the raw data in 
+file ojpstx.dat and from the DTMAX in the file called dtmnx.dat. The resultant 
+sap flow files are called sapfx_94.dat (x=1 or 2). The two sap flow files were 
+merged into a single file called sfojp94.dat (standing for Sap Flow of Old Jack 
+Pine in 1994). The data from this final file were sent to BORIS. Raw data and 
+intermediate data are available on request.
+
+9.2.1 Processing Steps
+
+None given.
+
+9.2.2 Processing Changes
+
+None given.
+
+9.3 Calculations
+
+See Section 9.1.1.
+
+9.3.1 Special Corrections/Adjustments
+
+None given.
+
+9.3.2 Calculated Variables
+
+None given.
+
+9.4 Graphs and Plots
+
+QuattroPro for windows was used to produce graphs. There is not an easy way to 
+make them accessible (other than by giving the cumbersome QP files). Graphs 
+produced were:
+
+- Diurnal values of sap flow and potential evaporation (computed from the 
+metstation data and standard Penman formula).                                     
+
+- The ratio of diurnal values of sap flow and potential evaporation, which 
+increased from 0.1 in the beginning of May to a maximum of 0.3 in July and 
+decreased to below 0.2 in mid-September.  
+
+10. Errors
+
+10.1 Sources of Error
+
+One possible source is the accuracy in the measurement of the voltage, 250 to 
+500 microvolts. This did not seem to be a problem with the Campbell data logger. 
+The second source is the assumption of a zero transpiration at night, necessary 
+to get the maximum temperature difference DTM, and the drift of DTM with time. 
+The above-described procedure should make the best use of the data.
+
+Another source of error may come from the sample of the six trees.  These may 
+not be representative of the tree stand.  A comparison between an inventory made 
+at TE-11's site in 1993 on only 100 trees, and an inventory by Bob Knox on a 
+larger sample (50m * 50m) shows that TE-11's sample is relatively 
+representative. 
+
+Also, the value taken for the sapwood area (12.3 m2/ha) needs independent 
+verification.
+
+TE-11 believes these data are fine when using daily values. The half-hourly 
+values are also good, but there is a time lag between the values of branch 
+transpiration (measured with branch bags) and sap flow values. This time lag is 
+about 1 hour (maybe 1 hour and 15 minutes). Sap flow lags behind transpiration, 
+so when using half-hourly values, subtract 1 hour from the time. 
+
+The sensor (1) installed on the smallest tree did not work all the time, and TE-
+11 did not use the data.
+
+In 1994, the first data were not reliable because the sensors took some time to 
+reach equilibrium.  The alternating freezing and thawing conditions gave strange 
+results.  In 1994, data were given from day 120, but may not be very good until 
+day 125. 
+
+10.2 Quality Assessment
+
+A comparison will be done between the stand transpiration calculated by sap 
+flow, and the difference between the latent heat fluxes above and below the 
+forest canopy, as given by Dennis Baldocchi. 100 W/m2 = 0.15 mm/h.  A 
+preliminary comparison showed roughly the same values in 1994 as in 1993.
+
+The data file was checked for errors and edited as necessary.
+
+10.2.1 Data Validation by Source
+
+None given.
+
+10.2.2 Confidence Level/Accuracy Judgment
+
+None given.
+
+10.2.3 Measurement Error for Parameters
+
+None given.
+
+10.2.4 Additional Quality Assessments
+
+None given.
+
+10.2.5 Data Verification by Data Center
+
+Data were examined for general consistency and clarity.
+
+11. Notes
+
+None given.
+
+11.1 Limitations of the Data
+
+None given.
+
+11.2 Known Problems with the Data
+
+Only 2-cm sensors were used in 1994.  It should be remembered that sap flow was 
+measured at breast height, and this follows transpiration with a delay that is 
+dependent on the variation in the amount of water stored by the trees.  So 
+although TE-11 believe that the maximum values and the diurnal values ae good, 
+the instantaneous values should be used with care.  A delay of about 1 hour 
+between transpiration and sap flow variations was common (see above).
+
+11.3 Usage Guidance
+
+See Sections 10.1 and 11.1.
+
+11.4 Other Relevant Information
+
+The interpretation of the data requires knowledge of the variables affecting the 
+evaporative demand: net radiation, saturation deficit, wind speed, and air 
+temperature. These data are given in 1993 and 1994 by the mesomet station in 
+Prince Albert (PA)-OJP.
+
+12. Application of the Data Set
+
+These data can be used to obtain the sap flow rates for OJP in the SSA.
+
+13. Future Modifications and Plans
+
+None given.
+
+14. Software
+
+None given.
+
+14.1 Software Description
+
+Word for Windows and QuattroPro were used.
+
+14.2 Software Access
+
+None given.
+
+15. Data Access
+
+None given.
+
+15.1 Contact Information
+
+Ms. Beth Nelson
+BOREAS Data Manager
+NASA GSFC
+Greenbelt, MD 
+(301) 286-4005
+(301) 286-0239 (fax)
+Elizabeth.Nelson@gsfc.nasa.gov
+
+15.2 Data Center Identification
+
+See Section 15.1.
+
+15.3 Procedures for Obtaining Data
+
+Users may place requests by telephone, electronic mail, or fax.
+
+15.4 Data Center Status/Plans
+
+The TE-11 sap flow data are available from the Earth Observing System Data and 
+Information System (EOSDIS) Oak Ridge National Laboratory (ORNL) Distributed 
+Active Archive Center (DAAC). The BOREAS contact at ORNL is: 
+
+ORNL DAAC User Services
+Oak Ridge National Laboratory
+(865) 241-3952
+ornldaac@ornl.gov
+ornl@eos.nasa.gov
+
+16. Output Products and Availability
+
+16.1  Tape Products
+
+None.
+
+16.2 Film Products
+
+None.
+
+16.3 Other Products
+
+Tabular ASCII files.
+
+17. References
+
+17.1 Satellite/Instrument/Data Processing Documentation
+
+None given.
+
+17.2 Journal Articles and Study Reports
+
+Saugier B., A. Granier, J.Y. Pontailler, E. Dufrêne, and D.D. Baldocchi. 1997. 
+Transpiration of a boreal pine forest measured by branch bags, sap flow and 
+micrometeorological methods, Tree Physiology, 17, 511-519.
+
+Sellers, P.and  F. Hall. 1994. Boreal Ecosystem-Atmosphere Study:
+Experiment Plan. Version 1994-3.0, NASA BOREAS Report (EXPLAN 94).
+
+Sellers, P., F. Hall, H. Margolis, B. Kelly, D. Baldocchi, G. den Hartog,
+J. Cihlar, M.G. Ryan, B. Goodison, P. Crill, K.J. Ranson, D. Lettenmaier,
+and D.E. Wickland. 1995. The boreal ecosystem-atmosphere study (BOREAS): an
+overview and earlyresults from the 1994 field year. Bulletin of the
+American Meteorological Society. 76(9):1549-1577.
+
+Sellers, P., F. Hall, and K.F. Huemmrich. 1996. Boreal Ecosystem-Atmosphere
+Study: 1994 Operations. NASA BOREAS Report (OPSDOC 94).
+
+Sellers, P.and F. Hall. 1996. Boreal Ecosystem-Atmosphere Study: Experiment
+Plan. Version 1996-2.0, NASA BOREAS Report (EXPLAN 96).
+
+Sellers, P., F. Hall, and K.F. Huemmrich. 1997. Boreal Ecosystem-Atmosphere
+Study: 1996 Operations. NASA BOREAS Report (OPSDOC 96).
+
+Sellers, P. J., F. G. Hall, R. D. Kelly, A. Black, D. Baldocchi, J. Berry,
+M. Ryan, K. J. Ranson, P. M. Crill, D. P. Lettenmaier, H. Margolis, J.
+Cihlar, J. Newcomer, D. Fitzjarrald, P. G. Jarvis, S. T. Gower, D.
+Halliwell, D. Williams, B. Goodison, D. E. Wickland, and F. E. Guertin,
+BOREAS in 1997: Experiment overview, scientific results, and future
+directions, Journal of Geophysical Research, 102 (D24), 28731-28769, 1997.
+
+17.3 Archive/DBMS Usage Documentation
+
+None.
+
+18. Glossary of Terms
+
+DT      - The actual temperature difference between the probes.
+DTM     - The maximum temperature difference between the probes.
+
+19. List of Acronyms
+
+ASCII   - American Standard Code for Information Interchange
+BOREAS  - BOReal Ecosystem-Atmosphere Study
+BORIS   - BOREAS Information System
+CD-ROM  - Compact Disk-Read-Only Memory
+DAAC    - Distributed Active Archive Center
+EOS     - Earth Observing System
+EOSDIS  - EOS Data and Information System
+GSFC    - Goddard Space Flight Center
+HTML    - HyperText Markup Language
+IFC     - Intensive Field Campaign
+NAD83   - North American Datum of 1983
+NASA    - National Aeronautics and Space Administration
+NOAA    - National Oceanic and Atmospheric Administration
+NSA     - Northern Study Area
+OJP     - Old Jack Pine
+ORNL    - Oak Ridge National Laboratory
+PA      - Prince Albert
+PANP    - Prince Albert National Park
+SSA     - Southern Study Area
+TE      - Terrestrial Ecology
+URL     - Uniform Resource Locator
+UTM     - Universal Transverse Mercator
+
+20. Document Information
+
+20.1 Document Revision Date
+
+Date written:  06-Jan-1994
+Last updated:  08-Oct-1998
+
+20.2 Document Review Date(s)
+
+BORIS Review:    28-Jul-1998
+Science Review:  12-Aug-1998
+
+20.3 Document ID
+
+20.4 Citation
+
+Dr. B. Saugier, of the Universite Paris-Sud, FRANCE
+
+20.5 Document Curator
+
+20.6 Document URL
+
+Keywords
+
+Sap flow rate
+Sapwood
+Temperature
+Velocity
+Xylem
+TE11_Sapflow.doc
+10/09/98

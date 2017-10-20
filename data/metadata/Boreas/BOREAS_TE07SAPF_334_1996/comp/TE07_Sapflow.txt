@@ -1,0 +1,1399 @@
+BOREAS TE-07 Sap Flow Data
+
+Summary
+
+The BOREAS TE-07 team collected data sets in support of its efforts to 
+characterize and interpret information on the sap flow of boreal vegetation.  
+The heat pulse method was used to monitor sap flow and to estimate rates of 
+transpiration from aspen, black spruce, and mixed wood forests at the SSA-OA, 
+MIX, SSA-OBS, and Batoche sites in Saskatchewan, Canada.  Measurements were made 
+at the various sites from May to Oct 1994, May to Oct 1995, and Apr to Oct 1996.  
+A scaling procedure was used to estimate canopy transpiration rates from the sap 
+flow measurements.  The data were stored in tabular ASCII files.
+
+Analyses to date show a tendency for sap flow in aspen to remain remarkably 
+constant over a wide range of environmental conditions VPD from 1.0 to 4.8 kPa 
+and solar radiation >400 W/m2).  For forests with high aerodynamic conductance, 
+the results would indicate an inverse relationship between stomatal conductance 
+and VPD, for VPD >1 kPa.  A possible interpretation is that stomata are 
+operating to maintain leaf water potentials above a critical minimum value, 
+which in turn places a maximum value on the rate of sap flow that can be 
+sustained by the tree.
+
+Table of Contents
+
+ 1 Data Set Overview
+ 2 Investigator(s)
+ 3 Theory of Measurements
+ 4 Equipment
+ 5 Data Acquisition Methods
+ 6 Observations
+ 7 Data Description
+ 8 Data Organization
+ 9 Data Manipulations
+10 Errors
+11 Notes
+12 Application of the Data Set
+13 Future Modifications and Plans
+14 Software
+15 Data Access
+16 Output Products and Availability
+17 References
+18 Glossary of Terms
+19 List of Acronyms
+20 Document Information
+
+1. Data Set Overview
+
+1.1 Data Set Identification
+
+BOREAS TE-07 Sap Flow Data
+
+1.2 Data Set Introduction
+
+Sap flow and transpiration of trees were measured in the southern boreal forest 
+and aspen parkland of western Canada as part of the BOReal Ecosystem-Atmosphere 
+Study (BOREAS) during the years of 1994, 1995, and 1996. These data sets contain 
+data on the rate of flow of sap (water) in tree stems during the growing season 
+(beginning April to June and ending in October).  Also included are a limited 
+number of environmental measurements (air temperature and relative humidity, and 
+in some instances, solar radiation and wind speed).  Measurements were made 
+every 3 hours in 1994 and hourly in 1995-96.
+
+1.3 Objective/Purpose
+
+The objectives of this research were to:
+
+1)  Examine how forest transpiration at different time scales (diurnal and 
+seasonal) is affected by environmental conditions, including vapor pressure 
+deficit (VPD), solar radiation, temperature, wind, and soil moisture.
+
+2)  Use sap flow measurements, coupled with environmental measurements, as a 
+means of examining changes in canopy (stomatal) conductance in aspen and spruce.
+
+3)  Compare transpiration responses of aspen under two contrasting climates 
+(boreal site at Southern Study Area (SSA) Old Aspen (SSA-OA), drought-prone 
+aspen parkland site at Batoche, located 100 km south of SSA-OA.
+
+4).  Ultimately, through collaboration with other BOREAS investigators, 
+determine what is controlling rates of forest transpiration at different time 
+scales.
+
+5)  On a long-term scale, use this information as part of the foundation for the 
+development of carbon-based, daily time-step models of forest growth responses 
+to changes in climate. 
+
+1.4 Summary of Parameters
+
+Air temperature   
+Relative humidity 
+Sap flux density (cm3 per cm2 of sapwood area per hour)
+Soil moisture     (10 and 30 cm depths, Batoche site only)
+Vapor pressure
+
+1.5 Discussion
+
+In the western Canadian interior, regional climatic moisture gradients appear to 
+be closely linked to forest distribution and to hydrological differences in 
+ecosystem functioning (Hogg, 1994, 1997).  Thus, an understanding of the factors 
+controlling forest transpiration is especially important in this region, and is 
+critical to predicting how the productivity and hydrology of the boreal forest 
+would respond to a warmer and drier future climate.
+
+One of the major processes being studied in the BOREAS project is water vapor 
+flux from different vegetation types and its control by environmental and 
+ecophysiological factors (Sellers et al,. 1995).  A major component of the 
+research within BOREAS has been to monitor xylem sap flux (upward flow of water) 
+within individual trees during the growing season. The attempt is then made to 
+"scale up" these results to give transpiration estimates at the stand level, 
+using measurements and estimates of stand and sapwood characteristics.  The 
+accuracy of the scaling procedure can then be assessed through comparisons with 
+eddy correlation measurements made above and below the tree canopy. 
+
+The research described here was conducted by two members of the Canadian Forest 
+Service (CFS), Edmonton, who are members of the Terrestrial Ecology (TE) group, 
+team TE-07, within BOREAS.  This work was conducted as part of the CFS Climate 
+Change program, and is also a contribution to the CFS Boreal Forest Transect 
+Case Study (BFTCS; see Price and Apps, 1995).
+
+The heat pulse method was used to monitor sap flow continuously during the 
+growing season from May to October (for details, see Section 3.0, Theory of 
+Measurements).  All measurements were made in the SSA.  At the OA site, sap flow 
+was measured on six aspen (Populus tremuloides) trees near the flux tower in 
+1996 and near the TE tower in 1994.  At the Batoche site, 9 to 12 aspen trees 
+were measured during 1994-96.  At the Mixed wood site (MIX), four aspen, two 
+white spruce (Picea glauca), and two black spruce (Picea mariana) were measured 
+in 1994.  At the Old Black Spruce SSA-OBS site, six black spruce were measured 
+in 1996.  Sap flow was measured every 3 hours at all sites in 1994, and hourly 
+in 1995 and 1996.
+
+Hourly meteorological data were obtained from the 18-m tower and at each of four 
+sap flow stations at Batoche.  Limited environmental measurements were made from 
+sap flow stations at BOREAS sites.
+
+In the data files, the column called MEASUREMENT_DESCR gives a coded description 
+of the measurements taken.  Each measurement taken is denoted by a single letter 
+of code.   The description code is:
+
+“a” to “h” means that trees called “a” to “h” gave good data.
+“N” denotes trees receiving new probes.
+“x” denotes missing or bad data taken from that tree.
+
+1.6 Related Data Sets
+
+BOREAS TE-11 Sap Flow Data
+BOREAS TE-11 Leaf Gas Exchange Measurements
+BOREAS RSS-17 Xylem Flux Density Measurements at the SSA-OBS Site
+
+2. Investigator(s)
+
+2.1 Investigator(s) Name and Title
+
+E.H. (Ted) Hogg, Research Scientist
+Climate Change Network, Canadian Forest Service
+
+2.2 Title of Investigation
+
+Climate Change Effects on Net Primary Productivity of Productivity of Aspen and 
+Jack Pine at the Southern Limit of the Boreal Forest.
+
+2.3 Contact Information
+
+Contact 1:
+E.H. (Ted) Hogg
+Northern Forestry Center, Canadian Forest Service
+Edmonton, Alberta  
+(403) 435-7225
+(403) 435-7359 (fax)
+thogg@nofc.forestry.ca or
+
+Contact 2:
+P.A. (Rick) Hurdle
+Northern Forestry Center, Canadian Forest Service
+Edmonton, Alberta  
+(403) 435-7263
+(403) 435-7359 (fax)
+rhurdle@nofc.forestry.ca
+
+Contact 3:
+Andrea Papagno
+Raytheon STX Corporation
+NASA GSFC
+Greenbelt, MD 
+(301) 286-3134
+(301) 286-0239 (fax)
+apapagno@pop900.gsfc.nasa.gov
+
+Contact 4:
+Shelaine Curd
+Raytheon STX Corporation
+NASA GSFC
+Greenbelt, MD 
+(301) 286-2447
+(301) 286-0239 (fax)
+shelaine.curd@gsfc.nasa.gov
+
+3. Theory of Measurements
+
+Sap (water) flow was measured by the heat pulse method (Marshall, 1958; Swanson, 
+1983, 1994; Hogg et al., 1997), using two thermocouples spaced symmetrically 
+0.75 cm above and below a heater 5-cm long with a power output of 2 W/cm.  All 
+probe elements had a diameter of 1.6 mm, and holes of the same diameter were 
+drilled using a steel template.  Thermocouple depth in the sapwood was 1.5 cm 
+for large (>15 cm diameter) trees and 1.0 cm for smaller trees.  At the SSA-OBS 
+site, a depth of 7.5 mm was used because of narrow (4 to 12 mm) sapwood under a 
+bark width of about 3-4 mm.
+
+Probes were located at a height of approximately 1.3 m on the north side of the 
+tree and were thermally insulated by wrapping with them white polyethylene 
+packing material.  At each station, a datalogger (Campbell Scientific, Model 
+21X, powered by batteries and a solar panel) was used to record the temperature 
+increase at the upper (T_u) and lower (T_l) thermocouples, 60 s following a 4 s 
+heat pulse.  On two dates in 1994 (boreal site, Julian Day of Year (DOY) 192 and 
+209; parkland site, DOY 190 and 205), one or two probes per station were removed 
+and replaced with new probes at another location on the same tree (all probes 
+were replaced once).  In 1995 and 1996, probes were replaced only as needed, 
+i.e., following heater failure or abnormal wounding.
+
+4. Equipment
+
+4.1 Sensor/Instrument Description
+
+The sap flow instrumentation was designed and constructed by P.A. Hurdle at the 
+CFS.  The instrumentation has evolved from earlier implementations used by P.A. 
+Hurdle and R.H. Swanson, former research scientist at CFS (retired 1992).
+
+The system operates using Campbell Scientific dataloggers (Model 21x).
+
+Measurements of temperature and relative humidity were made using shielded Model 
+HMP35C Vaisala probes.  
+
+Volumetric water content of the soil was measured using Barber-Colman fibreglass 
+sensors that had been precalibrated in the laboratory using soil samples 
+collected from the site (Batoche only).
+
+4.1.1 Collection Environment
+
+Measurements were made with ambient environmental conditions of forest 
+understories, from April or May to October.  Temperatures ranged from -10 to 
+35?C.  Occasional damage to sap flow probes was caused by bears, deer, and other 
+wildlife, which usually resulted in complete malfunction of probes in affected 
+trees.  Lightning and rain events did not adversely affect the operation of the 
+instruments.
+
+4.1.2 Source/Platform
+
+Probes were mounted at a height of 1 to 1.5 m on the north side of trees.
+
+The datalogger was in a weatherproof box, anchored either to a wooden fence or 
+to an adjacent tree.
+
+Environmental measurements were made either from a tripod or from a horizontally 
+mounted aluminum boom extending from a fencepost or pole. 
+     
+4.1.3 Source/Platform Mission Objectives
+
+The platform objective was to provide a place from which accurate and  
+consistant measurements could be made.
+
+4.1.4 Key Variables
+
+sap flux density (cm3 per cm2 of sapwood area per hour)
+sapwood area to ground area ratio
+
+For analysis (including collaborations with other investigators):
+
+hourly in-canopy (derived from air temperature and relative humidity)
+hourly solar radiation 
+daily precipitation and soil moisture  
+leaf area index 
+aerodynamic conductance (to assess degree to which VPD versus net radiation is 
+controlling transpiration using the Penman-Monteith approach)
+
+4.1.5 Principles of Operation
+
+A probe placed in the sapwood released a pulse of heat.  One minute later, the 
+increase in sapwood temperature 7.5 mm above and below the heater was measured 
+using thermocouples.  If no sap (water) is flowing, the temperature increase is 
+symmetrical; as sap flow increases, more heat is transported to the upper heater 
+and less heat reaches the lower heater.  Sap flow is proportional to the natural 
+logarithm of the ratio between the temperature increase of the upper 
+thermocouple and that of the lower thermocouple.  The calculation also required 
+estimates of sapwood bulk density and moisture content, and a correction factor 
+needed to be applied to account for interruption of the sap stream by probes.
+
+4.1.6 Sensor/Instrument Measurement Geometry
+
+The heater provided a linear heat source across the full sapwood depth.  The 
+thermocouples were located at an appropriate sapwood depth (0.75 to 1.5 cm, 
+depending on sapwood thickness). 
+
+4.1.7 Manufacturer of Sensor/Instrument
+
+Barber-Colman Fibreglass Sensors
+Barber-Colman Company
+103 High St.
+P.O. Box 1067
+Sutton West ON L0E 1RO
+Canada
+905-722-9881
+905-722-4260 (fax)
+bc@ils.com
+
+Campbell Scientific Dataloggers
+Model CR21x
+Campbell Scientific, Inc.
+815 West 1800 North 
+Logan, UT 84321-1784
+(435) 753-2342
+(435) 750-9540 (fax)
+support@campbellsci.com
+
+Sap flow Instrumentation
+Custom-designed by P.A. Hurdle (address given in Section 2.3)
+
+VAISALA Oyj Probe
+Model HMP35C
+P.O. Box 26 FIN-00421 Helsinki
+FINLAND
+(+358 9) 894 91
+(+358 9) 894 9227 (fax)
+122832 vsala fi (telex)
+
+4.2 Calibration
+
+Calibrations of earlier designs have been conducted on small trees in the 
+laboratory by Cohen et al. (1981) and Swanson (1983), but field calibration was 
+difficult (e.g., on 20-m-tall aspen trees).  A heat transfer model, similar to 
+that used by Swanson and Whitfield (1981), was used to determine the degree to 
+which sap flux densities were underestimated through local interruption of sap 
+flow by probes.  The primary means of calibration at the stand level was to 
+compare results against other sap flow methods and against eddy correlation 
+measurements of latent heat flux (Hogg et al., 1997; see also Black et al., 
+1996).
+
+4.2.1 Specifications
+
+Freezing and thawing of xylem during early spring and late fall result in 
+"spiking" of sap flow outputs.  
+
+The sap flow calculation was insensitive to the quantity of heat released by the 
+probe (although signal-to-noise ratio can be affected if power output of heater 
+decreases, e.g., by weak solar panels and batteries).
+
+4.2.1.1 Tolerance
+
+As shown by Hogg and Hurdle (1997), TE-07's implementation was highly sensitive 
+to slow rates of sap flow (as would be recorded at night); sap flow rates 
+corresponding to 5 to 10% of the typical midday maximum can be easily resolved.  
+
+The spacing of thermocouples relative to the heater (0.75 cm) allowed 
+measurements of sap flow rates (S) of up to about 12 cm/h.  If sap flow was 
+greater than this, there would be no detectable temperature increase at the 
+lower thermocouple. Such over-ranging was never observed in aspen or spruce 
+using the 0.75 cm spacing, but over-ranging was observed in early trials using a 
+spacing of 1.0 cm.
+
+A slight nonlinearity of sensitivity may have occurred as a result of sap flow.  
+This was largely covered by the inflow interruption by the probes; based on the 
+heat transfer modeling, sap flow may be underestimated by up to 10% at the 
+maximum measurable rate.  Laboratory comparisons by Swanson (1983, p. 177) using 
+lysimetry with small aspen showed little evidence of nonlinearity, even though 
+heat transfer simulations by Swanson and Whitfield (1981) predicted a 
+significant nonlinear response for some implementations of the heat pulse 
+method.
+
+4.2.2 Frequency of Calibration
+
+Inspections and maintenance of instrumentation were conducted every 2 to 4 weeks 
+(more frequently during Intensive Field Campaigns (IFCs).  There were no means 
+by which to calibrate sap flow estimates or transpiration estimates, except by 
+comparisons against other methods.
+
+4.2.3 Other Calibration Information
+
+Not applicable.
+
+5. Data Acquisition Methods
+
+At each station, data from three or four trees were stored every 3 hours (1994) 
+or every hour (1995 and 1996) by a Campbell Scientific datalogger (Model 21X).  
+For sap flow, the temperature increase above and below the heater was reported 
+1, 2, and 3 minutes following the heat pulse, for each tree being measured.  
+With the amount of data reported and the datalogger used, up to 27 days of 
+hourly time-step sap flow results for three trees could be stored.  A cassette 
+tape was also used as backup data storage, in the event of a power loss to the 
+datalogger or in case the period between field visits extended beyond this 
+amount of time.  Data were downloaded from the datalogger onto a laptop  
+computer.
+
+6. Observations
+
+6.1 Data Notes
+
+In the data files, the column called MEASUREMENT_DESCR gives a coded description 
+of the measurements taken.  Each measurement taken is denoted by a single letter 
+of code.   The description code is:
+
+“a” to “h” means that trees called “a” to “h” gave good data.
+“N” denotes trees receiving new probes.
+“x” denotes missing or bad data taken from that tree.
+
+See Section 11.4.
+
+6.2 Field Notes
+
+See Section 11.4.
+
+7. Data Description
+
+7.1 Spatial Characteristics
+
+7.1.1 Spatial Coverage
+
+All sap flow measurements were made on individual trees.  Three or four trees, 
+all located within a 10-m x 10-m plot, were measured at each sap flow monitoring 
+station.  As part of the scaling procedure used to estimate stand transpiration 
+rates from sap flow results, tallies of the diameters of each tree within the 
+10-m x 10-m plot were made to estimate the local ratio between stand basal area 
+and ground area (i.e., 100 m2 area).
+
+The number of sap flow monitoring stations at each SSA site (Ns), number of 
+trees (Nt) per station, and maximum distance separating stations are given 
+below:
+
+
+Site                 Year     Ns  Nt   Distance         
+SSA-OA               1994     2   3    ca.  20 m
+MIX                  1994     2   4    ca.  30 m
+Batoche              1994     3   3    ca. 300 m
+Batoche              1995     3   3    ca. 300 m
+SSA-OA               1996     2   3    ca. 100 m
+SSA-OBS              1996     2   3    ca. 100 m
+
+
+The SSA measurement sites and associated North American Datum of 1983 (NAD83) 
+coordinates are:
+
+SSA-OA flux tower, site id C3B7T, Lat/Long: 53.62889° N, 106.19779° W, Universal 
+Transverse Mercator (UTM) Zone 13, N: 5,942,899.9, E: 420,790.5.
+
+SSA-OA TE tower, located 100 m from the dirt road, site id C3B7T, Lat/Long: 
+53.62889° N, 106.19779° W, UTM Zone 13, N: 5,942,899.9, E: 420,790.5.
+
+ASP-AUX01 Batoche, site id A1A, Lat/Long: 52.74244° N, 106.13372° W, UTM Zone 
+13, N: 5,844,222, E: 423,465.
+
+MIX TE tower, site id D9I1M, Lat/Long: 53.7254° N, 105.20643° W, UTM Zone 13, N: 
+5,952,989.7, E: 486,379.7.
+
+SSA-OBS flux tower, site id G8I4T, Lat/Long: 53.98717° N, 105.11779° W, UTM Zone 
+13, N: 5,982,100.5, E: 492,276.5.
+
+7.1.2 Spatial Coverage Map
+
+Not applicable.
+
+7.1.3 Spatial Resolution
+
+These are point measurements made at the given locations.
+
+7.1.4 Projection
+
+Not applicable.
+
+7.1.5 Grid Description
+
+Not applicable.
+
+7.2 Temporal Characteristics
+
+7.2.1 Temporal Coverage
+
+The data were collected from 23-MAY-1994 to 23-OCT-1996.
+
+7.2.2 Temporal Coverage Map
+
+Site           Measurement Dates
+SSA-OA         26-May-1994 to 20-Oct-1994 (DOY 146-293)
+SSA MIX        13-Jun-1994 to 20-Oct-1994 (DOY 164-293)
+Batoche        23-May-1994 to 19-Oct-1994 (DOY 143-292)
+Batoche        21-May-1995 to 25-Oct-1995 (DOY 141-298)
+SSA-OA         19-Apr-1996 to 23-Oct-1996 (DOY 110-297)
+SSA-OBS        13-Apr-1996 to 22-Oct-1996 (DOY 104-296)
+
+The sampling interval was always the same, regardless of IFC.
+
+7.2.3 Temporal Resolution
+
+Measurement occurred between 00 and 01 minutes after each hour; 1994 
+measurements began at 00, 03, 06, 09, 12, 15, 18, 21 hour Greenwich Mean Time 
+(GMT), and  1995 and 1996 measurements began on the hour, every hour.
+
+7.3 Data Characteristics                                                        
+                                                                                
+Data characteristics are defined in the companion data definition file 
+(te07sapf.def).
+                                                                                
+7.4 Sample Data Record                                                          
+                                                                                
+Sample data format shown in the companion data definition file (te07sapf.def).
+
+8. Data Organization
+
+8.1 Data Granularity
+
+All of the Sap Flow Data are contained in one dataset.
+
+8.2 Data Format(s)
+
+The data files contain numerical and character fields of varying length 
+separated by commas. The character fields are enclosed with a single apostrophe 
+marks. There are no spaces between the fields. Sample data records are shown in 
+the companion data definition file (te07sapf.def).
+
+9. Data Manipulations
+
+9.1 Formulae
+
+9.1.1 Derivation Techniques and Algorithms
+
+Sap flux density (S) (cm/h) was calculated using the following equation derived 
+from Marshall (1958):
+
+S=3600 k_sw ln (T_u/T_l)/(x Cp_w rho_w)
+                                                             (1a)
+where:
+
+x is the spacing between the heater and each thermocouple (0.75 cm).
+Cp_w is the specific heat (i.e. value for water is 4.18 J/(g °C)).
+rho_w is the density of sap (i.e., value for water is 1 g/cm3).  
+
+The thermal conductivity of active sapwood (k_sw) was estimated at 0.0038 J/(cm 
+s °C), based on the following (based on Swanson 1983):
+
+k_sw = (k_w M rho_b/rho_w) + k_dw (1 M rho_b/rho_w)          (1b)
+
+where:
+
+k_w is the thermal conductivity of water (0.0060 J/(m s °C)).
+rho_b is the typical live bulk density of sapwood (0.37 g/cm3 for both aspen and 
+spruce).
+M is the typical sapwood moisture content of 1.0 g moisture per g dry mass.  
+
+The reported variation in aspen moisture content from 0.75 to 1.25 g/g, i.e., 
+100 ± 25%, would lead to ± 9% error in k_sw and resultant estimates of S.  The 
+longitudinal thermal conductivity of dry wood (k_dw) was taken to be 0.00248 
+J/(cm s °C) based on rho_b and the resultant void volume (Siau, 1971). 
+
+From equation (2a), conditions of zero sap flow can be identified when T_u = 
+T_l.  Ideally, this is applicable if probe spacing is exactly symmetrical and if 
+wood heat transfer characteristics are precisely homogeneous above and below the 
+heater.  In practice, it was necessary to assume that zero sap flow occurred 
+when the minimum value of mean S in each clone was reached (nights when VPD was 
+near zero, excluding frost events).  Thus, a zero offset (z) was applied to 
+obtain the "zeroed" sap flux density (S'), where S' = z + S.  The magnitude of z 
+was constant, and normally within ± 0.5 cm/hr; it was recalculated, however, 
+when probes were replaced.
+
+The heat transfer theory indicates that the interruption of the sap stream by 
+the probes results in an underestimation of the true sap flux density.  For this 
+implementation, wound width was estimated to be 2.0 to 2.2 mm, including a 0.2 
+to 0.3-mm zone of disturbed sapwood on each side of the holes following drilling 
+(Swanson and Whitfield, 1981; Barrett et al., 1995).  Simulations using a two-
+dimensional numerical model similar to Swanson and Whitfield (1981) indicated 
+that with this implementation, a correction factor (a) of approximately 2.0 is 
+warranted to obtain the actual sap flux density (S*), where S* = aS'.  A similar 
+underestimation of 45% (i.e., a=1.8) was observed by Cohen et al. (1981) for 
+their implementation of the heat pulse method. 
+
+At each station, measurements of S* were multiplied by the stand sapwood area to 
+ground area ratio (SA) to give estimates of canopy transpiration (E).  SA was 
+determined as the product of BA and FSA, where BA is the basal area to ground 
+area ratio of aspen stems (at 1.3-m height) in one 10-m x 10-m plot centered on 
+each station, and FSA is the fraction of BA occupied by sapwood.  FSA was 
+calculated using two radial increment cores from each of four trees per station.  
+The zone of active sapwood within increment cores was recognized from staining 
+by a solution of methylene blue in methyl hydrate.
+
+Measurements of BA and SA for each site monitored are described in Section 3 and 
+given in Section 11.4.
+
+9.2 Data Processing Sequence
+
+Sap flow results were calculated using a custom-designed utility program 
+(written in BASIC).  The output file was then imported into a Quattro Pro 
+spreadsheet, and bad data were flagged.  Mean sap flux densities (S) for up to 
+three properly functioning trees per datalogger station were then calculated.  
+
+9.2.1 Processing Steps
+
+1) Uncorrected sap flux density (S) from raw datalogger output was calculated 
+   based on equation 1a using a BASIC utility program.
+2) The output file was imported into a Quattro Pro spreadsheet.
+3) Data were graphed, and bad, anomalous, or missing data points were flagged.
+4) Average uncorrected sap flux density (S) for each group of trees was 
+   calculated (normally two or three trees of a given species at each sap flow 
+   monitoring station).  Data points flagged in step 3 were not included in the 
+   mean.
+5) For each portion of thedata set where there were no changes in the number of 
+   properly functioning trees and no probe changes, the zero offset was 
+   determined as the difference between zero and the minimum S when the 
+   temperature was >0 °C.
+6) Zero offset was applied to the entire portion of the data set to give S'(see 
+   Section 9).
+7) Corrected sap flux density (S*) was obtained from S' by applying a multiplier 
+   (a=2.0) to account for interruption of sap flow by probes (see Section 9).
+8) Transpiration at the stand level was estimated as follows:
+   a) Sapwood area to ground area ratio (SA) was determined for each species in 
+      each 10-m x 10-m plot.
+   b) SA of minor tree species (if present) was combined with SA of related 
+      major species (e.g., SA of balsam poplar, a minor species, was considered 
+      to be trembling aspen, the major species, for purposes of scaling). 
+   c) For each species group, transpiration rate was estimated in each 10-m x 
+      10-m plot as the product of S* and SA.
+   d) For each species group, the transpiration rate for the site as a whole 
+      (e.g., SSA-OA) was determined as the average of the transpiration 
+      estimates from each 10-m x 10-m plot (i.e. datalogger station).
+   e) Total transpiration was estimated as the sum of the transpiration rates 
+      for all tree species.
+
+9.2.2 Processing Changes
+
+Since production of the previous data set in November 1994, the analysis method 
+has been modified by incorporating the zero offset and the correction for sap 
+flow interruption by probes.  The method of flagging bad data has also been 
+modified slightly.
+
+9.3 Calculations
+
+9.3.1 Special Corrections/Adjustments
+
+For each period encompassing no probe changes and no loss of function by probes, 
+a "zero offset" was determined by examining the deviation from zero of minimum 
+flow on nonfreezing nights with negligible VPD.  This resulted in a linear 
+correction (usually <0.5 cm/h) to all values of S to obtain S' (as described in 
+Section 9).
+
+9.3.2 Calculated Variables
+
+S     Uncorrected sap flux density (cm/h)
+S'    Zeroed sap flux density (cm/h)
+S*    Estimated actual sap flux density (cm/h)
+TRANS Estimated stand transpiration rate (mm/h)
+
+9.4 Graphs and Plots
+
+See BOREAS special issue publications (Hogg et al., 1997; Hogg and Hurdle, 
+1997).
+
+10. Errors
+
+10.1 Sources of Error
+
+Potential errors in quantitative determinations of true sap flux density 
+include:
+
+a) Freezing and thawing of xylem causes spiking of reported sap flow (including 
+   negative spikes).  This can be readily recognized in the datasets by 
+   reference to air temperature data.
+
+b) Sapwood moisture content was generally not measured since it is a destructive 
+   procedure and most of the work was conducted in national parks.  However, it 
+   can be reasonably assumed that it is near 1.0 (weight of moisture/weight of 
+   wood).  Deviations from this assumption should normally lead to ? 10% error 
+   in S' (see Section 9).  Diurnal variation in sapwood moisture content is 
+   assumed to be small and should not significantly affect the relative 
+   variation in S' (see Hogg et al., 1997).
+
+c) Sapwood bulk density can have a possible error of ?10%, but this does not 
+   affect relative changes in S'.
+
+d) Problems in defining zero flow may lead to error of ca. 0.3 cm/h in S'.
+
+e) Variation in sap flux density with depth in xylem or by direction (all trees 
+were probed on the north side to avoid thermal gradients caused by sun flecks) 
+can lead to errors.  This implementation partially integrates flow rates at 
+different depths, but "spillage" of heat from sapwood into nonconducting 
+heartwood may lead to underestimates of Sí in trees with a very narrow sapwood 
+zone (e.g., black spruce at SSA-OBS).
+
+f) The correction factor (a = 2.0, see Section 9) for sap flow interruption by 
+sensors was dependent on a consistent width of xylem disruption following 
+drilling and assumes that there was no progressive wounding response (see items 
+h) and i) below).  The appropriate correction factor was also dependent on the 
+time interval between the heat pulse and when the temperature changes in sapwood 
+were recorded (the correction would be reduced if the time interval were 
+increased from 1 minute).  However, a longer time interval would also reduce the 
+signal-to-noise ratio.  Also, because of this flow interruption, a reduction in 
+sensitivity of up to 10% may occur at the maximum flow rates recorded (see 
+Section 4.2.1.1).  For these reasons, the correction factor may be in error by 
+?10% (i.e., a = 1.8 to 2.2).
+
+g) Rapid, uneven heating or cooling of different regions of sapwood can lead to 
+baseline drift.  An attempt was made to minimize this by mounting probes on the 
+north side of trees and by insulating the area in the vicinity of probes.  This 
+type of error can generally be recognized by the appearance of spikey (or 
+incalculable) data, which were removed from the analysis.  The cause is usually 
+attributable to a visible symptom (removal of insulation by bears or bucks), 
+direct sunlight on tree at a certain time of day, or a weak heat pulse, which 
+amplifies the effect of any baseline drift).
+ 
+h) If moisture was trapped beneath the insulating layer around the probes, there 
+was a tendency for reported sap flow values to decrease beause of changes in 
+heat transfer characteristics and/or wounding from fungal infections.
+
+i) Long-term implantation of probes in aspen (>2 to 3 months) usually resulted 
+in a gradual, slight decline in sensitivity, typically in the range of 10 to 20% 
+(possible wounding response).  Thus, each probe was generally changed at least 
+once during the growing season. For spruce, wounding responses and/or excessive 
+resin from holes containing implanted probes may result in a more rapid 
+reduction in sensitivity, although some trees maintain sensitivity over long 
+time periods (3 to 4 months).
+
+j) Estimations of stand-level transpiration from sap flow data were also subject 
+to statistical error (variation among trees and among patches of trees within 
+the same stand).
+
+k) At SSA-OBS, the narrow (3 to 12 mm) width of sapwood probably led to 
+significant underestimates of sap flux density, because of lateral heat transfer 
+from the water-conducting sapwood into adjacent, nonconducting tissues.  This 
+would also lead to underestimates of stand transpiration rates based on sap flow 
+measurements.
+
+10.2 Quality Assessment
+
+10.2.1 Data Validation by Source
+
+The following two cross-comparisons are relevant here:
+
+a) A comparison of stand transpiration rates at SSA OA for the entire 1994 
+growing season, based on sap flow and tower-based eddy correlation measurements 
+of latent flux above and below the aspen canopy (with Tower Flux (TF)-1, TF-2; 
+Hogg et al., 1997; see also Black et al., 1996).  With this comparison, total 
+estimated transpiration of aspen (mid-June 1994 to mid-August 1994) using the 
+scaled-up sap flow measurements was 15% lower than the most recent tower-based 
+estimates (see Blanken et al., 1997).
+
+A good correspondence was obtained when examining the overall seasonal pattern 
+of transpiration by the two methods, and day-to-day variations in transpiration 
+rates were similar (Hogg et al., 1997). On a mean diurnal basis, changes in sap 
+flow lag behind changes in  transpiration by about 1 hour, becasue of changes in 
+water storage in the aspen stems and crowns.
+
+b) The constant power method of determining sap flow (TE-11, Bernard Saugier) 
+was operated alongside the heat pulse method at the TE mixed wood site, from 28-
+Jul-1994 to 6-Aug-1994.  The comparison was made for aspen, black spruce, and 
+white spruce (n=2 trees per species for the constant power method; n=4 for aspen 
+and n=2 for black and white spruce for the heat pulse method).
+
+The magnitude of daily mean sap flow (S*) by both methods was always within 15% 
+for each of the 9 days, for both aspen and spruce (black and white spruce were 
+combined in the analysis because of small sample sizes).  The relative day-to-
+day pattern was also similar. 
+
+Differences in the diurnal pattern of sap flow were noted, however.  The 
+constant power method was relatively more "sluggish" for early to mid-morning 
+values, and showed relatively greater maximum daytime values compared to the 
+heat pulse method.  This difference could be partly attributed to diurnal 
+changes in heat storage with the constant power method.
+
+10.2.2 Confidence Level/Accuracy Judgment
+
+In general, TE-07 is confident that this method can accurately determine 
+relative changes in sap flow over periods of time ranging from 1 hour to a few 
+weeks.  Errors in the relative changes should be within ?10%.  This also applies 
+to relative changes in the transpiration estimates, bearing in mind that there 
+is typically a 0.5-to 1-hour diurnal lag between stem sap flow (at 1- to 1.5-m 
+height) and transpiration.
+
+Over longer time periods, wounding responses can introduce additional errors, 
+which TE-07 attempted to minimize by periodic change in probes, regular 
+maintenance, and removal of low-quality data.  Nevertheless, relative changes on 
+a full-season basis could be in error by as much as ?25%.
+
+Error in quantitative estimates of the actual sap flux density is difficult to 
+assess, but based on the comparison with TE-11 (Section 10.2.1), error is 
+probably ?15% for aspen and spruce.  However, progressive wounding responses can 
+result in serious underestimations of sap flux density (such responses are 
+usually evident from the data, and are normally corrected by changing probes). 
+
+From Section 10.1, it will be evident to the reader that there are many possible 
+sources of error in estimating stand transpiration rates from sap flow 
+measurements.  In the 1994 comparison with eddy correlation measurements at SSA-
+OA, the estimates of transpiration were similar within 15%.  This could indicate 
+that much of the error listed in Section 10.1 is of minor consequence, but TE-07 
+nevertheless urges caution in applying these quantitative estimates of stand 
+transpiration.  
+
+Tower-based eddy correlation is clearly a superior means of obtaining seasonal 
+totals of water vapor flux at the stand level, since results can be rigorously 
+validated by examining the degree of energy closure.  However, sap flow 
+measurements can have the following advantages over tower-based methods: 1) they 
+are much less sensitive to meteorological conditions, resulting in more stable 
+diurnal values; 2) all of the flux is attributable to water flux within a given 
+tree; thus, they can provide a better means of examining transpiration responses 
+for a given species.  TE-07 experience indicates the benefits of operating sap 
+flow measurements alongside eddy correlation, since the potential sources of 
+error are different and generally independent.
+
+10.2.3 Measurement Error for Parameters
+
+See Section 10.2.2.
+
+10.2.4 Additional Quality Assessments
+
+None given.
+
+10.2.5 Data Verification by Data Center
+
+Data were examined for general consistency and clarity.
+
+11. Notes
+
+11.1 Limitations of the Data
+
+Potential sources of error are noted in Section 10.  All of the sap flow data 
+are for trees only; thus, transpiration estimates are not directly comparable to 
+measurements of water vapor flux made above the canopy (which also include 
+evaporation of intercepted water and transpiration by the understory and soil).
+
+11.2 Known Problems with the Data
+
+In some instances, sample sizes (number of trees giving good measurements) was 
+reduced because of animal damage, heater failure, thermal drift, and other 
+causes. Discontinuities may occur in the data set when there is a loss of 
+function for one or more trees at a given site, or following probe changes.
+
+11.3 Usage Guidance
+
+Readers are advised to examine all sections of this document to determine the 
+suitability of this data set for their purposes. Any constructive feedback that 
+users may have about the contents of this document and associated data sets is 
+welcome.  Scathing criticism will be cheerfully rebutted.  "Let he/she who is 
+without error in their own measurements throw the first stone."
+
+Data may be viewed, transformed, or skewed in any fashion that suits the user's 
+whim or needs.  However, contact TE-07 (see Section 2.3) before using these data 
+for presentations, publications, and related venues for the dissemination of 
+erudite information.
+
+11.4 Other Relevant Information
+
+In the data files, the column called MEASUREMENT_DESCR gives a coded description 
+of the measurements taken.  Each measurement taken is denoted by a single letter 
+of code.   The description code is:
+
+“a” to “h” means that trees called “a” to “h” gave good data.
+“N” denotes trees receiving new probes.
+“x” denotes missing or bad data taken from that tree.
+
+The format design of the BOREAS data plan template seems to have been optimized 
+for fluxers and remote sensors rather than for researchers in terrestrial 
+ecology and physiology.
+
+In lieu of humor and apologies, this section is hereby used to sneak in some 
+ecological information relevant to these data sets.
+
+Section A: Description of Aspen Sites
+
+The two aspen sites are both situated in stands of trembling aspen in central 
+Saskatchewan, Canada.  The boreal site is the BOREAS SSA-OA tower site, located 
+in the southern boreal forest of Prince Albert National Park (PANP), elevation 
+600 m.  The parkland site is located at Batoche National Historic Park, in the 
+aspen parkland about 100 km to the south, elevation 500 m), midway between 
+Saskatoon and Prince Albert.  It is a CFS research site that forms part of the 
+BFTCS (Price and Apps, 1995).
+
+The two aspen sites differ dramatically, in terms of climate, vegetation, tree 
+growth form, and productivity (see Hogg and Hurdle, 1995).  Based on the 1951-80 
+climate normals (Environment Canada, 1982), the Batoche site receives 
+considerably less precipitation (375 mm/yr at Rosthern, 52?40'N, 106?20'W) 
+compared to the SSA OA site (462 mm/yr at Waskesui Lake, 53?55'N, 106?05'W). 
+Furthermore, mean growing season temperatures at the Batoche site are about 2 °C 
+warmer at the parkland site, resulting in a much drier long-term climate (see 
+Hogg, 1994).
+
+SSA-OA Site:
+
+The vegetation of the SSA-OA site consists of an extensive, even-aged stand of 
+trembling aspen, 70 to 80 years old and 18 to 22 m tall.  The understory is 
+dominated by beaked hazelnut (Corylus cornuta Marsh.) about 2 m tall.  Aspen 
+clones (patches of genetically identical trees) are readily distinguishable 
+because of differences in bark characteristics and phenology.  The stand is 
+relatively homogeneous except for a few small openings and occasional patches of 
+balsam poplar (Populus balsamifera L.).  The site is gently rolling and 
+generally well drained, with a predominantly clay loam soil texture.
+
+In 1994, sap flow was monitored at a location about 1 km east of the main BOREAS 
+flux tower.  Two adjacent clones were monitored.  They are referred to as the 
+early-leafing (EL) and late-leafing (LL) clones, because of differences in 
+phenology. 
+
+In 1996, sap flow was monitored at two locations near the main BOREAS flux 
+tower.  The first clone (PAA) was located near Hut B, where Remote Sensing 
+Science (RSS)-17 monitored sap flow by the Granier method in 1994.  The second 
+clone (PAB) was situated near the canopy access tower located about 100 m east 
+of the main flux tower.
+
+
+Batoche Site 
+CFS site and Auxiliary BOREAS site)
+
+The parkland site is in one of the few remaining areas of native aspen parkland 
+in the region that was never cultivated for agriculture.  The terrain is rolling 
+and underlain by stabilized sand dunes.  The vegetation is highly heterogeneous, 
+ranging from open native grassland with small, stunted clones of aspen to more 
+productive lowland forests of aspen and balsam poplar with an understory of red 
+osier dogwood (Cornus stolonifera Michx.). Trees are stunted in relation to 
+diameter, and are often crooked, leaning, or forked, with heights ranging from 
+<5 m to 15 m (see Hogg and Hurdle, 1995).  Within the aspen stands, trees from 
+two or more age classes are usually found (maximum age about 85 years).  Dense 
+bands of beaked hazelnut occur on north- and east- facing slopes, but in most 
+areas, the forest understory consists of sparse grasses, herbs, and low shrubs 
+(e.g., Saskatoon, Amelanchier alnifolia Nutt., choke-cherry, Prunus virginiana 
+L., and prickly rose, Rosa acicularis Lindl.).
+
+At the Batoche site, four stations were established along a 400-m transect 
+extending from grassland to the forest interior, and three different trees were 
+monitored each year at each station.  One station was located in a small clone 
+of stunted aspen surrounded by grassland (GL clone), two stations were located 
+at the edge and in the center of a large (200 m x 75 m) clone in upland forest 
+next to the grassland (UF clone), and one station was located in the center of a 
+more mesic, lowland forest (LF clone).   
+
+Stand Characteristics Of Aspen Sites Where Sap Flow Measurements Were Made:
+
+
+General Stand Characteristics:
+
+
+                       SSA-OA             Batoche
+Stand volume
+(cubic m per ha):      144*               32* 
+Leaf Area Index:       2.3**              1.4***
+Height (m):            18-22              5-14
+Age (years):           70-80              30-80
+
+
+Notes:
+
+*   biometry surveys by Halliwell and Apps (1996)
+**  from Blanken et al. (1997)
+*** estimate based on litter traps
+
+
+SSA-OA: Characteristics of clones monitored:
+
+                    1994            1996
+clone name:         EL      LL      PAA     PAB
+diameter at
+1.3 m ht (cm):      21-27   17-22   19-23   20-22 
+
+basal area ratio
+(sq. m per sq. m):  0.0039  0.0063  0.0046  0.0048
+
+sapwood area ratio
+(sq. m per sq. m):  0.0020  0.0032  0.0032  0.0030
+
+
+Batoche: Characteristics of clones monitored:
+
+                      Batoche 1994-1995
+clone name:           GL        UF       UF        LF
+                                edge     center
+height (m):           5         6- 8     12-14     7-10
+
+diameter at
+1.3 m ht (cm):        6-9       8-12     20-23     8-14
+
+age (years):          30-45     30-45    70-80     30-55
+
+basal area ratio
+(sq. m per sq. m):    0.0015    0.0015   0.0035    0.0017   
+
+sapwood area ratio
+(sq. m per sq. m):    0.0009    0.0010   0.0010    0.0011 
+
+
+Note: Data from UF (edge) were excluded in 1994 because of problems with 
+wounding responses.  Data from UF (center) were excluded from the 1995 analysis 
+because of problems with thermal drift.
+
+
+Section B: Description Of Mixed Wood Site
+
+This site is located near Candle Lake, Saskatchewan (53? 43.8'N, 105? 12.0'W), in 
+the BOREAS SSA.  It was used as an auxiliary site and had a canopy access tower 
+for measurements by the TE-04 team (Joe Berry, principal investigator).
+
+It is located on Saskatchewan forest inventory map E43 N595, on the NW side of 
+Hwy 120 about 3 km east of southernmost turnoff into Candle Lake.  The stand 
+designation is 819/933, H15b ta a94/S5d BS a94.  It is a small (180 m x 180 m) 
+site of young (1940's origin) aspen-black spruce-white spruce mixed wood 
+surrounded (to the north and west) by fen.  
+
+
+Characteristics of Trees at Mixed Wood Site Where Sap Flow Measurements Were 
+Made in 1994:
+
+
+Species:            Black    White    Trembling  Balsam     Total
+                    Spruce   Spruce   Aspen      Poplar
+                                     
+height (m):         7-8      7-8      11-13      
+
+diameter at
+1.3 m ht (cm):      11       11       12-16      
+
+stem density*
+number per ha:      1400     300      1800       500        4000
+
+Overall
+basal area ratio*
+(sq. m per sq. m):  0.00071  0.00020  0.00202    0.00045    0.00341    
+ 
+Overall
+sapwood area ratio*
+(sq. m per sq. m):  0.00040  0.00016  0.00158    (0.00035)  (0.0025)    
+
+
+Notes:
+*Based on average of four 10-m x 10-m plots 
+
+
+Section C: Description of SSA-OBS Site
+
+
+The SSA-OBS site (53?59'N, 105?07'W) is a BOREAS tower site located NE of Candle 
+Lake, Saskatchewan, in the BOREAS SSA.  It is dominated by an extensive stand of 
+black spruce (Picea mariana) >100 years old.  There is an understory of labrador 
+tea (Ledum groenlandicum) and other sparse shrubs, and a surface moss layer 
+dominated by Pleurozium schreberi, other feather mosses, and occasional hummocks 
+of Sphagnum spp.  The black spruce is highly variable in size, ranging up to ca. 
+15 m in height and about 15 cm in diameter.  The forest is dominated by black 
+spruce, with occasional large tamarack (Larix laricina) trees in the wettest 
+areas and a few jack pine (Pinus banksiana) in the drier areas. Stem density is 
+generally high but variable. 
+
+
+Characteristics of Trees at SSA-OBS Site Where Sap Flow Measurements Were Made 
+in 1996:
+
+
+Species:               Black Spruce
+
+Site:                  BSA      BSB             
+                                     
+height (m):            6-11     7-10
+
+diameter at
+1.3 m ht (cm):         5.5-12   7-11
+
+stem density*
+number per ha:         9000     7000
+
+Basal area ratio* 
+(sq. m per sq. m):     0.0039   0.0028
+ 
+Sapwood area ratio*
+(sq. m per sq. m):     0.00105  0.00082
+
+
+Notes:
+*Based on 10 m x 10 m plot around each sap flow station 
+----------------------------------------------------------------
+
+12. Application of the Data Set
+
+This data set can be used to study the sap flow rates, transpiration rates 
+derived from the sap flow rates, and the environmental conditions affecting 
+these rates of the boreal forest.
+
+13. Future Modifications and Plans
+
+No plans as of yet.
+
+14. Software
+
+A utility program was used to process these data.
+
+14.1 Software Description
+
+The utility program that was used to process these data is written in QuickBasic 
+and is presently not optimized for user friendliness.
+
+14.2 Software Access
+
+Contact TE-07 if interested in obtaining the QuickBasic program.
+
+15. Data Access
+
+15.1 Contact Information
+
+Ms. Beth Nelson
+BOREAS Data Manager
+NASA GSFC
+Greenbelt, MD 
+(301) 286-4005
+(301) 286-0239 (fax)
+Elizabeth.Nelson@gsfc.nasa.gov
+
+15.2 Data Center Identification
+
+See Section 15.1.
+
+15.3 Procedures for Obtaining Data
+
+Users may place requests by telephone, electronic mail, or fax.
+
+15.4 Data Center Status/Plans
+
+The TE-07 sap flow data are available from the Earth Observing System Data and 
+Information System (EOSDIS) Oak Ridge National Laboratory (ORNL) Distributed 
+Active Archive Center (DAAC).  The BOREAS contact at ORNL is:
+
+ORNL DAAC User Services
+Oak Ridge National Laboratory
+(865) 241-3952
+ornldaac@ornl.gov
+ornl@eos.nasa.gov
+16. Output Products and Availability
+
+16.1 Tape Products
+
+None.
+
+16.2 Film Products
+
+None.
+
+16.3 Other Products
+
+Tabular ASCII files.
+
+17. References
+
+17.1 Platform/Sensor/Instrument/Data Processing Documentation
+
+P.A. Hurdle has a preliminary document outlining the technical configuration of 
+the heat pulse method used here.  Please contact TE-07 if interested in this 
+document.
+
+17.2 Journal Articles and Study Reports
+
+Barrett, D.J., T.J. Hatton, J.E. Ash, and M.C. Ball. 1995.  Evaluation of the 
+heat pulse velocity technique for measurement of sap flow in rainforest and 
+eucalypt forest species of south-eastern Australia. Plant Cell Env. 18:463-469.
+
+Black, T.A., G. den Hartog, H.H. Neumann, P.D. Blanken, P.C. Yang, C. Russell, 
+Z. Nesic, X. Lee, S.G. Chen, R. Staebler, and M.D. Novak. 1996.  Annual cycles 
+of water vapor and carbon dioxide fluxes in and above a boreal aspen forest. 
+Global Change Biol. 2: 219-229.
+
+Blanken, P.D., T.A. Black, P.C. Yang, H.H. Neumann, Z. Nesic, R. Staebler, G. 
+den Hartog, M.D. Novak, and X. Lee.  1997. Energy balance and canopy conductance 
+of a boreal aspen forest:  partitioning overstory and understory components. 
+Journal of Geophysical Research, 102 (D24), 28915-28927.
+
+Cohen, Y., M. Fuchs, and G.C. Green. 1981. Improvements of the heat pulse method 
+for determining sap flow in trees. Plant Cell Env. 4:391-397. 
+
+Environment Canada. 1982. Canadian climatic normals 1951-1980. Temperature and 
+precipitation.  Prairie Provinces. Atmospheric Environment Service, Downsview, 
+Ontario, Canada, 429 pp.
+
+Halliwell, D. and M.J. Apps. 1996. BOREAS biometry and auxiliary sites. 
+Overstory and understory data, Version 2. Canadian Forest Service, Edmonton, 
+Alberta, 256 p.
+
+Hogg, E.H. 1994. Climate and the southern limit of the western Canadian boreal 
+forest. Can. J. For. Res. 24:1835-1845.
+
+Hogg, E.H. 1997. Temporal scaling of moisture and the forest-grassland boundary 
+in western Canada. Agric. Forest Meteorol. 84: 115-122.
+
+Hogg, E.H. and P.A. Hurdle. 1995. The aspen parkland in western Canada: a dry-
+climate analogue for the future boreal forest? Water Air Soil Pollut. 82:391-
+400.
+
+Hogg, E.H. and P.A. Hurdle. 1995. Responses of sap flow in aspen(Populus 
+tremuloides) to vapor pressure deficit in the boreal forest and aspen parkland 
+of central Saskatchewan, Canada.  Abstracts of presentations at the 80th Annual 
+Ecological Society of America Meeting, 30-Jul-1995 to 3-August-1995, Snowbird, 
+Utah.
+
+Hogg, E.H. and P.A. Hurdle.  1997. Sap flow in trembling aspen:  implications of 
+stomatal responses to vapor pressure deficit.  Tree Physiology, 17:501-509 
+(BOREAS Special Issue).
+
+Hogg, E.H., T.A. Black, G. den Hartog, H.H. Neumann, R. Zimmermann, P.A. Hurdle, 
+P.D. Blanken, Z. Nesic, P.C. Yang, R.M. Staebler, K.C. McDonald, and R. Oren.  
+1997. A comparison of sap flow and eddy fluxes of water vapor from a boreal 
+deciduous forest. Journal of Geophysical Research, 102 (D24), 28929-28937.
+
+Marshall, D.C. 1958. Measurement of sap flow in conifers by heat transport. 
+Plant Physiol. 33:385-396.
+
+Price, D.T. and M.J. Apps. 1995. The Boreal Forest Transect Case Study: global 
+change effects on ecosystem processes and carbon dynamics in boreal Canada. 
+Water Air Soil Pollut. 82:203-214.
+
+Sellers, P. and  F. Hall. 1994. Boreal Ecosystem-Atmosphere Study: Experiment 
+Plan. Version 1994-3.0, NASA BOREAS Report (EXPLAN 94). 
+
+Sellers, P. and F. Hall. 1996. Boreal Ecosystem-Atmosphere Study: Experiment 
+Plan. Version 1996-2.0, NASA BOREAS Report (EXPLAN 96). 
+
+Sellers, P., F. Hall, and K.F. Huemmrich. 1996. Boreal Ecosystem-Atmosphere 
+Study: 1994 Operations. NASA BOREAS Report (OPSDOC 94). 
+
+Sellers, P., F. Hall, and K.F. Huemmrich. 1997. Boreal Ecosystem-Atmosphere 
+Study: 1996 Operations. NASA BOREAS Report (OPSDOC 96). 
+
+Sellers, P.J., F.G. Hall, R.D. Kelly, A. Black, D. Baldocchi, J. Berry,
+M. Ryan, K.J. Ranson, P.M. Crill, D.P. Lettenmaier, H. Margolis, J.
+Cihlar, J. Newcomer, D. Fitzjarrald, P.G. Jarvis, S.T. Gower, D.
+Halliwell, D. Williams, B. Goodison, D.E. Wickland, and F.E. Guertin.  1997.  
+BOREAS in 1997: Experiment overview, scientific results, and future
+directions. Journal of Geophysical Research, 102 (D24), 28731-28769.
+
+Sellers, P.J., F. Hall, H. Margolis, B. Kelly, D. Baldocchi, G. den Hartog, J. 
+Cihlar, M.G. Ryan, B. Goodison, P. Crill, K.J. Ranson, D. Lettenmaier, and D.E. 
+Wickland. 1995. The Boreal Ecosystem-Atmosphere Study (BOREAS): An overview and 
+early results from the 1994 field year. Bull. Am. Meteorol. Soc. 76:1549-1577.
+ 
+Siau, J.F. 1971. Flow in wood. Syracuse Wood Science Series 1. Syracuse 
+University Press. 131 p.
+
+Swanson, R.H. 1983. Numerical and experimental analyses of implanted-probe heat 
+pulse velocity theory. Ph.D. thesis, University of Alberta, 298 p.
+
+Swanson, R.H. 1994. Significant historical developments in thermal methods for 
+measuring sap flow in trees. Agric. For. Meteorol. 72:113-132.
+
+Swanson, R.H. and D.W.A. Whitfield. 1981. A numerical analysis of heat pulse 
+velocity theory and practice. J. Exp. Bot. 32:221-239.
+
+17.3 Archive/DBMS Usage Documentation
+
+None.
+
+18. Glossary of Terms
+
+aerodynamic conductance - In this context, a measure of the degree to which 
+vertical air movement permits the transfer of water vapor and sensible heat 
+between the leaf surface and a reference height above the forest canopy.
+
+BA (basal "area") - In this context, the ratio of tree basal area (at 1.3 m 
+height) to ground area, as measured within plots in the forest stand being 
+monitored.
+
+boreal forest - Northern forest that occurs at high latitudes in Canada, Alaska, 
+Russia, and Scandinavia.  In western Canada, it can be defined as a forested, 
+cold-climate region where there are peatlands (bogs and/or fens) and at least 
+three species of conifers (typically white spruce, black spruce, and tamarack; 
+and usually either jack pine or lodgepole pine).  Trembling aspen is often 
+abundant or dominant, but the diversity of other hardwood tree species is low.
+
+canopy conductance - In this context, a measure of the degree to which stomata 
+and plant surfaces in the canopy permit passage of water vapor, expressed on a 
+ground area basis.
+
+clone - A group of genetically identical trees that occurs in species that 
+reproduce vegetatively, including trembling aspen and balsam poplar.  Typically 
+a clone of aspen consists of dozens to hundreds of trees, occupying areas of up 
+to several hectares in the boreal region.
+
+eddy correlation - A micrometeorological technique used extensively in BOREAS to 
+measure the exchange of water vapor, heat, carbon dioxide, and trace gases 
+between the forest and the atmosphere.  Eddy correlation measurements in BOREAS 
+were made from towers (above or below the forest canopy) and from aircraft.  In 
+simple terms, the technique involves simultaneous, high-frequency measurements 
+of vertical air movement and the quantities of interest.
+
+FSA - Fraction of total tree basal area that is sapwood, as estimated using 
+increment cores.
+
+latent heat flux density - The rate of energy exchange (e.g., from the 
+landscape) caused by evaporation of water (including transpiration), expressed 
+in watts per square meter ground area. This can also be expressed in mm per hour 
+of water vapor loss from the landscape.
+
+leaf water potential - A measure of plant water status, inferred as the negative 
+value of the pressure required to restore moisture to the cut surface of xylem 
+in a leaf petiole or twig when the latter is enclosed by a pressure chamber.
+
+parkland - A semi-arid vegetation zone in western Canada that is transitional 
+between the boreal forest and prairies to the south.  Conifers such as spruce 
+and pine are generally absent, and forest cover is generally restricted to 
+stunted patches of aspen.  Peatlands (bogs and fens) are generally absent, and 
+small lakes tend to dry up during periods of drought.  This zone is intensively 
+cultivated for agriculture.
+
+sap flow - General term referring to the upward movement of liquid water within 
+trees and other plants.
+
+sap flux density - Quantitative measure of the volume of liquid water moving 
+upward per unit area of sapwood in trees.
+
+sapwood - Water-conducting tissue in trees, consisting of the outermost and 
+youngest region of xylem.  For the major boreal tree species, this typically 
+consists of the "wood" formed in the past 10-25 years.
+
+SA (sapwood "area") - In this context, the ratio of sapwood area (at 1.3-m 
+height) to ground area, as measured within plots in the  forest stand being 
+monitored.
+
+sensible heat flux density - The total rate of energy exchange (e.g., from the 
+landscape) by convection or conduction of heat, expressed in watts per square 
+meter ground area.
+
+stomata - Little holes in leaves that provide a pathway for water vapor loss 
+from leaves and for the exchange of carbon dioxide with the atmosphere.
+
+stomatal conductance - A measure of the degree to which stomata permit the 
+passage of water vapor or carbon dioxide, expressed on a leaf area basis.
+
+transpiration - In this context, refers to water vapor loss through the stomata 
+of tree leaves.
+
+vapor pressure deficit (VPD) - Difference between the actual vapor pressure and 
+the saturation vapor pressure of air, as measured at a reference height within 
+or above the forest canopy.
+
+xylem - Water-conducting tissue in plants; in trees we are referring to 
+secondary xylem or what the lay person would view as "wood," which also serves 
+as structural support for the tree.
+
+19. List of Acronyms
+
+ASCII   - American Standard Code for Information Interchange
+Batoche - The study site located in the Batoche National Historic Park
+BFTCS   - Boreal Forest Transect Case Study
+BOREAS  - BOReal Ecosystem-Atmosphere Study
+BORIS   - BOREAS Information System
+CD-ROM  - Compact Disk-Read Only memory
+CFS     - Canadian Forest Service
+DAAC    - Distributed Active Archive Center
+DOY     - Julian Day of Year
+EOS     - Earth Observing System
+EOSDIS  - EOS Data and Information System
+GMT     - Greenwich Mean Time
+GSFC    - Goddard Space Flight Center
+HTML    - HyperText Markup Language
+IFC     - Intensive Field Campaign
+MIX     - Mixed Wood
+NAD83   - North American Datum of 1983
+NASA    - National Aeronautics and Space Administration
+NOAA    - National Oceanic and Atmospheric Administration
+NSA     - Northern Study Area
+ORNL    - Oak Ridge National Laboratory
+PANP    - Prince Albert National Park
+RSS     - Remote Sensing Science
+S       - Sap Flux Density
+SSA     - Southern Study Area
+SSA-OA  - Old Aspen
+SSA-OBS - Old Black Spruce
+TE      - Terrestrial Ecology
+TF      - Tower Flux 
+T_l     - Temperature at the lower thermocouple
+T_u     - Temperature at the upper thermocouple
+URL     - Uniform Resource Locator
+UTM     - Universal Transverse Mercator
+VPD     - Vapor Pressure Deficit
+
+20. Document Information
+
+20.1 Document Revision Date
+
+Written:       03-Oct-1996
+Last Updated:  08-Oct-1998
+
+20.2 Document Review Date(s)
+
+BORIS Review:  10-Oct-1997
+Science Review:  
+
+20.3 Document ID
+
+20.4 Citation
+
+E.H. (Ted) Hogg and P.A. Hurdle, CFS
+
+20.5 Document Curator
+
+20.6 Document URL
+
+Keywords
+
+Aspen
+Sap flow
+Sap flux density
+Spruce
+Stomatal conductance
+Transpiration
+Vapor pressure deficit
+TE07_Sapflow.doc
+10/09/98
+

@@ -1,0 +1,5 @@
+Equation du modèle global:
+
+"Flux de sève =  -0.6175  +  1e-04  NETRAD_1havant +  0.0054  PPFD_IN_1havant +  0.0014  RH +  -0.0041 SW_IN_1havant +  0.0268  TA +  -0.0406  FC_1havant +  -0.0048  H_1havant +  0.0112  LE +  0.9171  VPD +  0.1108  SB +  -0.1376  G"
+
+Les données de X pour une journée moyenne (graphique qui apparait sur l'ouverture de la page) sont dans le fichier X_par_heure.csv.
