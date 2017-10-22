@@ -1,7 +1,7 @@
 
 
 # Importer les données:
-path<-"F:/MIASHS/TER/Vegeta/data/data_brut/Puechabon_2010_vpd.csv" # Fichier de Darren
+path<-"F:/MIASHS/TER/Vegeta/data/data_brut/Puechabon_2010_vpd.csv" 
 donnees <- read.table(path,sep=",",dec=",",header=T,na.strings = c("-9999","NA"))
 head(donnees)
 setwd("F:/MIASHS/TER/Vegeta/Anaelle")
