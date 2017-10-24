@@ -19,7 +19,7 @@ donnees_base = donnees_base[,-which(colnames(donnees_base)=="TS_3")] # Enleve TS
 
 #############  Transforme les dates
 donnees_base$dates = strptime(donnees_base$date,format = "%Y-%m-%d %H:%M:%S")
-donnees_base$heure_solaire = strptime(donnees_base$heure_solaire,format = "%Y-%m-%d %H:%M:%S")
+donnees_base$heure_solaire = strptime(donnees_base$heure_solaire,format = "%H:%M")
 
 #############  Supprime colonnes inutiles pour le moment
 donnees<- donnees_base[,-which(names(donnees_base) %in% c("TIMESTAMP_START","TIMESTAMP_END","DTime","dates","heure_solaire"))]

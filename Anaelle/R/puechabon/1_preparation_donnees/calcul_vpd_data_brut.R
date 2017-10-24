@@ -11,12 +11,11 @@ for (i in 1:ncol(donnees)){
   donnees[,i]<-as.numeric(as.character(donnees[,i]))}
 
 # Colonne date normale:
-library(solaR)
 donnees$TIMESTAMP_END <- as.character(donnees$TIMESTAMP_END)
 donnees$dates<-as.POSIXct(donnees$TIMESTAMP_END,format="%Y%m%d%H%M", tz='Europe/Paris',origin = "1960-01-01")
-donnees$heure_solaire<-local2Solar(donnees$dates)
+library(solaR)
+donnees$heure_solaire = local2Solar(donnees$dates)
 donnees$heure_solaire<-strftime(donnees$heure_solaire,format="%H:%M")
-donnees$heure_solaire<-as.POSIXct(donnees$heure_solaire,format="%H:%M", tz='Europe/Paris')
 
 
 # Calcul du VPD:

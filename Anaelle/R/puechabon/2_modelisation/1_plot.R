@@ -8,7 +8,7 @@ donnees = donnees[,-1]# supprime premier colonne d'index
 
 # Transforme les dates
 donnees$dates = strptime(donnees$date,format = "%Y-%m-%d %H:%M:%S")
-donnees$heure_solaire = strptime(donnees$heure_solaire,format = "%Y-%m-%d %H:%M:%S")
+donnees$heure_solaire = strptime(donnees$heure_solaire,format = "%H:%M")
 
 
 # SAP_flow en fonction des heures de la jorunée:
