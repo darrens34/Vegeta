@@ -13,18 +13,19 @@
 	  <!--<link href="Rad/slider/css/bootstrap-slider.css" rel="stylesheet">-->
 
 	  <script>
-			function readTextFile()
-			{
-				var rawFile = new XMLHttpRequest();
-				rawFile.open("GET", "data/puechabon/X_par_heure.csv", true);
-				rawFile.onreadystatechange = function ()
-				{
-					if(rawFile.readyState === 4)
-					{
-							var data = rawFile.responseText;
+	  var dataDict = {};
+	  var nomX=[];
+	  var Y=[];
+	  
+			function readTextFile(){
+				var xhttp = new XMLHttpRequest();
+				xhttp.open("GET", "data/puechabon/X_par_heure.csv", true);
+				
+				xhttp.onreadystatechange = function (){
+					if(xhttp.readyState === 4){
+							var data = xhttp.responseText;
 							var allTextLines = data.match(/[^(\r\n|\t)]+/g);
-						
-							var dataDict = {};
+							var D="";
 							for(i=0;i<12;i++){
 								for(j=1;j<=48;j++){
 									if (!dataDict[allTextLines[(i*49)]]) {
@@ -32,38 +33,79 @@
 									}
 									dataDict[allTextLines[(i*49)]].push(allTextLines[((i)*49)+j]);
 								}
+								nomX.push(allTextLines[(i*49)]);
 							}
-					console.log(dataDict);
+					EQ(dataDict,nomX);
 					}
 				}
-				rawFile.send(null);
+				xhttp.send(null);
+				return Y ;
 			}
+		
+		
+			function EQ(Donnee,nomX) {
+				
+				for (i=0;i<48 ;i++) {
+					var dataA=[];
+					for (j=1;j<nomX.length;j++) {		
+								dataA.push(Donnee[nomX[j]][i]);	
+					}
+						Y.push({ 'y' : 0.5000152+0.0033572*dataA[0]+0.0455421*dataA[1]+(-0.0006398)*dataA[2]+(-0.0036218)*dataA[3]+(-0.0456083)*dataA[4]+0.0257086*dataA[5]+(-0.0199913)*dataA[6]+0.00894 *dataA[7]+(-0.0004025)*dataA[8] +(-0.01239)*dataA[9]+1.5134258*dataA[10] })  ;
+ 				}	
+ 				console.log(Y)
+				
+				document.getElementById("test").innerHTML = Y;
+				return Y ;
+			}
+
+			
+			
+			function le_graph() {
+
+				var chart = new CanvasJS.Chart("chartContainer", {
+					animationEnabled: true,
+					theme: "light2",
+					title:{
+						text: "Simple Line Chart"
+					},
+					data: [{        
+						type: "line",       
+						dataPoints: Y}]
+				});
+
+				chart.render();
+
+
+				}
+
+			
 		</script>
 		
 	</head>
 
-	<body onload="readTextFile()">
+	<body onload="readTextFile();le_graph()">
 
 
-		<div class="container text-center">
-	  <div class="form-inline">
-	  <label>X1</label>
-	  <input type="range" min=0 max=10 step=0.01 ng-model="X1" ng-init="X1=1">
-	  <br>
+	<div class="container text-center">
+		<div class="form-inline">
+			<label>X1</label>
+			<input type="range" min=0 max=10 step=0.01 ng-model="X1" ng-init="X1=1">
+				<br>
 	 
-	  <label>X2</label>
-	  <input  id="Slide2" type="range" min=0 max=10 step=0.01 ng-model="X2" ng-init="X2=5">
+			<label>X2</label>
+			<input  id="Slide2" type="range" min=0 max=10 step=0.01 ng-model="X2" ng-init="X2=5">
 	  
-	  <input id="ex8" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="20" data-slider-step="1" data-slider-value="14"/>
-	</div>
-
+			<input id="ex8" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="20" data-slider-step="1" data-slider-value="14"/>
 		
+		</div>
+	</div>
+		
+<div id="chartContainer" style="height: 370px; width: 100%;"></div>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 
-	<plot height=300 aspect=3 stroke-width=2 stroke="red">
-	  <lines x="[[seq(0,23.5,47)]]" y="[[normal(x,X1,X2)]]"/>
-	</plot>
-
-	</div>	
+	<div>
+	 <p id="test"></p>
+	</div>
 
 
 
