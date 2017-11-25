@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+	  <meta charset="utf-8">
+	  <link rel="stylesheet" type="text/css" href="style2.css" />
+	  <script>
+	  var dataDict = {};
+	  var nomX=[];
+	  
+	  		// fonction qui récupére les données .CSV 
+	  		// qui les nettoies, pour avoir un  un tableau des X variables pour chaque demi heure 
+	  		// et le nom des variables X 
+	  		// et qui appelle la fonction EQ
+			function readTextFile(betaa=[1,1,1,1,1,1,1,1,1,1,1,1]){
+			var dataDict = {};
+				var xhttp = new XMLHttpRequest();
+				xhttp.open("GET", "data/puechabon/X_par_heure.csv", true);
+				xhttp.onreadystatechange = function (){
+					if(xhttp.readyState === 4){
+							var data = xhttp.responseText;
+							var allTextLines = data.match(/[^(\r\n|\t)]+/g);
+							for(i=0;i<12;i++){
+								for(j=1;j<=48;j++){
+									if ( !dataDict[allTextLines[(i*49)]]){
+										dataDict[allTextLines[(i*49)]]= [];
+									}
+									dataDict[allTextLines[(i*49)]].push(allTextLines[((i)*49)+j]);
+								}
+								nomX.push(allTextLines[(i*49)]);
+							}
+
+					EQ(dataDict,nomX,betaa);
+					sliders(nomX);
+					}
+				}
+				xhttp.send();
+			}
+			// Fonction qui calcule les Y avec l'equation du modele le plus 
+			// qui prend comme entré un tableau des X variables pour chaque demi heure 
+			// qui prend comme 2 entré le nom des variables X qui permet de 
+			function EQ(Donnee,nomX,betaa) {
+				var dataA=[];
+				var Y=[];
+				var BETA =[0.5000152,0.0033572,0.0455421,-0.0006398,-0.0036218,-0.0456083,0.0257086,-0.0199913,0.00894,-0.0004025,-0.01239,1.5134258]
+				for (i=0;i<48 ;i++) {
+					dataA=[];
+					for (j=1;j<nomX.length;j++) {		
+								dataA .push(Donnee[nomX[j]][i]);	
+					}
+						Y[i]=(0.5000152+0.0033572*dataA[0]*betaa[0]+0.0455421*dataA[1]*betaa[1]+(-0.0006398)*dataA[2]*betaa[2]+(-0.0036218)*dataA[3]*betaa[3]+(-0.0456083)*dataA[4]*betaa[4]+0.0257086*dataA[5]*betaa[5]+(-0.0199913)*dataA[6]*betaa[6]+0.00894 *dataA[7]*betaa[7]+(-0.0004025)*dataA[8] *betaa[8]+(-0.01239)*dataA[9]*betaa[9]+1.5134258*dataA[10]*betaa[10]) ;
+ 				}	
+ 				Courbe(Y);
+			}
+	// Fonction SVG qui trace les Axes
+	function drawAxes(){
+				var tmp = "";
+				
+				// Axe X
+				tmp += '<line x1="0" y1="500" x2="1000" y2="500" stroke="gray" stroke-width=2 opacity=0.2 />'; // line y=0
+				tmp += '<line x1="0" y1="600" x2="1000" y2="600" stroke="gray" />';
+				for(i=0;i<=48;i+=1){
+					tmp += '<line x1="'+(i*20)+'" y1="600" x2="'+(i*20)+'" y2="610" stroke="gray" />';
+				}
+				// Axe Y
+  				tmp += '<line x1="0" y1="-10" x2="0" y2="600" stroke="gray" />';
+  				for(i=0;i<=500;i+=100){
+  					tmp += '<line x1="-10" y1="'+i+'" x2="-20" y2="'+i+'" stroke="gray" />';
+  				}
+  				
+  				// Etiquettes axe X
+  				for(i=0;i<=24;i+=1){
+  					tmp += ' <text x="'+(i*40)+'" y="637" fill="gray" style="text-anchor: middle"  >'+i+'</text>'
+  				}
+  				tmp += '<path d="M 1005,595 L 1010,600 L 1005,605" fill="none" stroke="gray" stroke-linecap="round" />';
+  				tmp += ' <text x="1000" y="637" fill="gray" style="text-anchor: middle"  >(Heure)</text>'
+  				
+  				// Etiquettes axe Y
+  				for(i=0;i<=600;i+=100){
+  					tmp += '<text x="-50" y="'+(5+i)+'" fill="gray" >'+((500-i)/100)+'</text>';
+  				}
+  				tmp += ' <text x="0" y="-40" fill="gray" style="text-anchor: middle"  >Flux Séve</text>'
+  				
+  				//innerHtml
+  				var axes = document.getElementById("axes");
+  				axes.innerHTML = tmp;		
+			}
+	
+	// Fonction qui trace la courbe "line" + les points "cir"
+				function Courbe(Y){
+					line =' <path d="M 0,'+(500-Y[0]*100)+' ';
+					cir ="";
+ 					for (j=0;j<Y.length;j++) {
+ 						cir +=' <circle onmouseleave="removeInfoBox()" onmouseover="drawInfoBox('+Y[j]+','+j*20+','+((500-Y[j]*100))+')"	cx="'+j*20+'" cy="'+((500-Y[j]*100))+'" r="5" fill="red" opacity=0.05 />' ;
+ 						line +='L '+j*20+','+((500-Y[j]*100))+' ' ;
+ 					}
+ 					line +='" fill="none" stroke="red" />' ;
+ 					var monSVGpt = document.getElementById("courbe");
+ 					monSVGpt.innerHTML = line +cir  ; 		
+ 			}
+	
+			//
+	 			function drawInfoBox(dataa,X,Y){
+ 				var info = '<rect  x=-30 y=-30 height="70" width="250" fill="yellow" opacity=0.3 "/>'
+ 				info += '<text  y=0 font-size="18 "fill="black">'+X/40+' H</text> ';
+ 				info += '<text  y=20 font-size="18 "fill="black">Y='+dataa+'</text> ';
+ 				var monSVGinfo = document.getElementById("infobox");
+ 				monSVGinfo.innerHTML = info  ; 	
+				monSVGinfo.setAttribute("transform","translate("+X+","+(Y+240)+")");	
+ 			}
+ 			function removeInfoBox(){
+ 				var info="";
+ 				var monSVGinfo = document.getElementById("infobox");
+ 				monSVGinfo.innerHTML = info  ; 	
+ 			}
+	// Fonction qui change les beta variables		
+		
+		// Fonction qui créer les SLIDERS 
+		var betaa=[1,1,1,1,1,1,1,1,1,1,1,1]
+		function sliders(nomX) {
+		var ID="";
+		var ID2 ="";
+		var sliderSX ="";
+			for (a=0;a<10;a++) {
+				var ID = "VAL"+a;
+				var ID2 = "value"+a;
+				var b = (a+1);
+			 	sliderSX +='<div class="slidecontainer"><input oninput="Change('+ID+','+ID2+','+a+')"  type="range" min="-5" max="5" value="'+betaa[a]+'" class="slider" id="'+ID+'"><p>'+nomX[b]+' :  <span id="'+ID2+'">'+betaa[a]+'</span></p></div>';
+				var sliderS = document.getElementById("sliderS");
+				sliderS.innerHTML = sliderSX ;		
+			}
+		}
+		
+		function Change(ID,ID2,a) {
+			var VAL = ID.value; // valeur qu'on récuper
+			var VAL2= ID2 ; // et ou est ce qu'on l'affiche 
+			VAL2.innerHTML = VAL ;
+			betaa[a]=VAL ;
+			readTextFile(betaa);
+		} 
+		
+	
+
+		
+
+		</script>
+		
+	</head>
+
+	<body onload="readTextFile();drawAxes();sliders();">
+	
+	<div id="graphe">
+
+			
+			
+		<svg width="800" height="850">
+			<g transform="scale(0.7)">
+				<g id="axes" transform="translate(70,200)"> </g>
+				<g id="courbe" transform="translate(70,200)"> </g>
+				<g id="infobox" transform="translate(70,200)"> </g>
+			</g>
+  		</svg>
+  		</div>
+  	<div id="box">
+	<div id="sliderS"></div>
+	</div>
+
+
+	</body>
+	
+</html>

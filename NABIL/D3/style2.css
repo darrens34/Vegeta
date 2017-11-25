@@ -1,6 +1,22 @@
-.slidecontainer {
-    width: 50%; /* Width of the outside container */
+#graphe{
+	border:black solid 5px;
+	
+
 }
+
+#box {
+  position: absolute;
+ 	left: 80%;
+  width: 800px;
+  top:20px;
+  height: 1000px
+  
+}	
+	
+.slidecontainer {
+    width: 25%; 
+}
+    /* Width of the outside container */
 
 /* The slider itself */
 .slider {
