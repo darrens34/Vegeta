@@ -70,6 +70,8 @@
                         .attr("transform", "translate(60,10)")
                         .attr("stroke","teal")
                         .attr("fill","none")
+                        .transition()
+                        .duration(500)
                         .attr("d", Lvalues(date));
 
                 svg.append("text")
