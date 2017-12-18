@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html>
 
 <head>
@@ -8,6 +8,8 @@
  	<meta http-equiv="Content-Type"content="text/html; charset=UTF-8" /> 
  
 	<link rel="stylesheet"	href="css/Style.css"	type="text/css"	/>	
+  <link rel="stylesheet" type="text/css" href="style2.css" />
+
  	<script type="text/javascript" src="fonction.js"></script>
  	
  	<script type="text/javascript" src="visual/jQuery.js"></script>
@@ -15,11 +17,15 @@
  	<script src="visual/jqueryFX.custom/jquery-ui.min.js"></script>
  	 <script src="visual/bootstrap/js/bootstrap.min.js"></script>
  	<link rel="stylesheet" href="visual/bootstrap/css/bootstrap.min.css">
+  <script src="d3.v4.js"></script>
+
+<script type="text/javascript" src="D3-Vf.js"></script>
+
  	
  	
 </head>
 
-<body >
+<body onload="readBetaFile();readTextFile()">
 
 <nav class="navbar navbar-inverse navbar-fixed-top">
   <div class="container-fluid">
@@ -52,6 +58,23 @@
 <div class="jumbotron text-center">
   <h1>Modèle Général</h1>
   <p>Comportement du flux séve sur une journée  </p>
+    <div id="graphe">
+
+        
+        
+      <svg width="800" height="850">
+        <g transform="scale(0.7)">
+          <g id="texte" transform="translate(50,50)"> </g>
+          <g id="points" transform="translate(50,50)"> </g>
+          <g id="courbe" transform="translate(50,50)"> </g>
+          <g id="infobox" transform="translate(50,50)"> </g>
+        </g>
+      </svg>
+    </div>
+    
+    <div id="box">
+    <div id="sliderS"></div>
+    </div>
 </div>
 
 

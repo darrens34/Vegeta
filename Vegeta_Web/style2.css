@@ -1,15 +1,16 @@
-#graphe{
+/*#graphe{
 	border:black solid 5px;
 	
 
-}
+}*/
 
 #box {
-  position: absolute;
- 	left: 80%;
-  width: 800px;
-  top:20px;
-  height: 1000px
+
+    position: absolute;
+    left: 80%;
+    width: 800px;
+    top:240px;
+    height: 1000px
   
 }	
 	
@@ -24,7 +25,7 @@
     appearance: none;
     width: 100%; /* Full-width */
     height: 25px;
-    background: #d3d3d3; /* Grey background */
+    /*background: #d3d3d3; /* Grey background */
     outline: none; /* Remove outline */
     opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
     -webkit-transition: .2s; /* 0.2 seconds transition on hover */
