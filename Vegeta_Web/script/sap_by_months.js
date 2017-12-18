@@ -1,0 +1,98 @@
+function draw(months){
+
+    h = 600
+    w = 1500
+
+    d3.csv("../data/Puechabon_mean_per_month.csv", function(error, data){
+        var date = []
+        var sap = []
+
+        data.forEach(function (d){
+            if(d.mois == months){
+                date.push(d.heure_solaire);
+                sap.push(d.SAP_FLOW);
+            }
+        })
+
+        xticks = [];
+        for(i=0;i<date.length;i++){
+            var v = i*30;
+            xticks.push(v);
+        }
+
+        var scaleX = d3.scaleOrdinal()
+            .domain(date)
+            .range(xticks);
+
+        var scaleY = d3.scaleLinear()
+            .domain([d3.min(data, function(d){
+                return d.SAP_FLOW;
+            }),d3.max(data, function(d){
+                return d.SAP_FLOW;
+            })])
+            .range([500,0]);
+
+
+        var axisX = d3.axisBottom(scaleX);
+
+        var axisY = d3.axisLeft(scaleY);
+
+        var svg = d3.select("#graph")
+            .attr("width" , w)
+            .attr("height", h);
+        
+        svg.select("#axisX")
+            .call(axisX)
+            .attr("transform","translate(60,520)");
+
+        svg.select("#axisY")
+            .call(axisY)
+            .attr("transform","translate(40,10)");
+                            
+        var Lvalues = d3.line()
+            .x(function(d,i){
+                return scaleX(date[i])
+            })
+            .y(function(d,i){
+                return scaleY(sap[i])
+            })
+            .curve(d3.curveBasis);
+
+        svg.select("#curve")
+            .attr("transform", "translate(60,10)")
+            .attr("stroke","teal")
+            .attr("fill","none")
+            .transition()
+            .duration(500)
+            .attr("d", Lvalues(date));
+
+    svg.append("text")
+        .attr("text-anchor", "middle")  // this makes it easy to centre the text as the transform is applied to the anchor
+        .attr("transform", "translate("+ 20 +","+(h/2)+")rotate(-90)")  // text is drawn off the screen top left, move down and out and rotate
+        .text("SAP FLOW");
+
+    svg.append("text")
+        .attr("text-anchor", "middle")  // this makes it easy to centre the text as the transform is applied to the anchor
+        .attr("transform", "translate("+ (w/2) +","+(h-(1/3))+")")  // centre below axis
+        .text("Hours");
+    })
+
+    d3.select("#months").on("input", function() {
+        update(+this.value);
+    });
+
+    
+}
+
+function setMonth(months){
+    var monthNames = ["January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December"
+    ];
+    return monthNames[months]
+}
+
+function update(months) {
+    d3.select("#months-value").text(setMonth(months))
+    d3.select("#months").property("value", months);
+    draw(months)
+}

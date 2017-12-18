@@ -9,8 +9,9 @@
  
 	<link rel="stylesheet"	href="css/Style.css"	type="text/css"	/>	
  	<script type="text/javascript" src="fonction.js"></script>
- 	
- 	<script type="text/javascript" src="visual/jQuery.js"></script>
+   <script type="text/javascript" src="visual/jQuery.js"></script>
+   <script type="text/javascript" src="script/sap_by_months.js"></script>
+   <script type="text/javascript" src="script/d3.v4.js"></script>
  	<script src="visual/jqueryFX.custom/jquery-ui.js"></script>
  	<script src="visual/jqueryFX.custom/jquery-ui.min.js"></script>
  	 <script src="visual/bootstrap/js/bootstrap.min.js"></script>
@@ -19,7 +20,7 @@
  	
 </head>
 
-<body >
+<body onload="update(4)">
 
 <nav class="navbar navbar-inverse navbar-fixed-top">
   <div class="container-fluid">
@@ -53,6 +54,19 @@
   <h1>Modèle Mensuel</h1>
   <p>Comportement du flux séve sur mois choisi  </p>
 </div>
+
+  <label for="months" style="display: inline-block; width: 150px; text-align: left">
+      months = <span id="months-value">…</span>
+  </label>        
+  <input type="range" min="4" max="10" id="months" style = "width: 10%">
+  <svg id="graph" style = "margin-left: auto; margin-right: auto;">
+      <g id="axisX"></g>
+      <g id="axisY"></g>
+      <g>
+          <path id="curve"></path>
+      </g>
+  </svg>
+
 
 
 
