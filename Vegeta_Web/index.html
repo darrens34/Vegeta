@@ -66,24 +66,50 @@
   			<p>L'enjeu principal de cette recherche est de déployer toute la problématique "Data Visualization" sur les données du végétal. 
   			Il existe pour les végétaux un certain nombre de capteurs dédiés, des plantes aux arbres. 
   			Ces capteurs fournissent essentiellement des séries temporelles dans des expériences scientifiques aux objectifs précis, comme par exemple mesurer l'influence de la sécheresse sur l'évolution.
-  			 Ce qui nous intéresse ici, c'est d'élargir le cadre de ces données à une approche typée Big Data/SHS, en faisant ressortir les processus d'individuation des plantes, de dégager des comportements, des échelles de temps, des rythmes non triviaux, bref, mettre au jour les processus de recherche qui servent de base à l'intuition scientifique mais qui ne sont jamais formalisés (ni publiés). 
-  			 Cette recherche sera en partie encadrée par le LAAB (Laboratoire associatif d'Art et de Botanique) . </p>
+  			Ce qui nous intéresse ici, est d'élargir le cadre de ces données à une approche typée Big Data/SHS, en faisant ressortir les processus d'individuation des plantes, de dégager des comportements, des échelles de temps, des rythmes non triviaux, bref, mettre au jour les processus de recherche qui servent de base à l'intuition scientifique mais qui ne sont jamais formalisés (ni publiés). 
+  			Cette recherche est en partie encadrée par le LAAB (Laboratoire associatif d'Art et de Botanique). </p>
   		</div>
 	</div>
  
 </div>
 <div class="container-fluid bg-1 text-justify">
 	<div class="col-sm-6">  
-		<h3 >La mission :</h3>
-		<p>Le premier jeu de donnée provient d’une expérience longue de 30 ans (la forêt de Puechabon) avec pour objectif d'observer le comportement du flux de séve (ici sur une forêt de chènes verts).
-			Et de comprendre les capteurs utilisés sur les végétaux, et de développer et réfléchir aux outils permettant d'explorer leurs séries temporelles, en relation en particulier avec les données météorologiques.</p>
+		<h3 >Le jeu de données :</h3>
+		<p>Les données utilisées proviennent d’une expérience longue de 30 ans effectuée sur des chênes verts dans la forêt de Puechabon.<br> 
+		L'objectif principal de cette expérience était d'observer l'évolution du flux de sève.
+		Cette expérience a aussi permis de comprendre les capteurs utilisés sur les végétaux, et de développer et réfléchir aux outils permettant d'explorer less séries temporelles (en relation en particulier avec les données météorologiques).</p>
+
+		<h3 >Les missions :</h3>
+		<p>Nos missions principales étaient de : </p>
 		<ul>
-			<li><p>mettre en place « une boucle de rétroaction » entre le traitement des données et la mise en forme visuelle</p></li>
-			<li><p>méthodes interactives de recherche exploratoire</p></li>
+			<li><p>Mettre en place « une boucle de rétroaction » entre le traitement des données et la mise en forme visuelle</p></li>
+			<li><p>Mettre en place des méthodes interactives de recherche exploratoire</p></li>
 	</div>
 	<div class="col-sm-6 text-right">  
 		<img src="img/tree2.jpg" class="img-responsive img-circle margin" style="display:inline" alt="Tree" width="400" height="400">
   	</div>
+</div>
+
+<div class="container-fluid bg-1 text-justify">
+
+	<div class="row">
+  		<div class="col-sm-5">
+  			<img src="img/tree_matrix.jpg" class="img-responsive img-circle margin" style="display:inline" alt="Tree" width="400" height="400">
+  		</div>
+  		
+  		<div class="col-sm-7">  
+  			<h3 >La démarche statistique :</h3>
+  			<p>Le jeu de données comporte 28 variables (voir onglet info) dont une correspond au flux de sève (variable à expliquer).
+			Les autres variables sont des variables environnementales mesurées en même temps que le flux de sève. <br>
+			Dans un premier temps, les corrélations entre les variables environnementales ont été étudiées afin de sélectionner uniquement des variables explicatives non corrélées entre elles.
+			Seize variables explicatives non correlées entre elles ont été choisies. <br>
+			Un modèle avec 11 variables explicatives a été selectionné en se basant sur le BIC (Bayesian Information Criteria). <br>
+			Pour toutes les variables, nous avons cherché à identifier si il y avait un délai entre la mesure d'une variable environmentale et son effet sur le flux de sève.
+			Au final, nous avons identifié des délais allant de 1 à 3 heures pour 7 variables environnementales (voir onglet info).
+			</p>
+  		</div>
+	</div>
+ 
 </div>
 
 <div class="container-fluid bg-2 text-center">

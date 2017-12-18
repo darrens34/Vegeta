@@ -63,17 +63,17 @@
 			</thead>
 			<TR>
 				<TD>TIMESTAMP_START</TD>
-				<TD>Date debut</TD>
+				<TD>Date de début de la mesure</TD>
 				<TD>timestamp</TD>
 			</TR>
 			<TR>
 				<TD>TIMESTAMP_END </TD>
-				<TD>Date fin</TD>
+				<TD>Date de fin de la mesure</TD>
 				<TD>timestamp</TD>
 			</TR>
 			<TR>
 				<TD>DTime </TD>
-				<TD>Date sur  366 jours </TD>
+				<TD>Date sur 366 jours </TD>
 				<TD> </TD>
 			</TR>
 			<TR>
@@ -83,7 +83,7 @@
 			</TR>
 			<TR>
 				<TD>P </TD>
-				<TD>Precipitation</TD>
+				<TD>Précipitation</TD>
 				<TD>mm</TD>
 			</TR>
 			<TR>
@@ -128,12 +128,12 @@
 			</TR>
 			<TR>
 				<TD>TS </TD>
-				<TD>Temperature du sol </TD>
+				<TD>Temperature du sol</TD>
 				<TD>°C</TD>
 			</TR>
 			<TR>
 				<TD>WD </TD>
-				<TD>Direction du vent </TD>
+				<TD>Direction du vent</TD>
 				<TD>Decimal degree</TD>
 			</TR>
 			<TR>
@@ -168,7 +168,7 @@
 			</TR>
 			<TR>
 				<TD>SB </TD>
-				<TD>Stock de chaleur dans la biomass</TD>
+				<TD>Stock de chaleur dans la biomasse</TD>
 				<TD>W m-2</TD>
 			</TR>
 			<TR>
@@ -183,7 +183,7 @@
 			</TR>
 			<TR>
 				<TD>SLE</TD>
-				<TD>Latent heat storage flux</TD>
+				<TD>Flux de stockage de chaleur latente</TD>
 				<TD>W m-2</TD>
 			</TR>
 			<TR>
@@ -193,7 +193,7 @@
 			</TR>
 			<TR>
 				<TD>USTAR </TD>
-				<TD>vitesse de frottement </TD>
+				<TD>vitesse de frottement</TD>
 				<TD>m s-1</TD>
 			</TR>
 			<TR>
@@ -217,6 +217,23 @@
 				<TD> mmolH2O m-2 s-1</TD>
 			</TR>
 	</table>
+</div>
+
+<div class="jumbotron text-center">
+  <p>Délai d'effet des variables environnementales</p>
+</div>
+
+<div>
+  <ul>
+	<p>Parmi les variables explicatives selectionnées pour le modèle, des délais ont été identifiés pour certaines variables :</p>
+	<li><p>PPFD_IN : délai de 1 heure pour effet sur le flux de sève</p></li>
+	<li><p>WD : délai de 2 heures pour effet sur le flux de sève</p></li>
+	<li><p>FC : délai de 1 heure pour effet sur le flux de sève</p></li>
+	<li><p>H2O : délai de 3 heures pour effet sur le flux de sève</p></li>
+	<li><p>SH : délai de 3 heures pour effet sur le flux de sève</p></li>
+	<li><p>SLE : délai de 3 heures pour effet sur le flux de sève</p></li>
+	<li><p>ZL : délai de 3 heures pour effet sur le flux de sève</p></li>
+	<p>Aucun décalage n'a été observé pour les variables : TS, CO2, SB et VPD.</p>
 </div>
 
 
