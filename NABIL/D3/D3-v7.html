@@ -50,6 +50,7 @@
 						}
 				EQ(dataDict,nomX,betaDict,betaa);
 				sliders(nomX);
+				console.log(nomX)
 				}
 			}
 			xhttp.send();
@@ -93,7 +94,7 @@
 			// scaleY
 			var scaleY = d3.scaleLinear();
 			// J'inverse min et max car pour Y c'est inversé
-			scaleY.domain([d3.max(Y),d3.min(Y)]);
+			scaleY.domain([25,d3.min(Y)]);
 			scaleY.range([0,500]);
 
 			// Axe Y
