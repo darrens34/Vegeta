@@ -32,8 +32,8 @@ function draw(months){
             })])
             .range([500,0]);
 
-
-        var axisX = d3.axisBottom(scaleX);
+        var axisX = d3.axisBottom(scaleX)
+            .tickValues(scaleX.domain().filter(function(d, i) { return !(i % 2); }));
 
         var axisY = d3.axisLeft(scaleY);
 
