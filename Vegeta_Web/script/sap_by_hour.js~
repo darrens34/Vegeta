@@ -183,7 +183,7 @@ var sliderSX ="";
 		sliderS1.innerHTML = sliderSX ;		
 	}
 var sliderSX ="";
-	for (a=6;a<=10;a++) {
+	for (a=5;a<=10;a++) {
 		var ID = "VAL"+a;
 		var ID2 = "value"+a;
 		var b = (a+1);

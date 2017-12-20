@@ -1,4 +1,4 @@
-/*liste des fonctions pour la page contact  */
+/*liste des fonctions */
 
   $(document).ready(function() {
     $('#contact_form').bootstrapValidator({

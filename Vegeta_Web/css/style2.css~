@@ -36,7 +36,6 @@
     border-radius: 5px;   /* Slider handle height */
     background: #4CAF50; /* Green background */
     cursor: pointer; /* Cursor on hover */
-    
 }
 
 .slider::-moz-range-thumb {

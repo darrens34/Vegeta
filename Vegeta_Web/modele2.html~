@@ -61,7 +61,7 @@
   </label>        
   <input type="range" min="4" max="10" id="months" style = "width: 10%">
   <svg id="graph" style = "margin-left: auto; margin-right: auto;">
-  	<g transform="scale(0.8)">
+  	<g transform="scale(0.7)">
       <g id="axisX"></g>
       <g id="axisY"></g>
       <g>
