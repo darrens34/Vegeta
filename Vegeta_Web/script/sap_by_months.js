@@ -47,7 +47,7 @@ function draw(months){
 
         svg.select("#axisY")
             .call(axisY)
-            .attr("transform","translate(40,10)");
+            .attr("transform","translate(50,10)");
                             
         var Lvalues = d3.line()
             .x(function(d,i){
@@ -69,12 +69,12 @@ function draw(months){
     svg.append("text")
         .attr("text-anchor", "middle")  // this makes it easy to centre the text as the transform is applied to the anchor
         .attr("transform", "translate("+ 20 +","+(h/2)+")rotate(-90)")  // text is drawn off the screen top left, move down and out and rotate
-        .text("SAP FLOW");
+        .text("Flux de sève");
 
     svg.append("text")
         .attr("text-anchor", "middle")  // this makes it easy to centre the text as the transform is applied to the anchor
         .attr("transform", "translate("+ (w/2) +","+(h-(1/3))+")")  // centre below axis
-        .text("Hours");
+        .text("Heures");
     })
 
     d3.select("#months").on("input", function() {
@@ -85,8 +85,8 @@ function draw(months){
 }
 
 function setMonth(months){
-    var monthNames = ["January", "February", "March", "April", "May", "June",
-    "July", "August", "September", "October", "November", "December"
+    var monthNames = ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin",
+    "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"
     ];
     return monthNames[months]
 }
