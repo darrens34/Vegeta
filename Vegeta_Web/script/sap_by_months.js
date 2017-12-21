@@ -96,6 +96,6 @@ function setGraph(){
 
     svg.append("text")
         .attr("text-anchor", "middle")  // this makes it easy to centre the text as the transform is applied to the anchor
-        .attr("transform", "translate("+ (w/2) +","+(h-(1/3))+")")  // centre below axis
+        .attr("transform", "translate("+ (2*w/5) +","+(3*h/4)+")")  // centre below axis
         .text("Heures");
 }
