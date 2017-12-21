@@ -1,8 +1,4 @@
 function draw(months){
-
-    h = 600
-    w = 1500
-
     d3.csv("data/puechabon/Puechabon_mean_per_month.csv", function(error, data){
         var date = []
         var sap = []
@@ -37,9 +33,7 @@ function draw(months){
 
         var axisY = d3.axisLeft(scaleY);
 
-        var svg = d3.select("#graph")
-            .attr("width" , w)
-            .attr("height", h);
+        var svg = d3.select("#graph");
         
         svg.select("#axisX")
             .call(axisX)
@@ -65,16 +59,6 @@ function draw(months){
             .transition()
             .duration(500)
             .attr("d", Lvalues(date));
-
-    svg.append("text")
-        .attr("text-anchor", "middle")  // this makes it easy to centre the text as the transform is applied to the anchor
-        .attr("transform", "translate("+ 20 +","+(h/2)+")rotate(-90)")  // text is drawn off the screen top left, move down and out and rotate
-        .text("Flux de sève");
-
-    svg.append("text")
-        .attr("text-anchor", "middle")  // this makes it easy to centre the text as the transform is applied to the anchor
-        .attr("transform", "translate("+ (w/2) +","+(h-(1/3))+")")  // centre below axis
-        .text("Heures");
     })
 
     d3.select("#months").on("input", function() {
@@ -95,4 +79,23 @@ function update(months) {
     d3.select("#months-value").text(setMonth(months))
     d3.select("#months").property("value", months);
     draw(months)
+}
+
+function setGraph(){
+    h = 600
+    w = 1500
+
+    var svg = d3.select("#graph")
+        .attr("width" , w)
+        .attr("height", h);
+
+    svg.append("text")
+        .attr("text-anchor", "middle")  // this makes it easy to centre the text as the transform is applied to the anchor
+        .attr("transform", "translate("+ 20 +","+(h/2)+")rotate(-90)")  // text is drawn off the screen top left, move down and out and rotate
+        .text("Flux de sève");
+
+    svg.append("text")
+        .attr("text-anchor", "middle")  // this makes it easy to centre the text as the transform is applied to the anchor
+        .attr("transform", "translate("+ (w/2) +","+(h-(1/3))+")")  // centre below axis
+        .text("Heures");
 }
