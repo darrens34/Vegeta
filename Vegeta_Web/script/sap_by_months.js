@@ -60,7 +60,6 @@ function draw(months){
     d3.select("#months").on("input", function() {
         update(+this.value);
     });
-
     
 }
 
@@ -75,6 +74,10 @@ function update(months) {
     d3.select("#months-value").text(setMonth(months))
     d3.select("#months").property("value", months);
     draw(months)
+    var graph = document.getElementById("curves");
+    for(i=0;i<oldCurvesArray.length;i++){
+        graph.innerHTML += oldCurvesArray[i];
+    }
 }
 
 function setGraph(){
@@ -97,3 +100,19 @@ function setGraph(){
 		.attr("font-size",22)
         .text("Heure");
 }
+
+function saveCurve(){
+    var oldCurve = document.getElementById("curve").cloneNode(false);
+    oldCurvesArray.push(oldCurve.outerHTML);
+}
+
+
+/*
+function resetCurve(){
+    oldCurvesArray = [];
+    curves = document.getElementById("curves");
+    while (curves.childNodes.length > 1) {
+        curves.removeChild(curves.lastChild);
+    }
+}
+*/
