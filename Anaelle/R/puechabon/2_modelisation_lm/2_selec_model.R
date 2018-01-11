@@ -212,7 +212,15 @@ res_mod_fin = obj_mod_fin$which[which.min(obj_mod_fin$bic),]*1
 sum(res_mod_fin) # nb de variables retenues
 res_mod_fin
 
-summary(lm(SAP_FLOW ~ PPFD_IN_1h  +TS+ WD_2h+ CO2 +FC_1h+H2O_3h + SB+ SH_3h+SLE_3h+ ZL_3h + VPD, data = data))
+mod = lm(SAP_FLOW ~ PPFD_IN_1h  +TS+ WD_2h+ CO2 +FC_1h+H2O_3h + SB+ SH_3h+SLE_3h+ ZL_3h + VPD, data = data)
+
+######
+summary(mod)
+# R2 adj = 0.88
+plot(mod)
+
+
+
 
 data<- data[,-which(names(data) %in% c("P_2h30","PA_3h","WS_3h","SC_3h"))]
 
