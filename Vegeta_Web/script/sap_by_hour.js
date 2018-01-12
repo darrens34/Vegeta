@@ -1,12 +1,12 @@
 var dataDict = {};
 var nomX=[];
 var betaDict = {};
-var betaa=[1,1,1,1,1,1,1,1,1,1,1]; // Facteur multiplicatif des X
+var factMult=[1,1,1,1,1,1,1,1,1,1,1]; // Facteur multiplicatif des X
 
 // Fonction qui récupère les bétas
 function readBetaFile(){
 	var xhttp2 = new XMLHttpRequest();
-	xhttp2.open("GET","data/puechabon/beta_eq.csv", true);
+	xhttp2.open("GET","data/puechabon/reg_lin/beta_eq.csv", true);
 	xhttp2.onreadystatechange = function (){
 		if(xhttp2.readyState === 4){
 			var data2 = xhttp2.responseText;
@@ -26,7 +26,7 @@ function readBetaFile(){
 // et qui appelle la fonction EQ et Sliders
 function readTextFile(){
 	var xhttp = new XMLHttpRequest();
-	xhttp.open("GET", "data/puechabon/X_par_heure.csv", true);
+	xhttp.open("GET", "data/puechabon/reg_lin/X_par_heure.csv", true);
 	xhttp.onreadystatechange = function (){
 		if(xhttp.readyState === 4){
 				var data = xhttp.responseText;
@@ -40,7 +40,7 @@ function readTextFile(){
 					}
 					nomX.push(allTextLines[(i*49)]);
 				}
-		EQ(dataDict,nomX,betaDict,betaa);
+		EQ(dataDict,nomX,betaDict,factMult);
 		sliders(nomX);
 		//console.log(nomX)
 		}
@@ -51,29 +51,29 @@ function readTextFile(){
 // Fonction qui calcule les Y avec l'equation du modèle
 // qui prend comme entrée un tableau des X variables pour chaque demi heure 
 // qui prend comme 2ème entrée le nom des variables X
-function EQ(Donnee,nomX,betaDict,betaa){
-	var dataA=[];
+function EQ(Donnee,nomX,betaDict,factMult){
+	var dataX=[];
 	var Y=[];
 	for (i=0;i<48 ;i++) {
 		
-		dataA=[];
+		dataX=[];
 		for (j=1;j<nomX.length;j++) {		
-					dataA.push(Donnee[nomX[j]][i]);	
+					dataX.push(Donnee[nomX[j]][i]);	
 		}
 		
 		// Equation automatique :
 		Y[i]=(Number(betaDict["beta0"][0])+
-		betaDict[nomX[1]][0]*dataA[0]*betaa[0]+
-		betaDict[nomX[2]][0]*dataA[1]*betaa[1]+
-		betaDict[nomX[3]][0]*dataA[2]*betaa[2]+
-		betaDict[nomX[4]][0]*dataA[3]*betaa[3]+
-		betaDict[nomX[5]][0]*dataA[4]*betaa[4]+
-		betaDict[nomX[6]][0]*dataA[5]*betaa[5]+
-		betaDict[nomX[7]][0]*dataA[6]*betaa[6]+
-		betaDict[nomX[8]][0] *dataA[7]*betaa[7]+
-		betaDict[nomX[9]][0]*dataA[8] *betaa[8]+
-		betaDict[nomX[10]][0]*dataA[9]*betaa[9]+
-		betaDict[nomX[11]][0]*dataA[10]*betaa[10]) ;
+		betaDict[nomX[1]][0]*dataX[0]*factMult[0]+
+		betaDict[nomX[2]][0]*dataX[1]*factMult[1]+
+		betaDict[nomX[3]][0]*dataX[2]*factMult[2]+
+		betaDict[nomX[4]][0]*dataX[3]*factMult[3]+
+		betaDict[nomX[5]][0]*dataX[4]*factMult[4]+
+		betaDict[nomX[6]][0]*dataX[5]*factMult[5]+
+		betaDict[nomX[7]][0]*dataX[6]*factMult[6]+
+		betaDict[nomX[8]][0] *dataX[7]*factMult[7]+
+		betaDict[nomX[9]][0]*dataX[8] *factMult[8]+
+		betaDict[nomX[10]][0]*dataX[9]*factMult[9]+
+		betaDict[nomX[11]][0]*dataX[10]*factMult[10]) ;
 	}
 	for(yi=0;yi<Y.length;yi++){
 		if(Y[yi] < 0){
@@ -141,10 +141,10 @@ function Courbe(Y){
 
 
 // Info box
-function drawInfoBox(dataa,datax,X,Y){
+function drawInfoBox(datay,datax,X,Y){
 	var info = '<rect  x=800 y=100 height="70" width="250" fill="grey" opacity=0.5 "/>'
 	info += '<text  y=130 x =870 font-size="20" fill="black">'+'A '+(datax/2)+' Heure </text> ';
-	info += '<text  y=160 x=850 font-size="20" fill="black">Flux de sève = '+Math.round(dataa*100)/100+'</text> ';
+	info += '<text  y=160 x=850 font-size="20" fill="black">Flux de sève = '+Math.round(datay*100)/100+'</text> ';
 	var monSVGinfo = document.getElementById("infobox");
 	monSVGinfo.innerHTML = info  ; 	
 	//monSVGinfo.setAttribute("transform","translate("+(X-200)+","+(Y+100)+")");	
@@ -178,7 +178,7 @@ var sliderSX ="";
 		var ID = "VAL"+a;
 		var ID2 = "value"+a;
 		var b = (a+1);
-		sliderSX +='<p>'+dicoNom[nomX[b]]+' :  <span id="'+ID2+'">'+betaa[a]+'</span></p><div class="slidecontainer"><input oninput="Change('+ID+','+ID2+','+a+')"  type="range" min="0" max="4" step="0.25" value="'+betaa[a]+'" class="slider" id="'+ID+'"></div>';
+		sliderSX +='<p>'+dicoNom[nomX[b]]+' :  <span id="'+ID2+'">'+factMult[a]+'</span></p><div class="slidecontainer"><input oninput="Change('+ID+','+ID2+','+a+')"  type="range" min="0" max="4" step="0.25" value="'+factMult[a]+'" class="slider" id="'+ID+'"></div>';
 		var sliderS1 = document.getElementById("sliderS1");
 		sliderS1.innerHTML = sliderSX ;		
 	}
@@ -187,7 +187,7 @@ var sliderSX ="";
 		var ID = "VAL"+a;
 		var ID2 = "value"+a;
 		var b = (a+1);
-		sliderSX +='<p>'+dicoNom[nomX[b]]+' :  <span id="'+ID2+'">'+betaa[a]+'</span></p><div class="slidecontainer"><input oninput="Change('+ID+','+ID2+','+a+')"  type="range" min="0" max="4" step="0.25" value="'+betaa[a]+'" class="slider" id="'+ID+'"></div>';
+		sliderSX +='<p>'+dicoNom[nomX[b]]+' :  <span id="'+ID2+'">'+factMult[a]+'</span></p><div class="slidecontainer"><input oninput="Change('+ID+','+ID2+','+a+')"  type="range" min="0" max="4" step="0.25" value="'+factMult[a]+'" class="slider" id="'+ID+'"></div>';
 		var sliderS2 = document.getElementById("sliderS2");
 		sliderS2.innerHTML = sliderSX ;		
 	}
@@ -197,6 +197,6 @@ function Change(ID,ID2,a) {
 	var VAL = ID.value; // valeur qu'on récuper
 	var VAL2= ID2 ; // et ou est ce qu'on l'affiche 
 	VAL2.innerHTML = VAL ;
-	betaa[a]=VAL ;
-	readTextFile(betaa);
+	factMult[a]=VAL ;
+	readTextFile(factMult);
 } 

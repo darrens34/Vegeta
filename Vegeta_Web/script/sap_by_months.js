@@ -1,5 +1,5 @@
 function draw(months){
-    d3.csv("data/puechabon/Puechabon_mean_per_month.csv", function(error, data){
+    d3.csv("data/puechabon/month/Puechabon_mean_per_month.csv", function(error, data){
         var date = []
         var sap = []
 
