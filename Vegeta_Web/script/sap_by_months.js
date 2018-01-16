@@ -74,11 +74,6 @@ function update(months) {
     d3.select("#months-value").text(setMonth(months))
     d3.select("#months").property("value", months);
     draw(months)
-    console.log(oldCurvesArray)
-    var graph = document.getElementById("curves");
-    for(i=0;i<oldCurvesArray.length;i++){
-        graph.innerHTML += oldCurvesArray[i];
-    }
 }
 
 function setGraph(){
@@ -103,14 +98,14 @@ function setGraph(){
 }
 
 function saveCurve(){
-    // stocke la courbe actuelle dans l'array oldCurvesArray
+    // garde la trace de la courbe sélectionnée
+    var graph = document.getElementById("curves");
     var oldCurve = document.getElementsByClassName("curve")[0].cloneNode(false);
-    oldCurvesArray.push(oldCurve.outerHTML);
+    graph.innerHTML += oldCurve.outerHTML;
 }
 
 function resetCurve(){
-    // vide l'array oldCurvesArray et vide le <g> qui contient toutes les courbes, sauf celle actuellement choisie par le mois
-    oldCurvesArray = oldCurvesArray.slice(0,0);
+    // supprime les traces d'anciennes courbes
     graph = document.getElementById("curves");
     while (graph.childNodes.length > 2) {
         graph.removeChild(graph.lastChild);
