@@ -82,9 +82,9 @@ function EQ(Donnee,nomX,betaDict,betaa){
 }
 
 // Fonction qui trace la courbe "line" + les points "cir"
-function Courbe(Y){
+function Courbe(Y){	
 	// Remise à zero de la courbe : 
-	d3.select("#courbe").selectAll("*").remove();
+	var svg = d3.select("#graph");
 
 	// scaleY
 	var scaleY = d3.scaleLinear();
@@ -94,8 +94,7 @@ function Courbe(Y){
 
 	// Axe Y
 	var yAxis = d3.axisLeft(scaleY);
-	var svg = d3.select("#courbe");
-	var gyAxis = svg.append("g");
+	var gyAxis = svg.select("#axisX");
 	gyAxis.call(yAxis);
 	gyAxis.attr("font-size",28);
 	gyAxis.attr("transform","translate(50,50)");
@@ -107,7 +106,7 @@ function Courbe(Y){
 	
 	// Axe X
 	var xAxis = d3.axisBottom(scaleX);
-	var gxAxis = svg.append("g");
+	var gxAxis = svg.select("#axisY");
 	gxAxis.call(xAxis.ticks(24));
 	gxAxis.attr("font-size",28);
 	gxAxis.attr("transform","translate(50,550)");
@@ -117,13 +116,13 @@ function Courbe(Y){
 	tmp +='<text x="550" y="620" font-size="28" fill="black" style="text-anchor: middle"  >Heure</text>';
 	tmp += ' <text x="50" y="0" font-size="28" fill="black" style="text-anchor: middle"  >Flux de sève</text>';
 	var titre_axes = document.getElementById("texte");
-	titre_axes.innerHTML = tmp;		
-	
+	titre_axes.innerHTML = tmp;	
+
 	// line
 	var lValues = d3.line();
 	lValues.x(function(d,i) { return scaleX(i/2) });
 	lValues.y(function(d) { return scaleY(d)});
-	var gLine = svg.append("path");
+	var gLine = svg.select(".courbe");
 	gLine.attr("transform", "translate(50,50)");
 	gLine.attr("stroke", "green");
 	gLine.attr("fill", "none");
@@ -200,3 +199,31 @@ function Change(ID,ID2,a) {
 	betaa[a]=VAL ;
 	readTextFile(betaa);
 } 
+
+function saveCurve(){
+    // garde la trace de la courbe sélectionnée
+    var dupplicated = false; // devient true si la courbe a déjà été sauvegardée
+	var graph = document.getElementById("courbes");
+    var curves = document.getElementsByClassName("courbe");
+    var oldCurve = curves[0].cloneNode(false); // courbe actuellement dessinée par l'utilisateur
+    for(i=1;i<curves.length;i++){ // i débute à 1 pour ignorer la courbe que l'on souhaite sauvegarder pendant la vérification
+        if(curves[i].getAttribute('d') == oldCurve.getAttribute('d')){
+            dupplicated = true
+        }
+    }
+    if(!dupplicated){
+        graph.innerHTML += oldCurve.outerHTML;
+		curves = document.getElementsByClassName("courbe");
+        for(i=1;i<curves.length;i++){
+            curves[i].setAttribute("opacity",i/curves.length)
+        }
+    }
+}
+
+function resetCurve(){
+    // supprime les traces d'anciennes courbes en supprimant tous les enfants de la balise g, sauf la courbe actuellement dessinée
+    graph = document.getElementById("courbes");
+    while (graph.childNodes.length > 2) { // 2 car le saut à la ligne compte comme un child
+        graph.removeChild(graph.lastChild);
+    }  
+}
