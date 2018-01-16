@@ -1,7 +1,8 @@
 var dataDict = {};
 var nomX=[];
 var betaDict = {};
-var factMult=[1,1,1,1,1,1,1,1,1,1,1]; // Facteur multiplicatif des X
+var factMult=[1,1,1,1,1,1,1,1,1,1,1,1,1]; // Facteur multiplicatif des X
+var nbBeta = 14;
 
 // Fonction qui récupère les bétas
 function readBetaFile(){
@@ -11,7 +12,7 @@ function readBetaFile(){
 		if(xhttp2.readyState === 4){
 			var data2 = xhttp2.responseText;
 			var allTextLines2 = data2.match(/[^(\r\n|\t|,)]+/g);
-			for(i=0;i<24;i+=2){
+			for(i=0;i<(nbBeta*2);i+=2){
 				betaDict[allTextLines2[i]]= [allTextLines2[i+1]];	
 			}
 			
@@ -30,8 +31,8 @@ function readTextFile(){
 	xhttp.onreadystatechange = function (){
 		if(xhttp.readyState === 4){
 				var data = xhttp.responseText;
-				var allTextLines = data.match(/[^(\r\n|\t)]+/g);
-				for(i=0;i<12;i++){
+				var allTextLines = data.match(/[^(\r\n|\t|,)]+/g);
+				for(i=0;i<nbBeta;i++){
 					for(j=1;j<=48;j++){
 						if ( !dataDict[allTextLines[(i*49)]]){
 							dataDict[allTextLines[(i*49)]]= [];
@@ -40,9 +41,9 @@ function readTextFile(){
 					}
 					nomX.push(allTextLines[(i*49)]);
 				}
+						console.log(allTextLines);
 		EQ(dataDict,nomX,betaDict,factMult);
 		sliders(nomX);
-		//console.log(nomX)
 		}
 	}
 	xhttp.send();
@@ -73,7 +74,9 @@ function EQ(Donnee,nomX,betaDict,factMult){
 		betaDict[nomX[8]][0] *dataX[7]*factMult[7]+
 		betaDict[nomX[9]][0]*dataX[8] *factMult[8]+
 		betaDict[nomX[10]][0]*dataX[9]*factMult[9]+
-		betaDict[nomX[11]][0]*dataX[10]*factMult[10]) ;
+		betaDict[nomX[11]][0]*dataX[10]*factMult[10]+
+		betaDict[nomX[12]][0]*dataX[11]*factMult[11]+
+		betaDict[nomX[13]][0]*dataX[12]*factMult[12]) ;
 	}
 	for(yi=0;yi<Y.length;yi++){
 		if(Y[yi] < 0){
@@ -157,24 +160,27 @@ function removeInfoBox(){
 
 // Fonction pour choisir le facteur multiplicatif associé a chaque X. De 0 à 4 (0.25 : divisé par 4 à 4 : multiplié par 4)	
 // Fonction qui créer les SLIDERS
-dicoNom = {"PPFD_IN_1h" : "Densité de Flux Photon Photosynthetique",
-	"TS": "Température du sol",
-	"WD_2h": "Direction du vent",
-	"CO2" : "Concentration du CO2",
-	"FC_1h": "Flux de CO2",
-	"H2O_3h": "Eau",
-	"SB" : "Stock de chaleur dans la biomasse",
-	"SH_3h" : "Flux de stockage de chaleur sensible",
-	"SLE_3h" : "Flux de stockage de chaleur latente",
-	"ZL_3h" : "Paramètre de stabilité",
-	"VPD" : "Déficit de pression de vapeur"
-}
+dicoNom = {
+	"PA_3h":"Pression athmosphérique",
+	"PPFD_DIF_1h":"PPFD diffuse incidente",
+	"PPFD_IN_1h":"Densité de Flux Photon Photosynthetique (PPFD)",
+	"RH_3h":"Humidité relative",
+	"TA":"Temperature de l'air",
+	"TS":"Temperature du sol",
+	"WD_1h30":"Direction du vent",
+	"WS":"Vitesse du vent",
+	"FC_3h":"Flux CO2",
+	"LE_30m":"Flux de chaleur latente",
+	"SH_3h":"Flux de Stockage de chaleur sensible",
+	"USTAR_30m":"Vitesse de frottement",
+	"VPD":"Déficit de pression de vapeur"
+	}
 
 function sliders(nomX) {
 var ID="";
 var ID2 ="";
 var sliderSX ="";
-	for (a=0;a<=5;a++) {
+	for (a=0;a<=6;a++) {
 		var ID = "VAL"+a;
 		var ID2 = "value"+a;
 		var b = (a+1);
@@ -183,7 +189,7 @@ var sliderSX ="";
 		sliderS1.innerHTML = sliderSX ;		
 	}
 var sliderSX ="";
-	for (a=6;a<=10;a++) {
+	for (a=7;a<=12;a++) {
 		var ID = "VAL"+a;
 		var ID2 = "value"+a;
 		var b = (a+1);

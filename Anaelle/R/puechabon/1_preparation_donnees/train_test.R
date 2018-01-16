@@ -11,7 +11,7 @@ donnees<-donnees[-which(as.numeric(donnees$PA) < 96),]
 donnees<-donnees[-which(is.na(donnees$SAP_FLOW)),]
 
 # supprime colonnes inutiles
-donnees = donnees[,-1]# supprime premier colonne d'index
+donnees = donnees[,-which(colnames(donnees)=="X")]# supprime premier colonne d'index
 
 # Pas PRI la nuit : On supprime la colonne
 donnees = donnees[,-which(colnames(donnees)=="PRI")]
@@ -99,6 +99,22 @@ data = data.frame(SAP_FLOW = sub_donnees$SAP_FLOW[-c(1:6)],
                   VPD = sub_donnees$VPD[-c(1:6)]
 )
 
+
+
+# moyenne des parametres pour chaque heure pour faire une courbe de sap flow predite moyenne
+X = data[,-which(names(data) %in% c("SAP_FLOW","dates","heure_solaire"))]
+var_heure<-NULL
+for (i in levels(data$heure_solaire)){
+  vec = NULL
+  for(j in names(X)){
+    vec=c(vec,mean(X[data$heure_solaire==i,j],na.rm=TRUE))
+  }
+  var_heure<-cbind(var_heure,vec)
+}
+var_heure<-as.data.frame(var_heure)
+colnames(var_heure)<-levels(data$heure_solaire)
+rownames(var_heure)<-names(X)
+write.csv(var_heure,"F:/MIASHS/TER/Vegeta/data/data_pour_visu_nabil/Puechabon/par_heure/X_par_heure.csv")
 
 # Separer train et test au hasard
 sample <- sample.int(n = nrow(data), size = round(nrow(data)*70/100,0), replace = F)

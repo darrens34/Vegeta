@@ -24,22 +24,6 @@ setwd("F:/MIASHS/TER/Vegeta/Anaelle")
 summary(donnees_base)
 donnees_base = donnees_base[,-1]# supprime premier colonne d'index
 
-
-#############  moyenne des parametres pour chaque heure pour faire une courbe de sap flow predite moyenne
-X = donnees_base[,-which(names(donnees_base) %in% c("SAP_FLOW","dates","heure_solaire","type"))]
-var_heure<-NULL
-for (i in levels(donnees_base$heure_solaire)){
-  vec = NULL
-  for(j in names(X)){
-    vec=c(vec,mean(X[donnees_base$heure_solaire==i,j],na.rm=TRUE))
-  }
-  var_heure<-cbind(var_heure,vec)
-}
-var_heure<-as.data.frame(var_heure)
-colnames(var_heure)<-levels(donnees_base$heure_solaire)
-rownames(var_heure)<-names(X)
-#write.csv(var_heure,"X_par_heure.csv")
-
 #############  Transforme les dates
 donnees_base$dates = strptime(donnees_base$dates,format = "%Y-%m-%d %H:%M:%S")
 donnees_base$heure_solaire = strptime(donnees_base$heure_solaire,format = "%H:%M")
