@@ -47,7 +47,7 @@ function draw(months){
             })
             .curve(d3.curveBasis);
 
-        svg.select("#curve")
+        svg.select(".curve")
             .attr("transform", "translate(100,50)")
             .attr("stroke","green")
 			.attr("stroke-width",2 )
@@ -74,6 +74,7 @@ function update(months) {
     d3.select("#months-value").text(setMonth(months))
     d3.select("#months").property("value", months);
     draw(months)
+    console.log(oldCurvesArray)
     var graph = document.getElementById("curves");
     for(i=0;i<oldCurvesArray.length;i++){
         graph.innerHTML += oldCurvesArray[i];
@@ -102,17 +103,16 @@ function setGraph(){
 }
 
 function saveCurve(){
-    var oldCurve = document.getElementById("curve").cloneNode(false);
+    // stocke la courbe actuelle dans l'array oldCurvesArray
+    var oldCurve = document.getElementsByClassName("curve")[0].cloneNode(false);
     oldCurvesArray.push(oldCurve.outerHTML);
 }
 
-
-/*
 function resetCurve(){
-    oldCurvesArray = [];
-    curves = document.getElementById("curves");
-    while (curves.childNodes.length > 1) {
-        curves.removeChild(curves.lastChild);
-    }
+    // vide l'array oldCurvesArray et vide le <g> qui contient toutes les courbes, sauf celle actuellement choisie par le mois
+    oldCurvesArray = oldCurvesArray.slice(0,0);
+    graph = document.getElementById("curves");
+    while (graph.childNodes.length > 2) {
+        graph.removeChild(graph.lastChild);
+    }  
 }
-*/

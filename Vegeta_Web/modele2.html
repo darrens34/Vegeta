@@ -18,7 +18,7 @@
 	<link rel="stylesheet" href="visual/bootstrap/css/bootstrap.min.css">
    
   <script>
-    var oldCurvesArray = [];
+    var oldCurvesArray = []; // permet de stocker les <path> des graphes à conserver grâce à saveCurve()
   </script>
  	
 </head>
@@ -75,7 +75,7 @@
       <g id="axisX"></g>
       <g id="axisY"></g>
       <g id="curves">
-          <path id="curve"></path>
+          <path class="curve"></path>
       </g>
      </g>
   </svg>
