@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html>
 
 <head>
@@ -8,18 +8,22 @@
  	<meta http-equiv="Content-Type"content="text/html; charset=UTF-8" /> 
  
 	<link rel="stylesheet"	href="css/Style.css"	type="text/css"	/>	
+    <link rel="stylesheet" type="text/css" href="css/style2.css" />
+
  	<script type="text/javascript" src="fonction.js"></script>
  	
  	<script type="text/javascript" src="visual/jQuery.js"></script>
  	<script src="visual/jqueryFX.custom/jquery-ui.js"></script>
  	<script src="visual/jqueryFX.custom/jquery-ui.min.js"></script>
- 	 <script src="visual/bootstrap/js/bootstrap.min.js"></script>
- 	<link rel="stylesheet" href="visual/bootstrap/css/bootstrap.min.css">
- 	
+ 	<script src="visual/bootstrap/js/bootstrap.min.js"></script>
+	<script src="script/d3.v4.js"></script>
+	<link rel="stylesheet" href="visual/bootstrap/css/bootstrap.min.css">
+
+	<script type="text/javascript" src="script/sap_by_hour.js"></script>
  	
 </head>
 
-<body >
+<body onload="readBetaFile();readTextFile()">
 
 <nav class="navbar navbar-inverse navbar-fixed-top">
   <div class="container-fluid">
@@ -36,7 +40,7 @@
     
   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><a href="modele_lm.html">LM simple</a></li>
+	    <li class="active"><a href="modele_lm.html">LM simple</a></li>
 		<li><a href="modele_lm_trans.html">LM avec transformation</a></li>
 		<li><a href="modele_acp.html">ACP</a></li>
 		<li><a href="modele_comp.html">Comparaison de modèle</a></li>
@@ -44,7 +48,7 @@
         <li><a href="info.html"><span class="glyphicon glyphicon-info-sign"> </span>Info </a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li class="active"><a href="donnee.html"><span class="glyphicon glyphicon-folder-open"></span> Données Brutes</a></li>
+        <li><a href="donnee.html"><span class="glyphicon glyphicon-folder-open"></span> Données Brutes</a></li>
         <li><a href="contact.html"><span class="glyphicon glyphicon-user"></span> Contact</a></li>
       </ul>
     </div>
@@ -53,11 +57,36 @@
 
 
 <div class="jumbotron text-center">
-  <h1>Données brutes</h1>
-  <p> Les données récoltées ... </p>
+  <h1>Comparaison des modèles</h1>
+  <p>Evolution du flux sève sur une journée</p>
+  <p>Comparaison de trois modèles : modèle linéaire simple, modèle linéaire avec les variables transformées, ACP.</p>
+   
+</div>
+    
+
+ 	<div id="graphe">
+     	<svg width="800" height="500">
+      		<g transform="scale(0.7) translate(50,50)">
+         		<g id="texte"> </g>
+          	<g id="points"> </g>
+             <g id="courbe" > </g>
+          	<g id="infobox" > </g>
+        	</g>
+      	</svg>
+    </div>
+    
+<div class="container-fluid bg-1 ">
+	 <div id="box">
+	 	 <div class="row">   
+	 	 	<div  class="col-sm-1"></div>
+			<div id="sliderS1" class="col-sm-5"></div>
+			<div id="sliderS2" class="col-sm-5"></div>
+			<div  class="col-sm-1"></div>
+    	</div>
+</div>
 </div>
 
-<footer class="container-fluid bg-1 text-center" style="margin-bottom:40px; ">
+<footer class="container-fluid bg- text-center" style="margin-bottom:80px; padding-top:100px; ">
 <a href="contact.html"><span class="glyphicon glyphicon-user"></span> Contact</a>
 </footer>
 

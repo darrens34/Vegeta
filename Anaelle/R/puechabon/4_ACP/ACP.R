@@ -24,12 +24,29 @@ setwd("F:/MIASHS/TER/Vegeta/Anaelle")
 summary(donnees_base)
 donnees_base = donnees_base[,-1]# supprime premier colonne d'index
 
+
+#############  moyenne des parametres pour chaque heure pour faire une courbe de sap flow predite moyenne
+X = donnees_base[,-which(names(donnees_base) %in% c("SAP_FLOW","dates","heure_solaire","type"))]
+var_heure<-NULL
+for (i in levels(donnees_base$heure_solaire)){
+  vec = NULL
+  for(j in names(X)){
+    vec=c(vec,mean(X[donnees_base$heure_solaire==i,j],na.rm=TRUE))
+  }
+  var_heure<-cbind(var_heure,vec)
+}
+var_heure<-as.data.frame(var_heure)
+colnames(var_heure)<-levels(donnees_base$heure_solaire)
+rownames(var_heure)<-names(X)
+#write.csv(var_heure,"X_par_heure.csv")
+
 #############  Transforme les dates
-donnees_base$dates = strptime(donnees_base$date,format = "%Y-%m-%d %H:%M:%S")
+donnees_base$dates = strptime(donnees_base$dates,format = "%Y-%m-%d %H:%M:%S")
 donnees_base$heure_solaire = strptime(donnees_base$heure_solaire,format = "%H:%M")
 
+
 #############  Supprime colonnes inutiles pour le moment
-donnees<- donnees_base[,-which(names(donnees_base) %in% c("TIMESTAMP_START","TIMESTAMP_END","DTime","dates","heure_solaire"))]
+donnees<- donnees_base[,-which(names(donnees_base) %in% c("dates","heure_solaire"))]
 summary(donnees)
 
 ############# Remplacement des valeurs manquantes par valeur moyenne
@@ -46,7 +63,7 @@ train <- as.data.frame(donnees[which(donnees$type=="train"),])
 test <- as.data.frame(donnees[which(donnees$type=="test"),])
 
 ############ ACP
-res_pca<- PCA(train[,-which(names(train) %in% c("SAP_FLOW","type"))], scale.unit = TRUE, graph = F,ncp =5)
+res_pca<- PCA(train[,-which(names(train) %in% c("SAP_FLOW","type"))], scale.unit = TRUE, graph = F,ncp =3)
 
 fviz_screeplot(res_pca)
 res_pca$eig
@@ -60,7 +77,7 @@ train_proj$SAP_FLOW <- train$SAP_FLOW
 
 
 ############ PCR
-model_pcr <- lm(SAP_FLOW~Dim.1+Dim.2+Dim.3+Dim.4+Dim.5,data = train_proj)
+model_pcr <- lm(SAP_FLOW~Dim.1+Dim.2+Dim.3,data = train_proj)
 # summary
 summary(model_pcr)
 
@@ -71,16 +88,18 @@ test_standard <- t(apply(test[,-which(names(test) %in% c("SAP_FLOW","type"))], M
 # projection (matrix multiplication between individuals and dimensions coordinates)
 test_proj <- as.matrix(test_standard) %*% res_pca$svd$V
 test_proj <- as.data.frame(test_proj) 
-colnames(test_proj) <- colnames(train_proj)
+colnames(test_proj) <- colnames(train_proj)[-length(colnames(train_proj))]
 test_proj$SAP_FLOW <- test$SAP_FLOW
 
 # prediction
-pred <- predict.lm(model_pcr,test_proj[,1:5])
+pred <- predict.lm(model_pcr,test_proj[,1:3])
 rmse <- sqrt(mean((test$SAP_FLOW - pred)^2)) ; rmse
 
 ########### Enregistrer fichiers nécessaires pour la prédiction avec ACP
 data_stand <- data.frame("centre"=res_pca$call$centre,"reduire"=res_pca$call$ecart.type)
+rownames(data_stand)<-colnames(test[,-which(names(test) %in% c("SAP_FLOW","type"))])
 write.csv(data_stand,"F:/MIASHS/TER/Vegeta/data/data_pour_visu_nabil/Puechabon/acp/data_stand.csv")
 vec_propre <-res_pca$svd$V
+rownames(vec_propre)<-colnames(test[,-which(names(test) %in% c("SAP_FLOW","type"))])
 write.csv(vec_propre,"F:/MIASHS/TER/Vegeta/data/data_pour_visu_nabil/Puechabon/acp/vec_propre.csv")
 

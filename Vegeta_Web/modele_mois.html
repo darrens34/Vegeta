@@ -8,19 +8,19 @@
  	<meta http-equiv="Content-Type"content="text/html; charset=UTF-8" /> 
  
 	<link rel="stylesheet"	href="css/Style.css"	type="text/css"	/>	
- 	<script type="text/javascript" src="script/fonction.js"></script>
-   <script type="text/javascript" src="visual/jQuery.js"></script>
-   <script type="text/javascript" src="script/sap_by_months.js"></script>
-   <script type="text/javascript" src="script/d3.v4.js"></script>
- 	<script src="visual/jqueryFX.custom/jquery-ui.js"></script>
- 	<script src="visual/jqueryFX.custom/jquery-ui.min.js"></script>
- 	 <script src="visual/bootstrap/js/bootstrap.min.js"></script>
- 	<link rel="stylesheet" href="visual/bootstrap/css/bootstrap.min.css">
+	<script type="text/javascript" src="script/fonction.js"></script>
+	<script type="text/javascript" src="visual/jQuery.js"></script>
+	<script type="text/javascript" src="script/sap_by_months.js"></script>
+	<script type="text/javascript" src="script/d3.v4.js"></script>
+	<script src="visual/jqueryFX.custom/jquery-ui.js"></script>
+	<script src="visual/jqueryFX.custom/jquery-ui.min.js"></script>
+	<script src="visual/bootstrap/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="visual/bootstrap/css/bootstrap.min.css">
  	
  	
 </head>
 
-<body onload="update(4)">
+<body onload="setGraph();update(4)">
 
 <nav class="navbar navbar-inverse navbar-fixed-top">
   <div class="container-fluid">
@@ -37,8 +37,11 @@
     
   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><a href="modele1.html">Modèle Général</a></li>
-        <li class="active"><a href="modele2.html">Modèle Mensuel</a></li>
+	    <li><a href="modele_lm.html">LM simple</a></li>
+		<li><a href="modele_lm_trans.html">LM avec transformation</a></li>
+		<li><a href="modele_acp.html">ACP</a></li>
+		<li><a href="modele_comp.html">Comparaison de modèle</a></li>
+        <li class="active"><a href="modele_mois.html">Effet du mois</a></li>
         <li><a href="info.html"><span class="glyphicon glyphicon-info-sign"> </span>Info </a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -51,17 +54,19 @@
 
 
 <div class="jumbotron text-center">
-  <h1>Modèle Mensuel</h1>
-  <p>Comportement du flux séve sur mois choisi  </p>
-  <p>Ces graphes montrent l'évolution moyenne du flux de sève pour chaque mois.</p>
+  <h1>Effet du mois</h1>
+  <p>Evolution du flux sève sur une journée observée pour chaque mois.</p>
 </div>
 
-  <label for="months" style="display: inline-block; width: 150px; text-align: left">
-      months = <span id="months-value">…</span>
-  </label>        
-  <input type="range" min="4" max="10" id="months" style = "width: 10%">
+  <div style="width:200px; margin-right:auto; margin-left:auto;">
+	  <label for="months" style="display: inline-block; width: 200px; text-align: center;font-size:150%">
+		  Mois = <span id="months-value">…</span>
+	  </label>        
+	  <input type="range" min="4" max="10" id="months" >
+  </div>
+  
   <svg id="graph" style = "margin-left: auto; margin-right: auto;">
-  	<g transform="scale(0.7)">
+  	<g transform="scale(0.8)">
       <g id="axisX"></g>
       <g id="axisY"></g>
       <g>

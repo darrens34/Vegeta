@@ -5,6 +5,7 @@ setwd("F:/MIASHS/TER/Vegeta/Anaelle")
 summary(donnees)
 
 donnees = donnees[,-1]# supprime premier colonne d'index
+donnees$espece[which(donnees$espece=="QUPR2")]<-"QUPR"
 
 # Transforme les dates
 donnees$date = strptime(donnees$date,format = "%d/%m/%Y %H:%M")
