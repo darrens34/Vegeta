@@ -99,15 +99,28 @@ function setGraph(){
 
 function saveCurve(){
     // garde la trace de la courbe sélectionnée
+    var dupplicated = false; // devient true si la courbe a déjà été sauvegardée
     var graph = document.getElementById("curves");
-    var oldCurve = document.getElementsByClassName("curve")[0].cloneNode(false);
-    graph.innerHTML += oldCurve.outerHTML;
+    var curves = document.getElementsByClassName("curve");
+    var oldCurve = curves[0].cloneNode(false); // courbe actuellement dessinée par l'utilisateur
+    for(i=1;i<curves.length;i++){ // i débute à 1 pour ignorer la courbe que l'on souhaite sauvegarder pendant la vérification
+        if(curves[i].getAttribute('d') == oldCurve.getAttribute('d')){
+            dupplicated = true
+        }
+    }
+    if(!dupplicated){
+        graph.innerHTML += oldCurve.outerHTML;
+        curves = document.getElementsByClassName("curve");
+        for(i=1;i<curves.length;i++){
+            curves[i].setAttribute("opacity",i/curves.length)
+        }
+    }
 }
 
 function resetCurve(){
-    // supprime les traces d'anciennes courbes
+    // supprime les traces d'anciennes courbes en supprimant tous les enfants de la balise g, sauf la courbe actuellement dessinée
     graph = document.getElementById("curves");
-    while (graph.childNodes.length > 2) {
+    while (graph.childNodes.length > 2) { // 2 car le saut à la ligne compte comme un child
         graph.removeChild(graph.lastChild);
     }  
 }
