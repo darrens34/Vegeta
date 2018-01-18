@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -67,12 +67,16 @@
     
 
  	<div id="graphe">
-     	<svg width="800" height="500">
+     	<svg width="800" height="500" id ="graph">
       		<g transform="scale(0.7) translate(50,50)">
-         		<g id="texte"> </g>
-          	<g id="points"> </g>
-             <g id="courbe" > </g>
-          	<g id="infobox" > </g>
+              <g id="axisX"></g>
+              <g id="axisY"></g>
+              <g id="texte"> </g>
+              <g id="points"> </g>
+              <g id="courbes" >
+                  <path class = "courbe"></path>
+              </g>
+          	  <g id="infobox" > </g>
         	</g>
       	</svg>
     </div>
@@ -87,6 +91,9 @@
     	</div>
 </div>
 </div>
+
+<button type="save" onclick="saveCurve()">Conserver Courbe</button>
+<button type="reset" onclick="resetCurve()">Supprimer Courbes</button>
 
 <footer class="container-fluid bg- text-center" style="margin-bottom:80px; padding-top:100px; ">
 <a href="contact.html"><span class="glyphicon glyphicon-user"></span> Contact</a>
