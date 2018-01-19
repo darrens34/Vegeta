@@ -21,6 +21,7 @@ donnes_train$heure_solaire = strptime(donnes_train$heure_solaire,format = "%H:%M
 #############  Supprime colonnes inutiles pour le moment
 donnees<- donnes_train[,-which(names(donnes_train) %in% c("dates","heure_solaire","type"))]
 
+############# Visualisation des relations avec le sap flow TODO!
 for (i in names(donnees)){
   plot(donnees$SAP_FLOW~donnees[,which(names(donnees)==i)],xlab=i)
 }
@@ -72,37 +73,3 @@ for (i in c("TA", "H_1h30", "LE_30m", "SB", "G", "VPD")){
   trans_nom <- paste0(i,"_trans")
   donnees$trans_nom<-trans
 }
-
-######### ######### #########
-######### Relation sigmoidale pour H
-######### ######### #########
-# A : y max : valeur du plateau final
-#X0 : Point d'inflection : 50% de Y
-#B : point ou la vitesse est maximale
-
-# Parametres à estimer : 
-A<-NA
-X0<-NA
-B<-NA
-
-# Plot obs:
-plot(SAP_FLOW~H_1h30,data=donnees)
-
-#Ajust
-y<-donnees$SAP_FLOW
-x<-donnees$H_1h30
-
-fit0<-NULL
-fit0<-nls(y ~ A / ( 1 + exp (-((x - X0) / B))),start = list(A = 10, B = 3, X0 =20),algorithm="port")
-A<-summary(fit0)$coef[1]
-B<-summary(fit0)$coef[2]
-X0<-summary(fit0)$coef[3]
-x<-min(x,na.rm=T):max(x,na.rm=T)
-points(A / ( 1 + exp (-((x - X0) / B)))~x,type="l",col="red",lwd=4)
-
-#### Transformer H
-
-H_trans <- A / ( 1 + exp (-((donnees$H - X0) / B)))
-plot(donnees$SAP_FLOW~H_1h30_trans)
-donnees$H_trans<-H_trans
-
