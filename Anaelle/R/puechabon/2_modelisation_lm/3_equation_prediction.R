@@ -10,8 +10,8 @@ donnees = donnees[,-which(colnames(donnees)=="X")]
 X = donnees[,-which(names(donnees) %in% c("SAP_FLOW"))]
 
 # Modele complet:
-mod<-lm(SAP_FLOW ~  PA_3h + PPFD_DIF_1h+ PPFD_IN_1h +RH_3h + TA+ TS +  WD_1h30+WS+
-          FC_3h + LE_30m + SH_3h + USTAR_30m + VPD , data = donnees)
+mod<-lm(SAP_FLOW ~  PPFD_IN_1h + TA+ TS +  WD_1h30+CO2+
+          FC_1h + LE_30m + SH_3h + ZL_3h + VPD , data = donnees)
 summary(mod)
 
 
@@ -25,8 +25,7 @@ write.csv(data.frame(predict.lm(mod,newdata=as.data.frame(t(X)))),"y_predit_par_
 
 # equation du modèle global:
 coef<-round(mod$coefficients,4)
-equation_modele_global <- paste("Flux de sève = ",coef[1]," + ",coef[2]," PA_3h + ",coef[3]," PPFD_DIF_1h + ",
-                                coef[4]," PPFD_IN_1h + ",coef[5],"RH_3h + ",coef[6],"  TA + ",coef[7]," TS + ",
-                                coef[8]," WD_1h30 + ",coef[9],"  WS + ",coef[10]," FC_3h + ",coef[11]," LE_30m + ",
-                                coef[12]," SH_3h + ",coef[13]," USTAR_30m + ",coef[14]," VPD")
+equation_modele_global <- paste("Flux de sève = ",coef[1]," + ",coef[2]," PPFD_IN_1h + ",coef[3],"  TA + ",coef[4]," TS + ",
+                                coef[5]," WD_1h30 + ",coef[6],"  CO2 + ",coef[7]," FC_1h + ",coef[8]," LE_30m + ",
+                                coef[9]," SH_3h + ",coef[10]," ZL_3H + ",coef[11]," VPD")
 

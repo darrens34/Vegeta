@@ -61,7 +61,7 @@ les_cor<-data.frame(h0,h30,h1,h130,h2,h230,h3)
 
 decalage <- NA
 for (i in 1:nrow(les_cor)){
-  decalage[i]<-les_cor["decalage",][which.max(les_cor[i,])]
+  decalage[i]<-les_cor["decalage",][which.max(abs(les_cor[i,]))]
 }
 
 # jeu final à la main  : 
@@ -69,12 +69,12 @@ data = data.frame(SAP_FLOW = sub_donnees$SAP_FLOW[-c(1:6)],
                   dates = donnees$dates[-c(1:6)],
                   heure_solaire = donnees$heure_solaire[-c(1:6)],
                   NETRAD_1h30 = sub_donnees$NETRAD[-c(1:3,nrow(sub_donnees)-2,nrow(sub_donnees)-1,nrow(sub_donnees))],
-                  P =  sub_donnees$P[-c(1:6)],
-                  PA_3h =sub_donnees$PA[-c(nrow(sub_donnees)-5,nrow(sub_donnees)-4,nrow(sub_donnees)-3,nrow(sub_donnees)-2,nrow(sub_donnees)-1,nrow(sub_donnees))],
+                  P_1h =  sub_donnees$P[-c(1:4,nrow(sub_donnees)-1,nrow(sub_donnees))],
+                  PA_3h = sub_donnees$PA[-c(nrow(sub_donnees)-5,nrow(sub_donnees)-4,nrow(sub_donnees)-3,nrow(sub_donnees)-2,nrow(sub_donnees)-1,nrow(sub_donnees))],
                   PPFD_DIF_1h = sub_donnees$PPFD_DIF[-c(1:4,nrow(sub_donnees)-1,nrow(sub_donnees))],
                   PPFD_IN_1h =  sub_donnees$PPFD_IN[-c(1:4,nrow(sub_donnees)-1,nrow(sub_donnees))],
                   PPFD_OUT_1h =  sub_donnees$PPFD_OUT[-c(1:4,nrow(sub_donnees)-1,nrow(sub_donnees))],
-                  RH_3h = sub_donnees$RH[-c(nrow(sub_donnees)-5,nrow(sub_donnees)-4,nrow(sub_donnees)-3,nrow(sub_donnees)-2,nrow(sub_donnees)-1,nrow(sub_donnees))],
+                  RH = sub_donnees$RH[-c(1:6)],
                   SW_IN_1h =  sub_donnees$SW_IN[-c(1:4,nrow(sub_donnees)-1,nrow(sub_donnees))],
                   SW_OUT_30m = sub_donnees$SW_OUT[-c(1:5,nrow(sub_donnees))],
                   TA = sub_donnees$TA[-c(1:6)],
@@ -83,18 +83,18 @@ data = data.frame(SAP_FLOW = sub_donnees$SAP_FLOW[-c(1:6)],
                   TS_3 = sub_donnees$TS_3[-c(1:6)],
                   WD_1h30 = sub_donnees$WD[-c(1:3,nrow(sub_donnees)-2,nrow(sub_donnees)-1,nrow(sub_donnees))],
                   WS = sub_donnees$WS[-c(1:6)],
-                  CO2_3h =sub_donnees$CO2[-c(nrow(sub_donnees)-5,nrow(sub_donnees)-4,nrow(sub_donnees)-3,nrow(sub_donnees)-2,nrow(sub_donnees)-1,nrow(sub_donnees))],
-                  FC_3h =sub_donnees$FC[-c(nrow(sub_donnees)-5,nrow(sub_donnees)-4,nrow(sub_donnees)-3,nrow(sub_donnees)-2,nrow(sub_donnees)-1,nrow(sub_donnees))],
+                  CO2 =sub_donnees$CO2[-c(1:6)],
+                  FC_1h =sub_donnees$FC[-c(1:4,nrow(sub_donnees)-1,nrow(sub_donnees))],
                   H_1h30 = sub_donnees$H[-c(1:3,nrow(sub_donnees)-2,nrow(sub_donnees)-1,nrow(sub_donnees))],
                   H2O_3h = sub_donnees$H2O[-c(nrow(sub_donnees)-5,nrow(sub_donnees)-4,nrow(sub_donnees)-3,nrow(sub_donnees)-2,nrow(sub_donnees)-1,nrow(sub_donnees))],
                   LE_30m =sub_donnees$LE[-c(1:5,nrow(sub_donnees))],
                   SB = sub_donnees$SB[-c(1:6)],
-                  SC = sub_donnees$SC[-c(1:6)],
+                  SC_3h = sub_donnees$SC[-c(nrow(sub_donnees)-5,nrow(sub_donnees)-4,nrow(sub_donnees)-3,nrow(sub_donnees)-2,nrow(sub_donnees)-1,nrow(sub_donnees))],
                   SH_3h = sub_donnees$SH[-c(nrow(sub_donnees)-5,nrow(sub_donnees)-4,nrow(sub_donnees)-3,nrow(sub_donnees)-2,nrow(sub_donnees)-1,nrow(sub_donnees))],
                   SLE_3h = sub_donnees$SLE[-c(nrow(sub_donnees)-5,nrow(sub_donnees)-4,nrow(sub_donnees)-3,nrow(sub_donnees)-2,nrow(sub_donnees)-1,nrow(sub_donnees))],
                   TAU_30m =sub_donnees$TAU[-c(1:5,nrow(sub_donnees))],
                   USTAR_30m =sub_donnees$USTAR[-c(1:5,nrow(sub_donnees))],
-                  ZL = sub_donnees$ZL[-c(1:6)],
+                  ZL_3h = sub_donnees$ZL[-c(nrow(sub_donnees)-5,nrow(sub_donnees)-4,nrow(sub_donnees)-3,nrow(sub_donnees)-2,nrow(sub_donnees)-1,nrow(sub_donnees))],
                   G = sub_donnees$G[-c(1:6)],
                   VPD = sub_donnees$VPD[-c(1:6)]
 )
