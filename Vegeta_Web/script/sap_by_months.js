@@ -67,7 +67,7 @@ function setMonth(months){
     var monthNames = ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin",
     "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"
     ];
-    return monthNames[months]
+    return monthNames[months-1]
 }
 
 function update(months) {
@@ -123,4 +123,76 @@ function resetCurve(){
     while (graph.childNodes.length > 2) { // 2 car le saut à la ligne compte comme un child
         graph.removeChild(graph.lastChild);
     }  
+}
+
+function updateOnMonthsList(){
+    d3.selectAll(".monthsList").each(function(d){
+        list = d3.select(this);
+        if(list.property("checked")){
+            drawMulti(list.property("value"));
+        }
+    })
+}
+
+function drawMulti(months){
+    d3.csv("data/puechabon/month/Puechabon_mean_per_month.csv", function(error, data){
+        var date = []
+        var sap = []
+
+        data.forEach(function (d){
+            if(d.mois == months){
+                date.push(d.heure_solaire);
+                sap.push(d.SAP_FLOW);
+            }
+        })
+
+        var scaleX = d3.scaleLinear()
+            .domain([0,24])
+            .range([0,1000]);
+
+        var scaleY = d3.scaleLinear()
+            .domain([d3.min(data, function(d){
+                return d.SAP_FLOW;
+            }),d3.max(data, function(d){
+                return d.SAP_FLOW;
+            })])
+            .range([500,0]);
+
+        var axisX = d3.axisBottom(scaleX);
+
+        var axisY = d3.axisLeft(scaleY);
+
+        var svg = d3.select("#graph");
+        
+        svg.select("#axisX")
+            .call(axisX.ticks(24))
+            .attr("transform","translate(100,560)")
+            .attr("font-size",25);
+
+        svg.select("#axisY")
+            .call(axisY)
+            .attr("transform","translate(90,50)")
+            .attr("font-size",25);
+                            
+        var Lvalues = d3.line()
+            .x(function(d,i){
+                return scaleX(i)/2
+            })
+            .y(function(d,i){
+                return scaleY(sap[i])
+            })
+            .curve(d3.curveBasis);
+
+        svg.select("#curves")
+            .append("path")
+            .attr("id",months)
+            .attr("transform", "translate(100,50)")          
+            .attr("stroke","green")
+            .attr("stroke-width",2 )
+            .attr("fill","none")
+            .transition()
+            .duration(500)
+            .attr("d", Lvalues(date));      
+    
+    })
 }

@@ -19,7 +19,7 @@
  	
 </head>
 
-<body onload="setGraph();update(4)">
+<body onload="setGraph();update(4);updateOnMonthsList()">
 
 <nav class="navbar navbar-inverse navbar-fixed-top">
   <div class="container-fluid">
@@ -78,6 +78,14 @@
      </g>
   </svg>
 
+
+  <input type="checkbox" class="monthsList" value="4" onchange="updateOnMonthsList()"> Avril
+  <input type="checkbox" class="monthsList" value="5"  onchange="updateOnMonthsList()"> Mai
+  <input type="checkbox" class="monthsList" value="6"  onchange="updateOnMonthsList()"> Juin
+  <input type="checkbox" class="monthsList" value="7"  onchange="updateOnMonthsList()"> Juillet
+  <input type="checkbox" class="monthsList" value="8"  onchange="updateOnMonthsList()"> Août
+  <input type="checkbox" class="monthsList" value="9"  onchange="updateOnMonthsList()"> Septembre
+  <input type="checkbox" class="monthsList" value="10"  onchange="updateOnMonthsList()"> Octobre
 
 <footer class="container-fluid bg-1 text-center" style="margin-bottom:40px; padding-top:100px;  ">
 <a href="contact.html"><span class="glyphicon glyphicon-user"></span> Contact</a>
