@@ -126,10 +126,20 @@ function resetCurve(){
 }
 
 function updateOnMonthsList(){
-    d3.selectAll(".monthsList").each(function(d){
+    // met à jour les courbes en fonction des checkbox cochées
+    d3.selectAll(".monthsList").each(function(d){ // parcourt les checkbox
         list = d3.select(this);
-        if(list.property("checked")){
-            drawMulti(list.property("value"));
+        if(list.property("checked")){ // vérifie les checkbox cochées
+            var elementToCreate = document.getElementById(list.property("value"));
+            if(!elementToCreate){
+                drawMulti(list.property("value")); // trace les courbes
+            }
+        }
+        if(!list.property("checked")){ // vérifie les checkbox non cochées
+            var elementToErase = document.getElementById(list.property("value"));
+            if(elementToErase){
+                elementToErase.remove(); // efface les courbes
+            }
         }
     })
 }
