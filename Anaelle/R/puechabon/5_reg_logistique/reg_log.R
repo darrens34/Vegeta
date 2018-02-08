@@ -26,15 +26,23 @@ for (i in names(donnees)){
   plot(donnees$SAP_FLOW~donnees[,which(names(donnees)==i)],xlab=i)
 }
 
+
+############# ############# ############# ############# 
 """
 Relation lineaire avec le sap flow pour : 
-NETRAD, PPFD_IN, PPFD_OUT, RH, SW_IN, SW_OUT
+NETRAD_1h30, PPFD_IN_1h, PPFD_OUT_1h, RH, SW_IN_1h, SW_OUT_30m H_1h30
 
 Relation sigmoidale pour : 
-TA, H, LE, SB, G, VPD
+TA, SB, G
 
-Genre de LOG inverse:
-CO2, FC, TAU, USTAR, WS
+Relation log :ln(Ax)
+LE_30m, VPD
+
+Genre de LOG inverse: ln(1/AX)+B
+CO2, FC_1h, TAU_30m, USTAR_30m, WS
+
+Pas de relation:
+P_1h PA_3h PPFD_DIF_1h TS TS_2 TS_3 WD_1h30 WS H2O_3h SC_3h SH_3h SLE_3h ZL_3h
 """
 
 ######### ######### #########
@@ -44,22 +52,22 @@ CO2, FC, TAU, USTAR, WS
 #X0 : Point d'inflection : 50% de Y
 #B : point ou la vitesse est maximale
 compt=0
-for (i in c("TA", "H_1h30", "LE_30m", "SB", "G", "VPD")){
-  compt=compt+1
 # Parametres à estimer : 
-  A<-c(9,9,9,9,9,9)
-  X0<-c(20,100,100,10,5,1)
-  B<-c(3,-100,0,-10,-10,0)
-  
+A<-c(10,9,9)
+X0<-c(15,0,0)
+B<-c(3,-5,-5)
+
+for (i in c("TA", "SB", "G")){
+  compt=compt+1
   #Ajust
   y<-donnees$SAP_FLOW
   x<-donnees[,which(names(donnees)==i)]
   
   # Plot obs:
-  plot(y~x)
+  plot(y~x,xlab=i,ylab="sap flow")
   
   fit0<-NULL
-  fit0<-nls(y ~ A / ( 1 + exp (-((x - X0) / B))),start = list(A = A[compt], B = B[compt], X0 =X0[compt]),algorithm="port")
+  fit0<-nls(y ~ A / ( 1 + exp (-((x - X0) / B))),start = list(A = A[compt], B = B[compt], X0 =X0[compt]),nls.control(maxiter = 100000, tol = 1e05),algorithm="port")
   A[compt]<-summary(fit0)$coef[1]
   B[compt]<-summary(fit0)$coef[2]
   X0[compt]<-summary(fit0)$coef[3]
@@ -69,7 +77,7 @@ for (i in c("TA", "H_1h30", "LE_30m", "SB", "G", "VPD")){
   #### Transformer TA
   
   trans <- A[compt] / ( 1 + exp (-((donnees[,which(names(donnees)==i)]- X0[compt]) / B[compt])))
-  plot(donnees$SAP_FLOW~trans)
+  plot(donnees$SAP_FLOW~trans,xlab =i)
   trans_nom <- paste0(i,"_trans")
   donnees$trans_nom<-trans
 }
