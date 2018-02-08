@@ -41,7 +41,6 @@ function readTextFile(){
 					}
 					nomX.push(allTextLines[(i*49)]);
 				}
-						console.log(allTextLines);
 		EQ(dataDict,nomX,betaDict,factMult);
 		sliders(nomX);
 		}
@@ -53,32 +52,63 @@ function readTextFile(){
 // qui prend comme entrée un tableau des X variables pour chaque demi heure 
 // qui prend comme 2ème entrée le nom des variables X
 function EQ(Donnee,nomX,betaDict,factMult){
-	var dataX=[];
-	var Y=[];
-	for (i=0;i<48 ;i++) {
-		
-		dataX=[];
-		for (j=1;j<nomX.length;j++) {		
-					dataX.push(Donnee[nomX[j]][i]);	
+
+	d3.csv("data/puechabon/sliders/factMult.csv", function(error,data){
+		minFact = [];
+		maxFact = [];
+		step = [];
+		minVal = [];
+		maxVal = [];
+
+		data.forEach(function (d){
+			minFact.push(d.factMultMin);
+			maxFact.push(d.factMultMax);
+			step.push(d.step);
+			minVal.push(d.minVal);
+			maxVal.push(d.maxVal)
+		})
+
+		var dataX=[];
+		var Y=[];
+		for (i=0;i<48 ;i++) {
+			
+			dataX=[];
+			for (j=1;j<nomX.length;j++) {		
+						dataX.push(Donnee[nomX[j]][i]);	
+			}
+			
+			values = []
+			for(k=0;k<factMult.length;k++){
+				if(dataX[k]*factMult[k] < minVal[k]){
+					values.push(minVal[k]);
+				}
+				else if(dataX[k]*factMult[k] > maxVal[k]){
+					values.push(maxVal[k]);
+				}
+				else{
+					values.push(dataX[k]*factMult[k])
+				}
+			}
+			
+			// Equation automatique :
+			Y[i]=(Number(betaDict["beta0"][0])+
+			betaDict[nomX[1]][0]*values[0]+
+			betaDict[nomX[2]][0]*values[1]+
+			betaDict[nomX[3]][0]*values[2]+
+			betaDict[nomX[4]][0]*values[3]+
+			betaDict[nomX[5]][0]*values[4]+
+			betaDict[nomX[6]][0]*values[5]+
+			betaDict[nomX[7]][0]*values[6]+
+			betaDict[nomX[8]][0]*values[7]+
+			betaDict[nomX[9]][0]*values[8]+
+			betaDict[nomX[10]][0]*values[9]) ;
 		}
-		
-		// Equation automatique :
-		Y[i]=(Number(betaDict["beta0"][0])+
-		betaDict[nomX[1]][0]*dataX[0]*factMult[0]+
-		betaDict[nomX[2]][0]*dataX[1]*factMult[1]+
-		betaDict[nomX[3]][0]*dataX[2]*factMult[2]+
-		betaDict[nomX[4]][0]*dataX[3]*factMult[3]+
-		betaDict[nomX[5]][0]*dataX[4]*factMult[4]+
-		betaDict[nomX[6]][0]*dataX[5]*factMult[5]+
-		betaDict[nomX[7]][0]*dataX[6]*factMult[6]+
-		betaDict[nomX[8]][0] *dataX[7]*factMult[7]+
-		betaDict[nomX[9]][0]*dataX[8] *factMult[8]+
-		betaDict[nomX[10]][0]*dataX[9]*factMult[9]) ;
-	}
-	for(yi=0;yi<Y.length;yi++){
-		if(Y[yi] < 0){
-			Y[yi] = 0}};  // Limite à O min
-	Courbe(Y);
+
+		for(yi=0;yi<Y.length;yi++){
+			if(Y[yi] < 0){
+				Y[yi] = 0}};  // Limite à O min
+		Courbe(Y);
+	})
 }
 
 // Fonction qui trace la courbe "line" + les points "cir"
@@ -170,26 +200,43 @@ dicoNom = {
 	}
 
 function sliders(nomX) {
-var ID="";
-var ID2 ="";
-var sliderSX ="";
-	for (a=0;a<=4;a++) {
-		var ID = "VAL"+a;
-		var ID2 = "value"+a;
-		var b = (a+1);
-		sliderSX +='<p>'+dicoNom[nomX[b]]+' :  <span id="'+ID2+'">'+factMult[a]+'</span></p><div class="slidecontainer"><input oninput="Change('+ID+','+ID2+','+a+')"  type="range" min="0" max="4" step="0.25" value="'+factMult[a]+'" class="slider" id="'+ID+'"></div>';
-		var sliderS1 = document.getElementById("sliderS1");
-		sliderS1.innerHTML = sliderSX ;		
-	}
-var sliderSX ="";
-	for (a=5;a<=9;a++) {
-		var ID = "VAL"+a;
-		var ID2 = "value"+a;
-		var b = (a+1);
-		sliderSX +='<p>'+dicoNom[nomX[b]]+' :  <span id="'+ID2+'">'+factMult[a]+'</span></p><div class="slidecontainer"><input oninput="Change('+ID+','+ID2+','+a+')"  type="range" min="0" max="4" step="0.25" value="'+factMult[a]+'" class="slider" id="'+ID+'"></div>';
-		var sliderS2 = document.getElementById("sliderS2");
-		sliderS2.innerHTML = sliderSX ;		
-	}
+
+	d3.csv("data/puechabon/sliders/factMult.csv", function(error,data){
+		minFact = [];
+		maxFact = [];
+		step = [];
+		minVal = [];
+		maxVal = [];
+
+		data.forEach(function (d){
+			minFact.push(d.factMultMin);
+			maxFact.push(d.factMultMax);
+			step.push(d.step);
+			minVal.push(d.minVal);
+			maxVal.push(d.maxVal)
+		})
+
+		var ID="";
+		var ID2 ="";
+		var sliderSX ="";
+			for (a=0;a<=4;a++) {
+				var ID = "VAL"+a;
+				var ID2 = "value"+a;
+				var b = (a+1);
+				sliderSX +='<p>'+dicoNom[nomX[b]]+' :  <span id="'+ID2+'">'+factMult[a]+'</span></p><div class="slidecontainer"><input oninput="Change('+ID+','+ID2+','+a+')"  type="range" min="'+minFact[a]+'" max="'+maxFact[a]+'" step="'+step[a]+'" value="'+factMult[a]+'" class="slider" id="'+ID+'"></div>';
+				var sliderS1 = document.getElementById("sliderS1");
+				sliderS1.innerHTML = sliderSX ;
+			}
+		var sliderSX ="";
+			for (a=5;a<=9;a++) {
+				var ID = "VAL"+a;
+				var ID2 = "value"+a;
+				var b = (a+1);
+				sliderSX +='<p>'+dicoNom[nomX[b]]+' :  <span id="'+ID2+'">'+factMult[a]+'</span></p><div class="slidecontainer"><input oninput="Change('+ID+','+ID2+','+a+')"  type="range" min="'+minFact[a]+'" max="'+maxFact[a]+'" step="'+step[a]+'" value="'+factMult[a]+'" class="slider" id="'+ID+'"></div>';
+				var sliderS2 = document.getElementById("sliderS2");
+				sliderS2.innerHTML = sliderSX ;
+			}
+		})
 }
 
 function Change(ID,ID2,a) {
