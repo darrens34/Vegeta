@@ -86,17 +86,19 @@ function drawMulti(months){
                 return scaleY(sap[i])
             })
             .curve(d3.curveBasis);
+        
+        var colors = d3.schemeCategory10; // attention, il n'y a que 10 couleurs !
 
         svg.select("#curves")
             .append("path")
             .attr("id",months)
             .attr("transform", "translate(100,50)")          
-            .attr("stroke","green")
+            .attr("stroke",colors[months-4])
             .attr("stroke-width",2 )
             .attr("fill","none")
             .transition()
             .duration(500)
-            .attr("d", Lvalues(date));      
+            .attr("d", Lvalues(date));
     
     })
 }
