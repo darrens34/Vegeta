@@ -66,7 +66,8 @@
   		
   		<div class="col-sm-7">  
   			<h3 >Le contexte :</h3>
-  			<p>L'enjeu principal de cette recherche est de déployer toute la problématique de "Data Visualization" sur les données du végétal. 
+  			<p>Ce site présente le résultat du projet de TER que nous avons réalisé au cours de notre Master 1 MIASHS à Université Paul Valéry, Montpellier (année universitaire 2017-2018).<br>
+			L'enjeu principal de ce projet est de déployer toute la problématique de "Data Visualization" sur les données du végétal. 
   			Il existe pour les végétaux un certain nombre de capteurs dédiés au suivi de plusieurs variables des plantes. 
   			Ces capteurs fournissent essentiellement des séries temporelles dans des expériences scientifiques aux objectifs précis, comme par exemple mesurer l'influence de la sécheresse sur la croissance de la plante.
   			Ce qui nous intéresse ici, est d'élargir le cadre de ces données à une approche typée Big Data, en faisant ressortir les processus intrinsèques aux plantes, en dégageant des comportements, ou encore des rythmes non triviaux.
@@ -107,6 +108,7 @@
 			Les autres variables sont des variables environnementales explicatives mesurées en même temps que le flux de sève. Les mesures de notre jeu de données ont été effectuées toutes les 30 minutes pendant 1 an.<br>
 			Pour toutes les variables environnementales, nous avons cherché à identifier dans un premier temps s'il y avait un délai entre la mesure d'une variable environmentale et son effet sur le flux de sève.
 			Au final, nous avons identifié des délais allant de 30 minutes à 3 heures pour plusieurs variables environnementales (voir l'onglet info pour plus de détails).<br>
+			Nous avons séparé notre jeu de données principal en un jeu "train" (6674 mesures de flux de sève) pour apprendre les modèles et un jeu "test" (2861 mesures du flux de sève) pour tester les modèles. Cette séparation a été faite de façon aléatoire.<br>
 			Nous avons testé trois types de modélisation afin d'identifier l'effet des variables environnementales sur le flux de sève : un modèle linéaire simple, un modèle linéaire avec des variables transformées et une régression sur composantes principales.<br>
 			Les mesures ayant été effectuées au cours d'une année, nous proposons aussi une visualisation de l'effet du mois sur le flux de sève.<br>
 			Dans tous les cas, la visualisation de l'effet des variables explicatives se fait sur l'évolution du flux de sève au cours d'une journée (sur 24 heures).

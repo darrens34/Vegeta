@@ -59,7 +59,7 @@
 <div class="jumbotron text-center">
   <h1>Comparaison des modèles</h1>
   <p>Evolution du flux sève sur une journée</p>
-  <p>Comparaison de trois modèles : modèle linéaire simple, modèle linéaire avec les variables transformées, ACP.</p>
+  <p>Comparaison de trois modèles : modèle linéaire simple (courbe noire), modèle linéaire avec les variables transformées (courbe bleue), analyse sur composantes principales (courbe rouge).</p>
    
 </div>
     
@@ -93,6 +93,37 @@
 <button type="save" onclick="saveCurve()">Conserver Courbe</button>
 <button type="reset" onclick="resetCurve()">Supprimer Courbes</button>
 
+<div class="container-fluid bg-1 ">
+  <h1>Détail du modèle de régression linéaire</h1>
+  <p>L'équation du modèle est la suivante : <br>
+	Flux de sève = 1.1689 + 0.0023 PPFD_IN - 0.0351 TA + 0.1019 TS - 0.0009 WD - 0.0046 CO2 - 0.0332 FC + 0.0119 LE + 0.0166 SH - 0.0305 ZL + 1.0677 VPD
+  </p>
+  <p>Le RMSE associé aux prédictions pour le jeu de données test est de 0.78.</p>
+</div>
+
+<div class="container-fluid bg-1 ">
+  <h1>Détail du modèle de régression linéaire</h1>
+  <p>L'équation du modèle est la suivante : <br>
+	Flux de sève = -1.0434 - 0.0825 P + 0.0020 PPFD + 0.0542 TS - 0.0004 WD + 0.1380 WS + 0.0145 SH - 0.6148 USTAR -0.0251 ZL + 0.0314 SB_transform + 0.4383 LE_transform + 0.1246 VPD_transform + 0.2492 CO2_transform <br>
+  Certaines variables ont été transformées afin que leur relation avec le flux de sève soit plus linéaire: <br>
+  <ul>
+		<li><p>SB_transform = 9.5 / ( 1 + exp ((8-SB) / 4))</p></li>
+		<li><p>LE_transform = 9 / ( 1 + exp ((92-LE) / 34))</p></li>
+		<li><p>VPD_transform = 9 / ( 1 + exp ((1.06-VPD) / 0.33))</p></li>
+		<li><p>CO2_transform = 0.00000000002 * exp(10000/CO2)</p></li>
+  </ul>
+  </p>
+  <p>Le RMSE associé aux prédictions pour le jeu de données test est de 0.71.</p>
+</div>
+ 
+<div class="container-fluid bg-1 ">
+  <h1>Détail du modèle de régression sur composantes principales</h1>
+  <p>Nous avons sélectionné 3 composantes principales qui permettent d'expliquer 64% de la variabilité globale. L'équation du modèle est la suivante : <br>
+	Flux de sève = 1.76 + 0.74 dim1 + 0.015 dim2 - 0.14 dim3
+  </p>
+  <p>Le RMSE associé aux prédictions pour le jeu de données test est de 0.96.</p>
+</div>
+ 
 <footer class="container-fluid bg- text-center" style="margin-bottom:80px; padding-top:100px; ">
 <a href="contact.html"><span class="glyphicon glyphicon-user"></span> Contact</a>
 </footer>
