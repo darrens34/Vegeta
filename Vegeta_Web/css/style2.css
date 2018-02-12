@@ -1,13 +1,10 @@
-
-
-#box {
-  
-}	
-	
 .slidecontainer {
-    width: 25%; 
+    width: 50%;     /* Width of the outside container */
+    display: flex;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
 }
-    /* Width of the outside container */
 
 /* The slider itself */
 .slider {
@@ -31,7 +28,7 @@
 .slider::-webkit-slider-thumb {
     -webkit-appearance: none; /* Override default look */
     appearance: none;
-    width: 25px; /* Set a specific slider handle width */
+    width: 100%; /* Set a specific slider handle width */
     height: 25px;
     border-radius: 5px;   /* Slider handle height */
     background: #4CAF50; /* Green background */
@@ -44,4 +41,12 @@
     height: 25px; /* Slider handle height */
     background: #4CAF50; /* Green background */
     cursor: pointer; /* Cursor on hover */
+}
+
+.baliseInf{
+    width: 40%;
+}
+
+.baliseSup{
+    width: 40%;
 }

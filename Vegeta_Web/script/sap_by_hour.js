@@ -187,15 +187,15 @@ function removeInfoBox(){
 // Fonction pour choisir le facteur multiplicatif associé a chaque X. De 0 à 4 (0.25 : divisé par 4 à 4 : multiplié par 4)	
 // Fonction qui créer les SLIDERS
 dicoNom = {
-	"PPFD_IN_1h":"Densité de Flux Photon Photosynthetique (PPFD)",
-	"TA":"Temperature de l'air",
-	"TS":"Temperature du sol",
-	"WD_1h30":"Direction du vent",
-	"CO2":"Concentration de CO2",
-	"FC_1h":"Flux CO2",
-	"LE_30m":"Flux de chaleur latente",
-	"SH_3h":"Flux de Stockage de chaleur sensible",
-	"ZL_3h":"Paramètre de stabilité",
+	"PPFD_IN_1h":"Densité de Flux Photon Photosynthetique (μmol m-2 s-1)",
+	"TA":"Temperature de l'air (°C)",
+	"TS":"Temperature du sol (°C)",
+	"WD_1h30":"Direction du vent (Decimal degree)",
+	"CO2":"Concentration de CO2 (ppm)",
+	"FC_1h":"Flux CO2 (μmolCO2 m-2 s-1)",
+	"LE_30m":"Flux de chaleur latente (W m-2)",
+	"SH_3h":"Flux de Stockage de chaleur sensible (W m-2)",
+	"ZL_3h":"Paramètre de stabilité (sans unité)",
 	"VPD":"Déficit de pression de vapeur"
 	}
 
@@ -220,19 +220,53 @@ function sliders(nomX) {
 		var ID2 ="";
 		var sliderSX ="";
 			for (a=0;a<=4;a++) {
+				// pour transposer les valeurs des facteurs multiplicateurs dans le même ordre de grandeur que celui des modalités sans modifier les sliders (pour bien recupérer le facteur multiplicateur utilisé par l'équation)
+				// ... je dois stocker les différentes valeurs constitutant le slider dans un tableau, avec son minimum, son maximum, et toutes ses valeurs intérmédiaires qui dépendent du pas.
+				// cela me permettra de récupérer l'indice du tableau correspondant à chaque valeur, et de l'utiliser comme coefficient multiplicateur.
+				// Ex : mon slider part de 0.95 à 1.05 avec un pas de 0.025. Je veux afficher des valeurs qui vont de 390 à 450. 
+				// (1.05 - 0.95) / 0.25 = 4, soit l'indice maximal de mon tableau (soit la taille du tableau - 1).
+				// Je recrée les valeurs constitutant le slider en partant de la valeur de départ, et on ajoutant le pas à chaque fois, cela me donne le tableau suivant : [0.95, 0.975, 1, 1.025, 1.05].
+				// Selon la position du slider, j'utiliserai l'indice du tableau pour transposer ma valeur dans le plan d'arrivée. Par example, si le slider retourne 1.025, je détermine l'indice du tableau correspondant : ici 3.
+				// J'effectue ensuite l'opération suivante : 390 + 3 * (450 - 390)/4 => 435.
+				// Un facteur multiplicateur de 1.025 correspond donc à 435 dans mes données.
+
+				var rangeValues = []; // tableau qui va contenir les valeurs du sliders
+				var numberValues = (maxFact[a] - minFact[a])/step[a]; // nombre de valeurs intermédiaire du range
+				var i = 0;
+				var value = parseFloat(minFact[a]); // min du slider converti en float
+				while(i<=numberValues){
+					rangeValues.push(parseFloat(value));
+					value += parseFloat(step[a]); // ajout du pas à chaque itération, tant que i < valeur du slider maximum
+					value = parseFloat(value.toFixed(3)); 
+					i++;
+				}
 				var ID = "VAL"+a;
 				var ID2 = "value"+a;
 				var b = (a+1);
-				sliderSX +='<p>'+dicoNom[nomX[b]]+' :  <span id="'+ID2+'">'+factMult[a]+'</span></p><div class="slidecontainer"><input oninput="Change('+ID+','+ID2+','+a+')"  type="range" min="'+minFact[a]+'" max="'+maxFact[a]+'" step="'+step[a]+'" value="'+factMult[a]+'" class="slider" id="'+ID+'"></div>';
+				printValue = parseFloat(minVal[a])+ parseFloat(rangeValues.indexOf(parseFloat(factMult[a]))*(maxVal[a] - minVal[a])/numberValues) // opération de translation
+				printValue = parseFloat(printValue.toFixed(2));
+				sliderSX +='<p>'+dicoNom[nomX[b]]+' :  <span id="'+ID2+'">'+ printValue +'</span></p><div class="slidecontainer"><p class ="baliseInf">'+minVal[a]+'</p><input oninput="Change('+ID+','+ID2+','+a+')"  type="range" min="'+minFact[a]+'" max="'+maxFact[a]+'" step="'+step[a]+'" value="'+factMult[a]+'" class="slider" id="'+ID+'"><p class = "baliseSup">'+maxVal[a]+'</p></div>';
 				var sliderS1 = document.getElementById("sliderS1");
 				sliderS1.innerHTML = sliderSX ;
 			}
 		var sliderSX ="";
 			for (a=5;a<=9;a++) {
+				var rangeValues = [];
+				var numberValues = (maxFact[a] - minFact[a])/step[a];
+				var i = 0;
+				var value = parseFloat(minFact[a]);
+				while(i<=numberValues){
+					rangeValues.push(parseFloat(value));
+					value += parseFloat(step[a]);
+					value = parseFloat(value.toFixed(3));
+					i++;
+				}
 				var ID = "VAL"+a;
 				var ID2 = "value"+a;
 				var b = (a+1);
-				sliderSX +='<p>'+dicoNom[nomX[b]]+' :  <span id="'+ID2+'">'+factMult[a]+'</span></p><div class="slidecontainer"><input oninput="Change('+ID+','+ID2+','+a+')"  type="range" min="'+minFact[a]+'" max="'+maxFact[a]+'" step="'+step[a]+'" value="'+factMult[a]+'" class="slider" id="'+ID+'"></div>';
+				printValue = parseFloat(minVal[a])+ parseFloat(rangeValues.indexOf(parseFloat(factMult[a]))*(maxVal[a] - minVal[a])/numberValues)
+				printValue = parseFloat(printValue.toFixed(2));
+				sliderSX +='<p>'+dicoNom[nomX[b]]+' :  <span id="'+ID2+'">'+ printValue +'</span></p><div class="slidecontainer"><p class ="baliseInf">'+minVal[a]+'</p><input oninput="Change('+ID+','+ID2+','+a+')"  type="range" min="'+minFact[a]+'" max="'+maxFact[a]+'" step="'+step[a]+'" value="'+factMult[a]+'" class="slider" id="'+ID+'"><p class = "baliseSup">'+maxVal[a]+'</p></div>';
 				var sliderS2 = document.getElementById("sliderS2");
 				sliderS2.innerHTML = sliderSX ;
 			}
