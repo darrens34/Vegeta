@@ -6,9 +6,7 @@
 path<-"F:/MIASHS/TER/Vegeta/data/data_train_test/Puechabon_train.csv" 
 donnes_train<-read.table(path,sep=",",dec=".",header=T,na.strings = c("-9999","NA"))
 donnes_train$type<-"train"
-path<-"F:/MIASHS/TER/Vegeta/data/data_train_test/Puechabon_test.csv" 
-donnes_test<-read.table(path,sep=",",dec=".",header=T,na.strings = c("-9999","NA"))
-donnes_test$type<-"test"
+
 setwd("F:/MIASHS/TER/Vegeta/Anaelle")
 summary(donnes_train)
 
@@ -321,4 +319,24 @@ equation_modele_global <- paste("Flux de sève = ",coef[1]," + ",coef[2]," P_1h +
                                 coef[5]," WD_1h30 + ",coef[6],"  WS + ",coef[7]," SH_3h + ",coef[8]," USTAR_30m + ",
                                 coef[9]," ZL_3h + ",coef[10]," SB_trans + ",coef[11]," LE_30m_trans + ",coef[12]," VPD_trans + ",coef[13]," CO2_trans")
 
+
+####################### PREDICTIONS
+path<-"F:/MIASHS/TER/Vegeta/data/data_train_test/Puechabon_test.csv" 
+donnes_test<-read.table(path,sep=",",dec=".",header=T,na.strings = c("-9999","NA"))
+donnes_test= donnes_test[,-which(colnames(donnes_test)=="X")]# supprime premier colonne d'index
+
+#############  Supprime colonnes inutiles pour le moment
+donnes_test<- donnes_test[,-which(names(donnes_test) %in% c("dates","heure_solaire","type"))]
+
+### transformation des variables
+SB_trans =  9.5 / ( 1 + exp ((8-donnes_test[,which(colnames(donnes_test)=="SB")]) / 4))
+LE_30m_trans = 9 / ( 1 + exp ((92-donnes_test[,which(colnames(donnes_test)=="LE_30m")]) / 34))
+VPD_trans = 9 / ( 1 + exp ((1.06-donnes_test[,which(colnames(donnes_test)=="VPD")]) / 0.33))
+CO2_trans = 0.00000000002 * exp(10000/donnes_test[,which(colnames(donnes_test)=="CO2")])
+donnes_test = cbind(donnes_test,SB_trans,LE_30m_trans,VPD_trans,CO2_trans)
+
+# prediction
+pred <- predict.lm(mod,donnes_test)
+rmse <- sqrt(mean((donnes_test$SAP_FLOW - pred)^2,na.rm=TRUE)) ; rmse
+# 0.7088663
 

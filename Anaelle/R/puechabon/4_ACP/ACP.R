@@ -77,7 +77,10 @@ test_proj$SAP_FLOW <- test$SAP_FLOW
 
 # prediction
 pred <- predict.lm(model_pcr,test_proj[,1:3])
-rmse <- sqrt(mean((test$SAP_FLOW - pred)^2)) ; rmse
+rmse <- sqrt(mean((test$SAP_FLOW - pred)^2)) ; rmse # 0.955463
+
+
+
 
 ########### Enregistrer fichiers nécessaires pour la prédiction avec ACP
 data_stand <- data.frame("centre"=res_pca$call$centre,"reduire"=res_pca$call$ecart.type)
