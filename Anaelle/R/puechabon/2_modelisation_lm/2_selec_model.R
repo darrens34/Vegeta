@@ -80,5 +80,19 @@ summary(mod)
 plot(mod)
 
 
+####################### PREDICTIONS
+path<-"F:/MIASHS/TER/Vegeta/data/data_train_test/Puechabon_test.csv" 
+donnes_test<-read.table(path,sep=",",dec=".",header=T,na.strings = c("-9999","NA"))
+donnes_test= donnes_test[,-which(colnames(donnes_test)=="X")]# supprime premier colonne d'index
+
+#############  Supprime colonnes inutiles pour le moment
+donnes_test<- donnes_test[,-which(names(donnes_test) %in% c("dates","heure_solaire","type"))]
+
+# prediction
+pred <- predict.lm(mod,donnes_test)
+rmse <- sqrt(mean((donnes_test$SAP_FLOW - pred)^2,na.rm=TRUE)) ; rmse
+# 0.782518
+
+
 # On ecrit les données post modelisation : 
 write.csv(donnees,"Puechabon_2010_post_model.csv")
