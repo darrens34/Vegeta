@@ -119,7 +119,7 @@ function Courbe(Y){
 	// scaleY
 	var scaleY = d3.scaleLinear();
 	// J'inverse min et max car pour Y c'est inversé
-	scaleY.domain([25,0]);
+	scaleY.domain([15,0]);
 	scaleY.range([0,500]);
 
 	// Axe Y
@@ -187,16 +187,16 @@ function removeInfoBox(){
 // Fonction pour choisir le facteur multiplicatif associé a chaque X. De 0 à 4 (0.25 : divisé par 4 à 4 : multiplié par 4)	
 // Fonction qui créer les SLIDERS
 dicoNom = {
-	"PPFD_IN_1h":"Densité de Flux Photon Photosynthetique (μmol m-2 s-1)",
+	"PPFD_IN_1h":"Densité de Flux Photon Photosynthetique (μmol m"+"-2".sup()+" s"+"-1".sup()+")",
 	"TA":"Temperature de l'air (°C)",
 	"TS":"Temperature du sol (°C)",
-	"WD_1h30":"Direction du vent (Decimal degree)",
+	"WD_1h30":"Direction du vent (Degré)",
 	"CO2":"Concentration de CO2 (ppm)",
-	"FC_1h":"Flux CO2 (μmolCO2 m-2 s-1)",
-	"LE_30m":"Flux de chaleur latente (W m-2)",
-	"SH_3h":"Flux de Stockage de chaleur sensible (W m-2)",
+	"FC_1h":"Flux CO2 (μmolCO"+"2".sub()+" m"+"-2".sup()+" s"+"-1".sup()+")",
+	"LE_30m":"Flux de chaleur latente (W m"+"-2".sup()+")",
+	"SH_3h":"Flux de Stockage de chaleur sensible (W m"+"-2".sup()+")",
 	"ZL_3h":"Paramètre de stabilité (sans unité)",
-	"VPD":"Déficit de pression de vapeur"
+	"VPD":"Déficit de pression de vapeur (kPa)"
 	}
 
 function sliders(nomX) {
