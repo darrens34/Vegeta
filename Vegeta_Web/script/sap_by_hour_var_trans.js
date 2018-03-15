@@ -53,7 +53,7 @@ function readTextFile(){
 // qui prend comme 2ème entrée le nom des variables X
 function EQ(Donnee,nomX,betaDict,factMult){
 
-	d3.csv("data/puechabon/sliders/factMult.csv", function(error,data){
+	d3.csv("data/puechabon/sliders/factMult_mod_nonlin.csv", function(error,data){
 		minFact = [];
 		maxFact = [];
 		step = [];
@@ -64,8 +64,8 @@ function EQ(Donnee,nomX,betaDict,factMult){
 			minFact.push(d.factMultMin);
 			maxFact.push(d.factMultMax);
 			step.push(d.step);
-			minVal.push(d.minVal);
-			maxVal.push(d.maxVal)
+			minVal.push(Number(d.minVal));
+			maxVal.push(Number(d.maxVal));
 		})
 
 		var dataX=[];
@@ -73,10 +73,11 @@ function EQ(Donnee,nomX,betaDict,factMult){
 		for (i=0;i<48 ;i++) {
 			
 			dataX=[];
-			for (j=1;j<nomX.length;j++) {		
-						dataX.push(Donnee[nomX[j]][i]);	
+			for (j=1;j<nomX.length;j++) {			
+						dataX.push(Number(Donnee[nomX[j]][i]));	
 			}
 			
+			// X maj apres les sliders (factMult)
 			values = []
 			for(k=0;k<factMult.length;k++){
 				if(dataX[k]*factMult[k] < minVal[k]){
@@ -88,8 +89,11 @@ function EQ(Donnee,nomX,betaDict,factMult){
 				else{
 					values.push(dataX[k]*factMult[k])
 				}
+				
 			}
 			
+
+		
 			// Equation automatique :
 			Y[i]=(Number(betaDict["beta0"][0])+
 			betaDict[nomX[1]][0]*values[0]+
@@ -105,11 +109,8 @@ function EQ(Donnee,nomX,betaDict,factMult){
 			betaDict[nomX[11]][0]*values[10]+
 			betaDict[nomX[12]][0]*(9 / ( 1 + Math.exp ((1.06-values[11]) / 0.33))) );
 		}
-console.log(values );
 
-
-
-
+		// Tracer la courbe :
 		for(yi=0;yi<Y.length;yi++){
 			if(Y[yi] < 0){
 				Y[yi] = 0}};  // Limite à O min
@@ -125,7 +126,7 @@ function Courbe(Y){
 	// scaleY
 	var scaleY = d3.scaleLinear();
 	// J'inverse min et max car pour Y c'est inversé
-	scaleY.domain([25,0]);
+	scaleY.domain([15,0]);
 	scaleY.range([0,500]);
 
 	// Axe Y
