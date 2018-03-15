@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<script src="http://d3js.org/d3.v4.min.js"> </script>
+<script type="text/javascript" src="script/ACP.js"></script>
+
+<style>
+			/* tell the SVG path to be a thin blue line without any area fill */
+			path {
+				stroke: steelblue;
+				stroke-width: 1;
+				fill: none;
+			}
+			
+			.axis {
+			  shape-rendering: crispEdges;
+			}
+
+			.x-axis line {
+			  stroke: lightgrey;
+			}
+			.y-axis line {
+			  stroke: lightgrey;
+			}
+			.axis line {
+			  stroke: lightgrey;
+			}
+
+
+		</style>
+
+</head>
+
+<body onload="setGraph()">
+	<div id="graphe">
+	
+	<div id="graph" class="aGraph" style="position:absolute;top:0px;left:0; float:left;"></div>
+	<svg width="960" height="500"></svg>
+	
+	 <!-- <svg id="graph" style ="margin-left: auto; margin-right: auto;" >
+  	<g transform="scale(0.8)">
+      <g id="axisX"></g>
+      <g id="axisY"></g>
+      <g id="curves">
+          <path class="curve"></path>
+      </g>
+     </g>
+  </svg> -->
+
+	
+	</div>;
+</body>
+</html>
