@@ -19,7 +19,7 @@
 	<script src="script/d3.v4.js"></script>
 	<link rel="stylesheet" href="visual/bootstrap/css/bootstrap.min.css">
 
-	<script type="text/javascript" src="script/sap_by_hour.js"></script>
+	<script type="text/javascript" src="script/vpd.js"></script>
  	
 </head>
 
@@ -40,12 +40,12 @@
     
   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-	    <li class="active"><a href="modele_lm.html">LM simple</a></li>
+	    <li><a href="modele_lm.html">LM simple</a></li>
 		<li><a href="modele_lm_trans.html">LM avec transformation</a></li>
 		<li><a href="modele_acp.html">PCR</a></li>
 		<li><a href="modele_comp.html">Comparaison des modèles</a></li>
         <li><a href="modele_mois.html">Effet du mois</a></li>
-		<li><a href="modele_vpd.html">Effet du VPD</a></li>
+		<li class="active"><a href="modele_vpd.html">Effet du VPD</a></li>
         <li><a href="info.html"><span class="glyphicon glyphicon-info-sign"> </span>Infos</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -57,11 +57,10 @@
 
 
 <div class="jumbotron text-center">
-  <h1>Modèle linéaire</h1>
-  <p>Evolution du flux sève sur une journée</p>
-  <p>Un modèle linéaire simple est utilisé pour prédire l'évolution du flux de sève en fonction de plusieurs régresseurs.<br>
-  L'effet de chaque régresseur sur le flux de sève peut être testé individuellement.</p>
-   
+  <h1>Focus sur l'effet du VPD</h1>
+  <p>L'effet du VPD sur le flux de sève a été modélisé grâce à deux modèles linéaires : </p>
+	<li>Correlation positive quand VPD &lt; 1.25 kPa</li>
+	<li>Plateau atteint quand VPD &ge; 1.25 kPa</li>
 </div>
     
 
