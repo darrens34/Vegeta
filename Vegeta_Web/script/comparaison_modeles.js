@@ -156,20 +156,27 @@ function Courbe(Y){
 	var lValues = d3.line();
 	lValues.x(function(d,i) { return scaleX(i/2) });
 	lValues.y(function(d) { return scaleY(d)});
-	var gLine = svg.select(".courbe");
-	gLine.attr("transform", "translate(50,50)");
-	gLine.attr("stroke", "black");
-	gLine.attr("fill", "none");
-	gLine.attr("stroke-width",2 );
-	gLine.attr("d", lValues(Y));
-	
-	// Ajout des points
-	cir ="";
-	for (j=0;j<Y.length;j++) {
-		cir +=' <circle transform = "translate(50,50)" onmouseover="drawInfoBox('+Y[j]+','+j+','+scaleX(j)+','+scaleY(Y[j])+')" onmouseleave="removeInfoBox()" 	cx="'+scaleX(j/2)+'" cy="'+scaleY(Y[j])+'" r="5" fill="black" />' ;
-	}
-	var gPoints = document.getElementById("points");
-	gPoints.innerHTML = cir  ;			
+	var gLine = svg.select(".courbe")
+		.attr("transform", "translate(50,50)")
+		.attr("stroke", "black")
+		.attr("stroke-width",2 )
+		.attr("fill", "none")
+		.transition()
+		.duration(500)
+		.on("start", function(d){
+			var gPoints = document.getElementById("points");
+			gPoints.innerHTML = ""  ;	
+		})
+		.on("end", function(d){
+			// Ajout des points
+			cir ="";
+			for (j=0;j<Y.length;j++) {
+				cir +=' <circle transform = "translate(50,50)" onmouseover="drawInfoBox_trans('+Y[j]+','+j+','+scaleX(j)+','+scaleY(Y[j])+')" onmouseleave="removeInfoBox_trans()" 	cx="'+scaleX(j/2)+'" cy="'+scaleY(Y[j])+'" r="5" fill="black" />' ;
+			}
+			var gPoints = document.getElementById("points");
+			gPoints.innerHTML = cir  ;		
+		})
+		.attr("d", lValues(Y));	
 }
 
 
@@ -382,20 +389,27 @@ function Courbe_trans(Y){
 	var lValues = d3.line();
 	lValues.x(function(d,i) { return scaleX(i/2) });
 	lValues.y(function(d) { return scaleY(d)});
-	var gLine = svg.select(".courbe_trans");
-	gLine.attr("transform", "translate(50,50)");
-	gLine.attr("stroke", "blue");
-	gLine.attr("fill", "none");
-	gLine.attr("stroke-width",2 );
-	gLine.attr("d", lValues(Y));
-	
-	// Ajout des points
-	cir ="";
-	for (j=0;j<Y.length;j++) {
-		cir +=' <circle transform = "translate(50,50)" onmouseover="drawInfoBox_trans('+Y[j]+','+j+','+scaleX(j)+','+scaleY(Y[j])+')" onmouseleave="removeInfoBox_trans()" 	cx="'+scaleX(j/2)+'" cy="'+scaleY(Y[j])+'" r="5" fill="blue" />' ;
-	}
-	var gPoints = document.getElementById("points_trans");
-	gPoints.innerHTML = cir  ;			
+	var gLine = svg.select(".courbe_trans")
+		.attr("transform", "translate(50,50)")
+		.attr("stroke", "blue")
+		.attr("stroke-width",2 )
+		.attr("fill", "none")
+		.transition()
+		.duration(500)
+		.on("start", function(d){
+			var gPoints = document.getElementById("points_trans");
+			gPoints.innerHTML = ""  ;	
+		})
+		.on("end", function(d){
+			// Ajout des points
+			cir ="";
+			for (j=0;j<Y.length;j++) {
+				cir +=' <circle transform = "translate(50,50)" onmouseover="drawInfoBox_trans('+Y[j]+','+j+','+scaleX(j)+','+scaleY(Y[j])+')" onmouseleave="removeInfoBox_trans()" 	cx="'+scaleX(j/2)+'" cy="'+scaleY(Y[j])+'" r="5" fill="blue" />' ;
+			}
+			var gPoints = document.getElementById("points_trans");
+			gPoints.innerHTML = cir  ;		
+		})
+		.attr("d", lValues(Y));
 }
 
 
