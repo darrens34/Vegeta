@@ -19,11 +19,11 @@
 	<script src="script/d3.v4.js"></script>
 	<link rel="stylesheet" href="visual/bootstrap/css/bootstrap.min.css">
 
-	<script type="text/javascript" src="script/sap_by_hour.js"></script>
+  <script type="text/javascript" src="script/comparaison_modeles.js"></script>
  	
 </head>
 
-<body onload="readBetaFile();readTextFile()">
+<body onload="readBetaFile();readTextFile();readBetaFile_trans();readTextFile_trans()">
 
 <nav class="navbar navbar-inverse navbar-fixed-top">
   <div class="container-fluid">
@@ -71,9 +71,13 @@
               <g id="axisY"></g>
               <g id="texte"> </g>
               <g id="points"> </g>
+              <g id="points_trans"> </g>
               <g id="courbes" >
                   <path class = "courbe"></path>
               </g>
+              <g id="courbes_trans" >
+                <path class = "courbe_trans"></path>
+            </g>
           	  <g id="infobox" > </g>
         	</g>
       	</svg>
@@ -90,8 +94,8 @@
 </div>
 </div>
 
-<button type="save" onclick="saveCurve()">Conserver Courbe</button>
-<button type="reset" onclick="resetCurve()">Supprimer Courbes</button>
+<button type="save" onclick="saveCurve(); saveCurve_trans()">Conserver Courbe</button>
+<button type="reset" onclick="resetCurve(); resetCurve_trans()">Supprimer Courbes</button>
 
 <div class="container-fluid bg-1 ">
   <h1>Détail du modèle de régression linéaire</h1>
