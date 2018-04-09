@@ -10,20 +10,45 @@
 	<link rel="stylesheet"	href="css/Style.css"	type="text/css"	/>	
     <link rel="stylesheet" type="text/css" href="css/style2.css" />
 
- 	<script type="text/javascript" src="fonction.js"></script>
- 	
  	<script type="text/javascript" src="visual/jQuery.js"></script>
  	<script src="visual/jqueryFX.custom/jquery-ui.js"></script>
  	<script src="visual/jqueryFX.custom/jquery-ui.min.js"></script>
  	<script src="visual/bootstrap/js/bootstrap.min.js"></script>
+ 	
 	<script src="script/d3.v4.js"></script>
+	<script src="http://d3js.org/d3.v4.min.js"> </script>
 	<link rel="stylesheet" href="visual/bootstrap/css/bootstrap.min.css">
+	
+<script type="text/javascript" src="script/ACP.js"></script>
 
-	<script type="text/javascript" src="script/sap_by_hour.js"></script>
+	<style>
+	
+			/* tell the SVG path to be a thin blue line without any area fill */
+			path{
+				stroke: steelblue;
+				stroke-width: 1;
+				fill: none;
+			}
+			.axis {
+			  shape-rendering: crispEdges;
+			}
+			.x-axis line {
+			  stroke: lightgrey;
+			}
+			.y-axis line {
+			  stroke: lightgrey;
+			}
+			.axis line {
+			  stroke: lightgrey;
+			}
+		</style>
+
  	
 </head>
 
-<body onload="readBetaFile();readTextFile()">
+<body onload="setGraph()">
+	
+	
 
 <nav class="navbar navbar-inverse navbar-fixed-top">
   <div class="container-fluid">
@@ -61,25 +86,12 @@
   <p>Evolution du flux sève sur une journée</p>
   <p>Une analyse en composante principale est utilisée pour prédire l'évolution du flux de sève en fonction de plusieurs variables.<br>
   L'effet de chaque variables sur le flux de sève peut être testé individuellement.</p>
-   
 </div>
-    
 
- 	<div id="graphe">
-     	<svg width="800" height="500" id ="graph">
-      		<g transform="scale(0.7) translate(50,50)">
-              <g id="axisX"></g>
-              <g id="axisY"></g>
-              <g id="texte"> </g>
-              <g id="points"> </g>
-              <g id="courbes" >
-                  <path class = "courbe"></path>
-              </g>
-          	  <g id="infobox" > </g>
-        	</g>
-      	</svg>
-    </div>
     
+<div id="graphe">
+<div id="graph" class="aGraph"></div>
+</div>
 <div class="container-fluid bg-1 ">
 	 <div id="box">
 	 	 <div class="row">   
@@ -90,9 +102,8 @@
     	</div>
 </div>
 </div>
+    
 
-<button type="save" onclick="saveCurve()">Conserver Courbe</button>
-<button type="reset" onclick="resetCurve()">Supprimer Courbes</button>
 
 <footer class="container-fluid bg- text-center" style="margin-bottom:80px; padding-top:100px; ">
 <a href="contact.html"><span class="glyphicon glyphicon-user"></span> Contact</a>
@@ -100,3 +111,5 @@
 
 </body>
 </html>
+
+ 

@@ -1,7 +1,7 @@
 function setGraph(){
 
 d3.queue()
-    .defer(d3.csv, "data/puechabon/acp/X_par_heure.csv",d3.values)
+    .defer(d3.csv, "data/X_par_heure.csv",d3.values)
     .defer(d3.csv, "data/puechabon/acp/data_stand.csv",d3.values)
     .defer(d3.csv, "data/puechabon/acp/vec_propre.csv",d3.values)
     .defer(d3.csv, "data/puechabon/acp/beta_eq.csv",d3.values)
