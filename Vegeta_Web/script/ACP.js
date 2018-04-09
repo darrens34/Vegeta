@@ -1,13 +1,38 @@
+var factMult=[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]; // Facteur multiplicatif des X
+
 function setGraph(){
+
+var dataDict = {};
+var nomX=[];
+var betaDict = {};
+var nbBeta = 29;
 
 d3.queue()
     .defer(d3.csv, "data/puechabon/acp/X_par_heure.csv",d3.values)
     .defer(d3.csv, "data/puechabon/acp/data_stand.csv",d3.values)
     .defer(d3.csv, "data/puechabon/acp/vec_propre.csv",d3.values)
     .defer(d3.csv, "data/puechabon/acp/beta_eq.csv",d3.values)
+	.defer(d3.csv, "data/puechabon/SLIDERS/factMult_origin.csv",d3.values)
     .await(calcul);    
     
-    function calcul(error,X_par_heure,data_stand,vec_propre,beta_eq){ 
+    function calcul(error,X_par_heure,data_stand,vec_propre,beta_eq,factMult_origin){ 
+	
+	// TODO : avant de transposer, multiplier par fact mult
+			
+			//values = []
+			//for(k=0;k<factMult.length;k++){
+			//	if(dataX[k]*factMult[k] < minVal[k]){
+			//		values.push(minVal[k]);
+			//	}
+			//	else if(dataX[k]*factMult[k] > maxVal[k]){
+			//		values.push(maxVal[k]);
+			//	}
+			//	else{
+			//		values.push(dataX[k]*factMult[k])
+			//	}
+			//}
+			
+			
    	 // TRANSPOSE############
     	var transpose=d3.transpose(X_par_heure); 
     	//NORMALISE ############   
@@ -28,8 +53,12 @@ d3.queue()
 	    	data_DIM.push(d3.sum(dim1),d3.sum(dim2),d3.sum(dim3));
 	    	var Y=data_DIM[0]*beta_eq[0][1]+data_DIM[1]*beta_eq[1][1]+data_DIM[2]*beta_eq[2][1]+Number(beta_eq["columns"][1]);
 	    	data.push(Y);
+			
+
     }
-    	console.log(data);
+	for(i=0;i<nbBeta;i++){
+		nomX.push(X_par_heure[i][0]);}
+		sliders(nomX);
     	
     	
 		// SVG ##################################################################
@@ -57,7 +86,7 @@ d3.queue()
 			})
 
 			// Add an SVG element with the desired dimensions and margin.
-			var graph = d3.select("#graph").append("svg:svg")
+			var graph = d3.select("#graph")
 			      .attr("width", w + m[1] + m[3])
 			      .attr("height", h + m[0] + m[2])
 			    .append("svg:g")
@@ -105,21 +134,43 @@ function removeInfoBox(){
 // Fonction pour choisir le facteur multiplicatif associé a chaque X. De 0 à 4 (0.25 : divisé par 4 à 4 : multiplié par 4)	
 // Fonction qui créer les SLIDERS
 dicoNom = {
-	"PPFD_IN_1h":"Densité de Flux Photon Photosynthetique (μmol m"+"-2".sup()+" s"+"-1".sup()+")",
-	"TA":"Temperature de l'air (°C)",
-	"TS":"Temperature du sol (°C)",
-	"WD_1h30":"Direction du vent (Degré)",
-	"CO2":"Concentration de CO2 (ppm)",
-	"FC_1h":"Flux CO2 (μmolCO"+"2".sub()+" m"+"-2".sup()+" s"+"-1".sup()+")",
-	"LE_30m":"Flux de chaleur latente (W m"+"-2".sup()+")",
-	"SH_3h":"Flux de Stockage de chaleur sensible (W m"+"-2".sup()+")",
-	"ZL_3h":"Paramètre de stabilité (sans unité)",
-	"VPD":"Déficit de pression de vapeur (kPa)"
-	}
+"NETRAD_1h30":"NETRAD_1h30",
+ "P_1h":"P_1h",
+"PA_3h":"PA_3h",
+ "PPFD_DIF_1h": "PPFD_DIF_1h",
+"PPFD_IN_1h":"Densité de Flux Photon Photosynthetique (μmol m"+"-2".sup()+" s"+"-1".sup()+")",
+"PPFD_OUT_1h":"PPFD_OUT_1h",
+"RH":"RH",
+"SW_IN_1h":"SW_IN_1h",
+"SW_OUT_30m":"SW_OUT_30m",
+"TA":"Temperature de l'air (°C)",
+"TS":"Temperature du sol (°C)",
+ "TS_2": "TS_2",
+"TS_3":"TS_3",
+"WD_1h30":"Direction du vent (Degre)",
+"WS": "WS",
+"CO2":"Concentration de CO2 (ppm)",
+"FC_1h":"FC_1h",
+"H_1h30":"H_1h30",
+"H2O_3h":"H2O_3h",
+"LE_30m":"Flux de chaleur latente (W m"+"-2".sup()+")",
+"SB":"SB",
+"SC_3h":"SC_3h",
+"SH_3h":"Flux de Stockage de chaleur sensible (W m"+"-2".sup()+")",
+"SLE_3h":"SLE_3h",
+ "TAU_30m": "TAU_30m",
+"USTAR_30m":"USTAR_30m",
+"ZL_3h":"Paramètre de stabilité (sans unité)",
+"G":"G",
+"VPD":"VPD"}
+
+
 
 function sliders(nomX) {
 
-	d3.csv("data/puechabon/sliders/factMult.csv", function(error,data){
+	d3.csv("data/puechabon/sliders/factMult_origin.csv", function(error,data){
+		
+
 		minFact = [];
 		maxFact = [];
 		step = [];
@@ -137,7 +188,7 @@ function sliders(nomX) {
 		var ID="";
 		var ID2 ="";
 		var sliderSX ="";
-			for (a=0;a<=4;a++) {
+			for (a=0;a<=14;a++) {
 				// pour transposer les valeurs des facteurs multiplicateurs dans le même ordre de grandeur que celui des modalités sans modifier les sliders (pour bien recupérer le facteur multiplicateur utilisé par l'équation)
 				// ... je dois stocker les différentes valeurs constitutant le slider dans un tableau, avec son minimum, son maximum, et toutes ses valeurs intérmédiaires qui dépendent du pas.
 				// cela me permettra de récupérer l'indice du tableau correspondant à chaque valeur, et de l'utiliser comme coefficient multiplicateur.
@@ -160,15 +211,14 @@ function sliders(nomX) {
 				}
 				var ID = "VAL"+a;
 				var ID2 = "value"+a;
-				var b = (a+1);
 				printValue = parseFloat(minVal[a])+ parseFloat(rangeValues.indexOf(parseFloat(factMult[a]))*(maxVal[a] - minVal[a])/numberValues) // opération de translation
 				printValue = parseFloat(printValue.toFixed(2));
-				sliderSX +='<p>'+dicoNom[nomX[b]]+' :  <span id="'+ID2+'">'+ printValue +'</span></p><div class="slidecontainer"><p class ="baliseInf">'+minVal[a]+'</p><input oninput="Change('+ID+','+ID2+','+a+')"  type="range" min="'+minFact[a]+'" max="'+maxFact[a]+'" step="'+step[a]+'" value="'+factMult[a]+'" class="slider" id="'+ID+'"><p class = "baliseSup">'+maxVal[a]+'</p></div>';
+				sliderSX +='<p>'+dicoNom[nomX[a]]+' :  <span id="'+ID2+'">'+ printValue +'</span></p><div class="slidecontainer"><p class ="baliseInf">'+minVal[a]+'</p><input oninput="Change('+ID+','+ID2+','+a+')"  type="range" min="'+minFact[a]+'" max="'+maxFact[a]+'" step="'+step[a]+'" value="'+factMult[a]+'" class="slider" id="'+ID+'"><p class = "baliseSup">'+maxVal[a]+'</p></div>';
 				var sliderS1 = document.getElementById("sliderS1");
 				sliderS1.innerHTML = sliderSX ;
 			}
 		var sliderSX ="";
-			for (a=5;a<=9;a++) {
+			for (a=15;a<=28;a++) {
 				var rangeValues = [];
 				var numberValues = (maxFact[a] - minFact[a])/step[a];
 				var i = 0;
@@ -181,10 +231,9 @@ function sliders(nomX) {
 				}
 				var ID = "VAL"+a;
 				var ID2 = "value"+a;
-				var b = (a+1);
 				printValue = parseFloat(minVal[a])+ parseFloat(rangeValues.indexOf(parseFloat(factMult[a]))*(maxVal[a] - minVal[a])/numberValues)
 				printValue = parseFloat(printValue.toFixed(2));
-				sliderSX +='<p>'+dicoNom[nomX[b]]+' :  <span id="'+ID2+'">'+ printValue +'</span></p><div class="slidecontainer"><p class ="baliseInf">'+minVal[a]+'</p><input oninput="Change('+ID+','+ID2+','+a+')"  type="range" min="'+minFact[a]+'" max="'+maxFact[a]+'" step="'+step[a]+'" value="'+factMult[a]+'" class="slider" id="'+ID+'"><p class = "baliseSup">'+maxVal[a]+'</p></div>';
+				sliderSX +='<p>'+dicoNom[nomX[a]]+' :  <span id="'+ID2+'">'+ printValue +'</span></p><div class="slidecontainer"><p class ="baliseInf">'+minVal[a]+'</p><input oninput="Change('+ID+','+ID2+','+a+')"  type="range" min="'+minFact[a]+'" max="'+maxFact[a]+'" step="'+step[a]+'" value="'+factMult[a]+'" class="slider" id="'+ID+'"><p class = "baliseSup">'+maxVal[a]+'</p></div>';
 				var sliderS2 = document.getElementById("sliderS2");
 				sliderS2.innerHTML = sliderSX ;
 			}
@@ -196,7 +245,8 @@ function Change(ID,ID2,a) {
 	var VAL2= ID2 ; // et ou est ce qu'on l'affiche 
 	VAL2.innerHTML = VAL ;
 	factMult[a]=VAL ;
-	readTextFile(factMult);
+	setGraph(factMult);
+	console.log(factMult);
 } 
 
 

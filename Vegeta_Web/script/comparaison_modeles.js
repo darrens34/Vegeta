@@ -177,6 +177,50 @@ function Courbe(Y){
 			gPoints.innerHTML = cir  ;		
 		})
 		.attr("d", lValues(Y));	
+		
+	//legende	
+	var legend = svg.append("g")
+	  .attr("class", "legend")
+	  .attr("transform", "translate(50,50)")
+	  .attr("height", 100)
+	  .attr("width", 100);
+
+	legend.append("line")
+		.attr("transform", "translate(540,50)")
+		.attr("x1", 5)
+		.attr("y1", 0)
+		.attr("x2", 50)
+		.attr("y2", 0)
+		.attr("stroke-width", 2)
+		.attr("stroke", "black");
+
+	legend.append("line")
+		.attr("transform", "translate(540,70)")
+		.attr("x1", 5)
+		.attr("y1", 0)
+		.attr("x2", 50)
+		.attr("y2", 0)
+		.attr("stroke-width", 2)
+		.attr("stroke", "blue");
+
+	legend.append("line")
+		.attr("transform", "translate(540,90)")
+		.attr("x1", 5)
+		.attr("y1", 0)
+		.attr("x2", 50)
+		.attr("y2", 0)
+		.attr("stroke-width", 2)
+		.attr("stroke", "red");
+		
+	legend.append("text")
+	  .attr("transform", "translate(600,50)")
+	  .text("Linéaire simple");
+	legend.append("text")
+	  .attr("transform", "translate(600,70)")
+	  .text("LM avec transformation");
+	legend.append("text")
+	  .attr("transform", "translate(600,90)")
+	  .text("PCR");
 }
 
 

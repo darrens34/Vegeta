@@ -1,8 +1,8 @@
 var dataDict = {};
 var nomX=[];
 var betaDict = {};
-var factMult=[1,1]; // Facteur multiplicatif des X
-var nbBeta = 6; // 6 bétas (3 pour chacun des 2 modèles)
+var factMult=[1,0.7]; // Facteur multiplicatif des X
+var nbBeta = 3; 
 
 // Fonction qui récupère les bétas
 function readBetaFile(){
@@ -56,9 +56,9 @@ function EQ(Donnee,nomX,betaDict,factMult){
 		//On a que le PPFDin et VPD en slider
 		minFact = [0,0];
 		maxFact = [2,2];
-		step = [0.25,0.05];
+		step = [0.25,0.1];
 		minVal = [0,0];
-		maxVal = [1600,4];
+		maxVal = [1600,3];
 
 		var dataX=[];
 		var Y=[];
@@ -82,16 +82,9 @@ function EQ(Donnee,nomX,betaDict,factMult){
 				}
 			}
 			
-			console.log(values);
-			if(values[1]<1.25){
-				Y[i]=(Number(betaDict["Beta0mod1"][0])+
-				betaDict["PPFD_IN_1hmod1"][0]*values[0]+
-				betaDict["VPDmod1"][0]*values[1])
-			}else{
-				Y[i]=(Number(betaDict["Beta0mod2"][0])+
-				betaDict["PPFD_IN_1hmod2"][0]*values[0]+
-				betaDict["VPDmod2"][0]*values[1])
-			}
+			Y[i]=(Number(betaDict["Beta0mod1"][0])+
+			betaDict["PPFD_IN_1hmod1"][0]*values[0]+
+			betaDict["VPDmod1"][0]*(8.5 / ( 1 + Math.exp ((0.7598-values[1]) / 0.1))) )
 		}
 
 		for(yi=0;yi<Y.length;yi++){
@@ -184,9 +177,9 @@ function sliders(nomX) {
 		//On a que le PPFDin et VPD en slider
 		minFact = [0,0];
 		maxFact = [2,2];
-		step = [0.25,0.05];
+		step = [0.25,0.1];
 		minVal = [0,0];
-		maxVal = [1600,4];
+		maxVal = [1600,3];
 
 		var ID="";
 		var ID2 ="";
