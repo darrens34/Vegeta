@@ -126,19 +126,19 @@ function Courbe(Y){
 	var yAxis = d3.axisLeft(scaleY);
 	var gyAxis = svg.select("#axisX");
 	gyAxis.call(yAxis);
-	gyAxis.attr("font-size",28);
+	gyAxis.attr("font-size",24);
 	gyAxis.attr("transform","translate(50,50)");
 	
 	// scaleX
 	var scaleX = d3.scaleLinear();
 	scaleX.domain([0,24]);
-	scaleX.range([0,1000]);
+	scaleX.range([0,800]);
 	
 	// Axe X
 	var xAxis = d3.axisBottom(scaleX);
 	var gxAxis = svg.select("#axisY");
 	gxAxis.call(xAxis.ticks(24));
-	gxAxis.attr("font-size",28);
+	gxAxis.attr("font-size",24);
 	gxAxis.attr("transform","translate(50,550)");
 	
 	// Ajout titres des axes
