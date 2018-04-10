@@ -1,8 +1,8 @@
 var factMult=[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]; // Facteur multiplicatif des X
 
 function setGraph(){
-	//efface l'ancien SVG pour Nouveau SVG 
-	d3.selectAll("svg > *").remove;
+	//clean ancien SVG
+d3.selectAll("svg > *").remove();
 var dataDict = {};
 var nomX=[];
 var betaDict = {};
