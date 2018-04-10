@@ -17,9 +17,8 @@ d3.queue()
     
     function calcul(error,X_par_heure,data_stand,vec_propre,beta_eq,factMult_origin){ 
 	
-	// TODO : avant de transposer, multiplier par fact mult
-			
-			//values = []
+
+			values = []
 			//for(k=0;k<factMult.length;k++){
 			//	if(dataX[k]*factMult[k] < minVal[k]){
 			//		values.push(minVal[k]);
@@ -32,7 +31,11 @@ d3.queue()
 			//	}
 			//}
 			
-			
+			for  (var i=0;i<28;i++) {
+    			for  (var j=1;j<49;j++) {
+    				X_par_heure[i][j]=Number(X_par_heure[i][j])*factMult[i];
+    				console.log(X_par_heure[i][1])
+    		}}
    	 // TRANSPOSE############
     	var transpose=d3.transpose(X_par_heure); 
     	//NORMALISE ############   
@@ -68,7 +71,7 @@ d3.queue()
 		// X scale 
 		var x = d3.scaleLinear().domain([0, data.length]).range([0, w]);
 		// Y scale 
-		var y = d3.scaleLinear().domain([d3.min(data), d3.max(data)]).range([h, 0]);
+		var y = d3.scaleLinear().domain([0, 14]).range([h, 0]);
 
 
     	
