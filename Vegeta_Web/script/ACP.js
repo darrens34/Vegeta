@@ -1,7 +1,7 @@
 var factMult=[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]; // Facteur multiplicatif des X
 
 function setGraph(){
-
+	d3.selectAll("svg > *").opacity=0.5;
 var dataDict = {};
 var nomX=[];
 var betaDict = {};
@@ -16,26 +16,26 @@ d3.queue()
     .await(calcul);    
     
     function calcul(error,X_par_heure,data_stand,vec_propre,beta_eq,factMult_origin){ 
-	
 
-			values = []
-			//for(k=0;k<factMult.length;k++){
-			//	if(dataX[k]*factMult[k] < minVal[k]){
-			//		values.push(minVal[k]);
-			//	}
-			//	else if(dataX[k]*factMult[k] > maxVal[k]){
-			//		values.push(maxVal[k]);
-			//	}
-			//	else{
-			//		values.push(dataX[k]*factMult[k])
-			//	}
-			//}
-			
 			for  (var i=0;i<28;i++) {
     			for  (var j=1;j<49;j++) {
-    				X_par_heure[i][j]=Number(X_par_heure[i][j])*factMult[i];
-    				console.log(X_par_heure[i][1])
+    				
+    				var ValueModif=Number(X_par_heure[i][j])*factMult[i];
+
+    				
+    				if (ValueModif<factMult_origin[i][4]) {
+    				X_par_heure[i][j]=Number(factMult_origin[i][4]);
+    				}	
+    				
+    				else if (ValueModif>factMult_origin[i][5]) {
+    				X_par_heure[i][j]=Number(factMult_origin[i][5]);
+    				}
+    				
+    				else {
+    				X_par_heure[i][j]=ValueModif;
+    				}
     		}}
+    		console.log(X_par_heure)
    	 // TRANSPOSE############
     	var transpose=d3.transpose(X_par_heure); 
     	//NORMALISE ############   
@@ -55,9 +55,10 @@ d3.queue()
 	    	var data_DIM=[];
 	    	data_DIM.push(d3.sum(dim1),d3.sum(dim2),d3.sum(dim3));
 	    	var Y=data_DIM[0]*beta_eq[0][1]+data_DIM[1]*beta_eq[1][1]+data_DIM[2]*beta_eq[2][1]+Number(beta_eq["columns"][1]);
+	    	if (Y<0) {
+	    		Y=0;
+	    	}
 	    	data.push(Y);
-			
-
     }
 	for(i=0;i<nbBeta;i++){
 		nomX.push(X_par_heure[i][0]);}
@@ -249,7 +250,6 @@ function Change(ID,ID2,a) {
 	VAL2.innerHTML = VAL ;
 	factMult[a]=VAL ;
 	setGraph(factMult);
-	console.log(factMult);
 } 
 
 
