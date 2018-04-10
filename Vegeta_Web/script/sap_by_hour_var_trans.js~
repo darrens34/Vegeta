@@ -139,7 +139,7 @@ function Courbe(Y){
 	// scaleX
 	var scaleX = d3.scaleLinear();
 	scaleX.domain([0,24]);
-	scaleX.range([0,800]);
+	scaleX.range([0,700]);
 	
 	// Axe X
 	var xAxis = d3.axisBottom(scaleX);

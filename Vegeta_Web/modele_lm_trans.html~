@@ -68,7 +68,7 @@
 
 <div class="row">
   <div class="col-sm-6">
-       	<svg width="700" height="500" id ="graph">
+       	<svg width="800" height="500" id ="graph">
         		<g transform="scale(0.7) translate(50,50)">
                 <g id="axisX"></g>
                 <g id="axisY"></g>
