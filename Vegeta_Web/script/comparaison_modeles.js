@@ -578,10 +578,9 @@ function Change(ID,ID2,a) {
 	var VAL2= ID2 ; // et ou est ce qu'on l'affiche 
 	VAL2.innerHTML = VAL ;
     if(nomX.indexOf(Object.keys(dicoNomTotal)[a])!= -1){
-        factMult[nomX.indexOf(Object.keys(dicoNomTotal)[a])-1]=VAL ;
+		factMult[nomX.indexOf(Object.keys(dicoNomTotal)[a])-1]=VAL ;
+		readTextFile(factMult);
     }
-    console.log(factMult)
-	readTextFile(factMult);
 } 
 
 function Change_trans(ID,ID2,a) {
@@ -589,9 +588,9 @@ function Change_trans(ID,ID2,a) {
     var VAL2= ID2 ; // et ou est ce qu'on l'affiche 
     VAL2.innerHTML = VAL ;
     if(nomXTrans.indexOf(Object.keys(dicoNomTotal)[a])!= -1){
-        factMultTrans[nomXTrans.indexOf(Object.keys(dicoNomTotal)[a])-1]=VAL ;
+		factMultTrans[nomXTrans.indexOf(Object.keys(dicoNomTotal)[a])-1]=VAL ;
+		readTextFile_trans(factMultTrans);
     }
-    readTextFile_trans(factMultTrans);
 } 
 
 function saveCurve_trans(){

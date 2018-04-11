@@ -134,20 +134,27 @@ function Courbe(Y){
 	var lValues = d3.line();
 	lValues.x(function(d,i) { return scaleX(i/2) });
 	lValues.y(function(d) { return scaleY(d)});
-	var gLine = svg.select(".courbe");
-	gLine.attr("transform", "translate(50,50)");
-	gLine.attr("stroke", "green");
-	gLine.attr("fill", "none");
-	gLine.attr("stroke-width",2 );
-	gLine.attr("d", lValues(Y));
-	
-	// Ajout des points
-	cir ="";
-	for (j=0;j<Y.length;j++) {
-		cir +=' <circle transform = "translate(50,50)" onmouseover="drawInfoBox('+Y[j]+','+j+','+scaleX(j)+','+scaleY(Y[j])+')" onmouseleave="removeInfoBox()" 	cx="'+scaleX(j/2)+'" cy="'+scaleY(Y[j])+'" r="5" fill="green" />' ;
-	}
-	var gPoints = document.getElementById("points");
-	gPoints.innerHTML = cir  ;			
+	var gLine = svg.select(".courbe")
+	.attr("transform", "translate(50,50)")
+	.attr("stroke", "green")
+	.attr("stroke-width",2 )
+	.attr("fill", "none")
+	.transition()
+	.duration(500)
+	.on("start", function(d){
+		var gPoints = document.getElementById("points");
+		gPoints.innerHTML = ""  ;	
+	})
+	.on("end", function(d){
+		// Ajout des points
+		cir ="";
+		for (j=0;j<Y.length;j++) {
+			cir +=' <circle transform = "translate(50,50)" onmouseover="drawInfoBox_trans('+Y[j]+','+j+','+scaleX(j)+','+scaleY(Y[j])+')" onmouseleave="removeInfoBox_trans()" 	cx="'+scaleX(j/2)+'" cy="'+scaleY(Y[j])+'" r="5" fill="green" />' ;
+		}
+		var gPoints = document.getElementById("points");
+		gPoints.innerHTML = cir  ;		
+	})
+	.attr("d", lValues(Y));	
 }
 
 
