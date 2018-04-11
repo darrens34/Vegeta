@@ -116,8 +116,6 @@ d3.queue()
 			
   			// TRACE  la COURBE
   			graph.append("svg:path").attr("d", line(data));
-  			
-			
 	}
 }
 
@@ -139,35 +137,35 @@ function removeInfoBox(){
 // Fonction pour choisir le facteur multiplicatif associé a chaque X. De 0 à 4 (0.25 : divisé par 4 à 4 : multiplié par 4)	
 // Fonction qui créer les SLIDERS
 dicoNom = {
-"NETRAD_1h30":"NETRAD_1h30",
- "P_1h":"P_1h",
-"PA_3h":"PA_3h",
- "PPFD_DIF_1h": "PPFD_DIF_1h",
-"PPFD_IN_1h":"Densité de Flux Photon Photosynthetique (μmol m"+"-2".sup()+" s"+"-1".sup()+")",
-"PPFD_OUT_1h":"PPFD_OUT_1h",
-"RH":"RH",
-"SW_IN_1h":"SW_IN_1h",
-"SW_OUT_30m":"SW_OUT_30m",
-"TA":"Temperature de l'air (°C)",
-"TS":"Temperature du sol (°C)",
- "TS_2": "TS_2",
-"TS_3":"TS_3",
-"WD_1h30":"Direction du vent (Degre)",
-"WS": "WS",
-"CO2":"Concentration de CO2 (ppm)",
-"FC_1h":"FC_1h",
-"H_1h30":"H_1h30",
-"H2O_3h":"H2O_3h",
-"LE_30m":"Flux de chaleur latente (W m"+"-2".sup()+")",
-"SB":"SB",
-"SC_3h":"SC_3h",
-"SH_3h":"Flux de Stockage de chaleur sensible (W m"+"-2".sup()+")",
-"SLE_3h":"SLE_3h",
- "TAU_30m": "TAU_30m",
-"USTAR_30m":"USTAR_30m",
-"ZL_3h":"Paramètre de stabilité (sans unité)",
-"G":"G",
-"VPD":"VPD"}
+	"NETRAD_1h30":"Radiation nette (incluant radiation solaire et infrarouge) (W m"+"-2".sup()+")",
+	"P_1h":"Précipitation (mm)",
+	"PA_3h":"Pression athmosphérique (kPa)",
+	"PPFD_DIF_1h": "Densité de Flux Photon Photosynthetique diffuse incidente (400-700 nm) (μmol m"+"-2".sup()+" s"+"-1".sup()+")",
+	"PPFD_IN_1h":"Densité de Flux Photon Photosynthetique (μmol m"+"-2".sup()+" s"+"-1".sup()+")",
+	"PPFD_OUT_1h":"Densité de Flux Photon Photosynthetique réflechi (400-700 nm) (μmol m"+"-2".sup()+" s"+"-1".sup()+")",
+	"RH":"Humidité relative (%)",
+	"SW_IN_1h":"Radiations des Ondes courtes incidentes (0.3 to 4.5 micron) (W m"+"-2".sup()+")",
+	"SW_OUT_30m":"Radiations des Ondes courtes sortantes (0.3 to 4.5 micron) (W m"+"-2".sup()+")",
+	"TA":"Temperature de l'air (°C)",
+	"TS":"Temperature du sol (°C)",
+	"TS_2": "Temperature du sol (°C) après 2h",
+	"TS_3":"Temperature du sol (°C) après 3h",
+	"WD_1h30":"Direction du vent (Degre)",
+	"WS": "Vitesse du vent (m s"+"-1".sup()+")",
+	"CO2":"Concentration de CO2 (ppm)",
+	"FC_1h":"Flux CO2 (μmol CO2 m"+"-2".sup()+" s"+"-1".sup()+")",
+	"H_1h30":"Flux de chaleur sensible (W m"+"-2".sup()+")",
+	"H2O_3h":"Eau (mmol H2O m"+"-2".sup()+"s"+"-1".sup()+")",
+	"LE_30m":"Flux de chaleur latente (W m"+"-2".sup()+")",
+	"SB":"Stock de chaleur dans la biomasse (W m"+"-2".sup()+")",
+	"SC_3h":"Flux de Stockage de CO2 (μmol CO2 m"+"-2".sup()+" s"+"-1".sup()+")",
+	"SH_3h":"Flux de Stockage de chaleur sensible (W m"+"-2".sup()+")",
+	"SLE_3h":"Flux de stockage de chaleur latente (W m"+"-2".sup()+")",
+	"TAU_30m": "Momentum flux (Kg m"+"-1".sup()+"s"+"-2".sup()+")",
+	"USTAR_30m":"Vitesse de frottement (m s"+"-1".sup()+")",
+	"ZL_3h":"Paramètre de stabilité (sans unité)",
+	"G":"Flux de chaleur du sol (W m"+"-2".sup()+")",
+	"VPD":"Vitesse flux de seve  (mmol H2O m"+"-2".sup()+"s"+"-1".sup()+")"}
 
 
 

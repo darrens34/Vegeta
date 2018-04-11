@@ -454,6 +454,7 @@ function Courbe_trans(Y){
 			gPoints.innerHTML = cir  ;		
 		})
 		.attr("d", lValues(Y));
+		console.log(Y)
 }
 
 
@@ -475,25 +476,39 @@ function removeInfoBox_trans(){
 // Fonction pour choisir le facteur multiplicatif associé a chaque X. De 0 à 4 (0.25 : divisé par 4 à 4 : multiplié par 4)	
 // Fonction qui créer les SLIDERS
 dicoNomTotal = {
+	"NETRAD_1h30":"Radiation nette (incluant radiation solaire et infrarouge) (W m"+"-2".sup()+")",
 	"P_1h":"Précipitation (mm)",
-    "PPFD_IN_1h":"Densité de Flux Photon Photosynthetique (μmol m"+"-2".sup()+" s"+"-1".sup()+")",
+	"PA_3h":"Pression athmosphérique (kPa)",
+	"PPFD_DIF_1h": "Densité de Flux Photon Photosynthetique diffuse incidente (400-700 nm) (μmol m"+"-2".sup()+" s"+"-1".sup()+")",
+	"PPFD_IN_1h":"Densité de Flux Photon Photosynthetique (μmol m"+"-2".sup()+" s"+"-1".sup()+")",
+	"PPFD_OUT_1h":"Densité de Flux Photon Photosynthetique réflechi (400-700 nm) (μmol m"+"-2".sup()+" s"+"-1".sup()+")",
+	"RH":"Humidité relative (%)",
+	"SW_IN_1h":"Radiations des Ondes courtes incidentes (0.3 to 4.5 micron) (W m"+"-2".sup()+")",
+	"SW_OUT_30m":"Radiations des Ondes courtes sortantes (0.3 to 4.5 micron) (W m"+"-2".sup()+")",
 	"TA":"Temperature de l'air (°C)",
 	"TS":"Temperature du sol (°C)",
-    "WD_1h30":"Direction du vent (Degré)",
-    "WS":"Vitesse du vent (m s-1)",
+	"TS_2": "Temperature du sol (°C) après 2h",
+	"TS_3":"Temperature du sol (°C) après 3h",
+	"WD_1h30":"Direction du vent (Degre)",
+	"WS": "Vitesse du vent (m s"+"-1".sup()+")",
 	"CO2":"Concentration de CO2 (ppm)",
-	"FC_1h":"Flux CO2 (μmolCO"+"2".sub()+" m"+"-2".sup()+" s"+"-1".sup()+")",
-    "LE_30m":"Flux de chaleur latente (W m"+"-2".sup()+")",
-    "SB":"Stock de chaleur dans la biomasse (W m-2)",	
-    "SH_3h":"Flux de Stockage de chaleur sensible (W m"+"-2".sup()+")",
-    "USTAR_30m":"Vitesse de frotement (m s-1)",
+	"FC_1h":"Flux CO2 (μmol CO2 m"+"-2".sup()+" s"+"-1".sup()+")",
+	"H_1h30":"Flux de chaleur sensible (W m"+"-2".sup()+")",
+	"H2O_3h":"Eau (mmol H2O m"+"-2".sup()+"s"+"-1".sup()+")",
+	"LE_30m":"Flux de chaleur latente (W m"+"-2".sup()+")",
+	"SB":"Stock de chaleur dans la biomasse (W m"+"-2".sup()+")",
+	"SC_3h":"Flux de Stockage de CO2 (μmol CO2 m"+"-2".sup()+" s"+"-1".sup()+")",
+	"SH_3h":"Flux de Stockage de chaleur sensible (W m"+"-2".sup()+")",
+	"SLE_3h":"Flux de stockage de chaleur latente (W m"+"-2".sup()+")",
+	"TAU_30m": "Momentum flux (Kg m"+"-1".sup()+"s"+"-2".sup()+")",
+	"USTAR_30m":"Vitesse de frottement (m s"+"-1".sup()+")",
 	"ZL_3h":"Paramètre de stabilité (sans unité)",
-	"VPD":"Déficit de pression de vapeur (kPa)"
-}
+	"G":"Flux de chaleur du sol (W m"+"-2".sup()+")",
+	"VPD":"Vitesse flux de seve  (mmol H2O m"+"-2".sup()+"s"+"-1".sup()+")"}
 
 function sliders() {
 
-	d3.csv("data/puechabon/sliders/factMult_comb.csv", function(error,data){
+	d3.csv("data/puechabon/sliders/factMult_origin.csv", function(error,data){
 		minFact = [];
 		maxFact = [];
 		step = [];
@@ -511,7 +526,7 @@ function sliders() {
 		var ID="";
 		var ID2 ="";
 		var sliderSX ="";
-			for (a=0;a<=6;a++) {
+			for (a=0;a<=13;a++) {
 				// pour transposer les valeurs des facteurs multiplicateurs dans le même ordre de grandeur que celui des modalités sans modifier les sliders (pour bien recupérer le facteur multiplicateur utilisé par l'équation)
 				// ... je dois stocker les différentes valeurs constitutant le slider dans un tableau, avec son minimum, son maximum, et toutes ses valeurs intérmédiaires qui dépendent du pas.
 				// cela me permettra de récupérer l'indice du tableau correspondant à chaque valeur, et de l'utiliser comme coefficient multiplicateur.
@@ -534,7 +549,8 @@ function sliders() {
                 }
                 if(nomX.indexOf(Object.keys(dicoNomTotal)[a])!= -1){
                     valueToPrint = factMult[nomX.indexOf(Object.keys(dicoNomTotal)[a])-1] ;
-                } else if(nomXTrans.indexOf(Object.keys(dicoNomTotal)[a])!= -1){
+                //} else if(nomXTrans.indexOf(Object.keys(dicoNomTotal)[a])!= -1){
+				} else {
                     valueToPrint = factMultTrans[nomXTrans.indexOf(Object.keys(dicoNomTotal)[a])-1] ;
                 }
 				var ID = "VAL"+a;
@@ -546,7 +562,7 @@ function sliders() {
 				sliderS1.innerHTML = sliderSX ;
 			}
 		var sliderSX ="";
-			for (a=7;a<=13;a++) {
+			for (a=14;a<=28;a++) {
 				var rangeValues = [];
 				var numberValues = (maxFact[a] - minFact[a])/step[a];
 				var i = 0;
@@ -559,7 +575,8 @@ function sliders() {
                 }
                 if(nomX.indexOf(Object.keys(dicoNomTotal)[a])!= -1){
                     valueToPrint = factMult[nomX.indexOf(Object.keys(dicoNomTotal)[a])-1] ;
-                } else if(nomXTrans.indexOf(Object.keys(dicoNomTotal)[a])!= -1){
+                //} else if(nomXTrans.indexOf(Object.keys(dicoNomTotal)[a])!= -1){
+				} else {
                     valueToPrint = factMultTrans[nomXTrans.indexOf(Object.keys(dicoNomTotal)[a])-1] ;
                 }
 				var ID = "VAL"+a;
