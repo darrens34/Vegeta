@@ -94,7 +94,7 @@ d3.queue()
 			var graph = d3.select("#graph")
 			      .attr("width", w + m[1] + m[3])
 			      .attr("height", h + m[0] + m[2])
-			    .append("svg:g")
+			      .append("svg:g")
 			      .attr("transform", "translate(" + m[3] + "," + m[0] + ")");
 
 			// create xAxis
@@ -114,8 +114,24 @@ d3.queue()
 			      .attr("transform", "translate(-25,0)")
 			      .call(yAxisLeft);
 			
+				// Ajout titres des axes
+			graph.append("text")  
+					.attr("font-size",22)			
+				  .attr("transform", "translate(0,-20)")
+				  .style("text-anchor", "middle")
+				  .text("Flux de sève");
+			
+			graph.append("text")   
+				.attr("font-size",22)			
+				  .attr("transform", "translate(320,280)")
+				  .style("text-anchor", "middle")
+				  .text("Heure");
+	
   			// TRACE  la COURBE
-  			graph.append("svg:path").attr("d", line(data));
+  			graph.append("svg:path")
+			.attr("d", line(data))
+			.attr("stroke", "green")
+			.attr("stroke-width",2 );
 	}
 }
 
@@ -191,7 +207,7 @@ function sliders(nomX) {
 		var ID="";
 		var ID2 ="";
 		var sliderSX ="";
-			for (a=0;a<=14;a++) {
+			for (a=0;a<=13;a++) {
 				// pour transposer les valeurs des facteurs multiplicateurs dans le même ordre de grandeur que celui des modalités sans modifier les sliders (pour bien recupérer le facteur multiplicateur utilisé par l'équation)
 				// ... je dois stocker les différentes valeurs constitutant le slider dans un tableau, avec son minimum, son maximum, et toutes ses valeurs intérmédiaires qui dépendent du pas.
 				// cela me permettra de récupérer l'indice du tableau correspondant à chaque valeur, et de l'utiliser comme coefficient multiplicateur.
@@ -221,7 +237,7 @@ function sliders(nomX) {
 				sliderS1.innerHTML = sliderSX ;
 			}
 		var sliderSX ="";
-			for (a=15;a<=28;a++) {
+			for (a=14;a<=28;a++) {
 				var rangeValues = [];
 				var numberValues = (maxFact[a] - minFact[a])/step[a];
 				var i = 0;
@@ -251,4 +267,32 @@ function Change(ID,ID2,a) {
 	setGraph(factMult);
 } 
 
+
+function saveCurve(){
+    // garde la trace de la courbe sélectionnée
+    var dupplicated = false; // devient true si la courbe a déjà été sauvegardée
+	var graph = document.getElementById("courbes");
+    var curves = document.getElementsByClassName("courbe");
+    var oldCurve = curves[0].cloneNode(false); // courbe actuellement dessinée par l'utilisateur
+    for(i=1;i<curves.length;i++){ // i débute à 1 pour ignorer la courbe que l'on souhaite sauvegarder pendant la vérification
+        if(curves[i].getAttribute('d') == oldCurve.getAttribute('d')){
+            dupplicated = true
+        }
+    }
+    if(!dupplicated){
+        graph.innerHTML += oldCurve.outerHTML;
+		curves = document.getElementsByClassName("courbe");
+        for(i=1;i<curves.length;i++){
+            curves[i].setAttribute("opacity",i/curves.length)
+        }
+    }
+}
+
+function resetCurve(){
+    // supprime les traces d'anciennes courbes en supprimant tous les enfants de la balise g, sauf la courbe actuellement dessinée
+    graph = document.getElementById("courbes");
+    while (graph.childNodes.length > 2) { // 2 car le saut à la ligne compte comme un child
+        graph.removeChild(graph.lastChild);
+    }  
+}
 
