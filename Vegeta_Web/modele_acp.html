@@ -21,28 +21,6 @@
 	
 <script type="text/javascript" src="script/ACP.js"></script>
 
-	<style>
-	
-			/* tell the SVG path to be a thin blue line without any area fill */
-			path{
-				stroke: steelblue;
-				stroke-width: 1;
-				fill: none;
-			}
-			.axis {
-			  shape-rendering: crispEdges;
-			}
-			.x-axis line {
-			  stroke: lightgrey;
-			}
-			.y-axis line {
-			  stroke: lightgrey;
-			}
-			.axis line {
-			  stroke: lightgrey;
-			}
-		</style>
-
  	
 </head>
 
@@ -89,41 +67,35 @@
 </div>
 
     
-<div id="row">
+<div class="row">
   <div class="col-sm-6">
- 	<!--<div id="graphe">-->
-	<svg width="800" height="500" id ="graph">
-		<g transform="scale(0.7) translate(50,50)">
-		  <g id="axisX"></g>
-		  <g id="axisY"></g>
-		  <g id="texte"> </g>
-		  <g id="points"> </g>
-		  <g id="courbes" >
-			  <path class = "courbe"></path>
-		  </g>
-		  <g id="infobox" > </g>
-		</g>
-	</svg>
-	</div>
-    <!--</div>-->
-  <div class="col-sm-6">
-    <div id="box">
-      <div align='center'>    
+       	<svg width="700" height="500" id ="graph">
+        		<g transform="scale(0.7) translate(50,50)">
+                <g id="axisX"></g>
+                <g id="axisY"></g>
+                <g id="texte"> </g>
+                <g id="points"> </g>
+                <g id="courbes" >
+                    <path class = "courbe"></path>
+                </g>
+            	  <g id="infobox" > </g>
+          	</g>
+        	</svg>
+      </div>
+ <div class="col-sm-6">
+  <div id="box"> 
+    <div align='center'>    
       <button type="save" onclick="saveCurve()">Conserver Courbe</button>
       <button type="reset" onclick="resetCurve()">Supprimer Courbes</button>
     </div>
-
-     <div class="row">  
-
+     <div class="row">   
       <div id="sliderS1" class="col-sm-6"></div>
       <div id="sliderS2" class="col-sm-6"></div>
       </div>
-    </div>
-  </div>
-  </div>  
+   </div>   
+</div>
 
-    
-
+     <div class="row">  
 
 <footer class="container-fluid bg- text-center" style="margin-bottom:80px; padding-top:100px; ">
 <a href="contact.html"><span class="glyphicon glyphicon-user"></span> Contact</a>

@@ -167,7 +167,7 @@ function Courbe(Y){
 		// Ajout des points
 		cir ="";
 		for (j=0;j<Y.length;j++) {
-			cir +=' <circle transform = "translate(50,50)" onmouseover="drawInfoBox_trans('+Y[j]+','+j+','+scaleX(j)+','+scaleY(Y[j])+')" onmouseleave="removeInfoBox_trans()" 	cx="'+scaleX(j/2)+'" cy="'+scaleY(Y[j])+'" r="5" fill="green" />' ;
+			cir +=' <circle transform = "translate(50,50)" onmouseover="drawInfoBox('+Y[j]+','+j+','+scaleX(j)+','+scaleY(Y[j])+')" onmouseleave="removeInfoBox()" 	cx="'+scaleX(j/2)+'" cy="'+scaleY(Y[j])+'" r="5" fill="green" />' ;
 		}
 		var gPoints = document.getElementById("points");
 		gPoints.innerHTML = cir  ;		
@@ -178,9 +178,9 @@ function Courbe(Y){
 
 // Info box
 function drawInfoBox(datay,datax,X,Y){
-	var info = '<rect  x=800 y=100 height="70" width="250" fill="grey" opacity=0.5 "/>'
-	info += '<text  y=130 x =870 font-size="20" fill="black">'+'A '+(datax/2)+' Heure </text> ';
-	info += '<text  y=160 x=850 font-size="20" fill="black">Flux de sève = '+Math.round(datay*100)/100+'</text> ';
+	var info = '<rect  x=500 y=100 height="70" width="250" fill="grey" opacity=0.5 "/>'
+	info += '<text  y=130 x =570 font-size="20" fill="black">'+'A '+(datax/2)+' Heure </text> ';
+	info += '<text  y=160 x=550 font-size="20" fill="black">Flux de sève = '+Math.round(datay*100)/100+'</text> ';
 	var monSVGinfo = document.getElementById("infobox");
 	monSVGinfo.innerHTML = info  ; 	
 	//monSVGinfo.setAttribute("transform","translate("+(X-200)+","+(Y+100)+")");	

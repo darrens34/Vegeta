@@ -23,7 +23,7 @@
  	
 </head>
 
-<body onload="readBetaFile();readTextFile();readBetaFile_trans();readTextFile_trans()">
+<body onload="readBetaFile();readTextFile();readBetaFile_trans();readTextFile_trans();setGraph_acp()">
 
 <nav class="navbar navbar-inverse navbar-fixed-top">
   <div class="container-fluid">
@@ -72,12 +72,16 @@
               <g id="texte"> </g>
               <g id="points"> </g>
               <g id="points_trans"> </g>
+              <g id="points_acp"> </g>
               <g id="courbes" >
                   <path class = "courbe"></path>
               </g>
               <g id="courbes_trans" >
                 <path class = "courbe_trans"></path>
-            </g>
+              </g>
+              <g id="courbes_acp" >
+                <path class = "courbe_acp"></path>
+              </g>
           	  <g id="infobox" > </g>
         	</g>
       	</svg>
@@ -94,8 +98,8 @@
 </div>
 </div>
 
-<button type="save" onclick="saveCurve(); saveCurve_trans()">Conserver Courbe</button>
-<button type="reset" onclick="resetCurve(); resetCurve_trans()">Supprimer Courbes</button>
+<button type="save" onclick="saveCurve(); saveCurve_trans(); saveCurve_acp()">Conserver Courbe</button>
+<button type="reset" onclick="resetCurve(); resetCurve_trans(); resetCurve_acp()">Supprimer Courbes</button>
  
 <footer class="container-fluid bg- text-center" style="margin-bottom:80px; padding-top:100px; ">
 <a href="contact.html"><span class="glyphicon glyphicon-user"></span> Contact</a>

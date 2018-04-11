@@ -1,13 +1,10 @@
 var factMult=[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]; // Facteur multiplicatif des X
-
-function setGraph(){
-	//clean ancien SVG
-d3.selectAll("svg > *").remove();
 var dataDict = {};
 var nomX=[];
 var betaDict = {};
 var nbBeta = 29;
 
+function setGraph(){
 d3.queue()
     .defer(d3.csv, "data/puechabon/acp/X_par_heure.csv",d3.values)
     .defer(d3.csv, "data/puechabon/acp/data_stand.csv",d3.values)
@@ -36,8 +33,7 @@ d3.queue()
     				X_par_heure[i][j]=ValueModif;
     				}
     		}}
-    		console.log(X_par_heure)
-   	 // TRANSPOSE############
+	   	// TRANSPOSE############
     	var transpose=d3.transpose(X_par_heure); 
     	//NORMALISE ############   
     	var data=[];
@@ -60,86 +56,85 @@ d3.queue()
 	    		Y=0;
 	    	}
 	    	data.push(Y);
-    }
+	}
 	for(i=0;i<nbBeta;i++){
 		nomX.push(X_par_heure[i][0]);}
 		sliders(nomX);
-    	
-    	
-		// SVG ##################################################################
-		var m = [80, 80, 80, 80]; // margins
-		var w = 800 - m[1] - m[3]; // width
-		var h = 400 - m[0] - m[2]; // height
-		// X scale 
-		var x = d3.scaleLinear().domain([0, data.length]).range([0, w]);
-		// Y scale 
-		var y = d3.scaleLinear().domain([0, 14]).range([h, 0]);
-
-
-    	
-		// create a line function that can convert data[] into x and y points
-		var line = d3.line()
-			.x(function(d,i) { 
-				//console.log('X value : ' + d + ' using index: ' + i + ' to be at: ' + x(i) + ' using our xScale.');
-				// return the X coordinate
-				return x(i); 
-			})
-			.y(function(d) { 
-				//console.log('Y value : ' + d + ' situé : ' + y(d) + " avec yScale.");
-				// return the Y coordinate 
-				return y(d); 
-			})
-
-			// Add an SVG element with the desired dimensions and margin.
-			var graph = d3.select("#graph")
-			      .attr("width", w + m[1] + m[3])
-			      .attr("height", h + m[0] + m[2])
-			      .append("svg:g")
-			      .attr("transform", "translate(" + m[3] + "," + m[0] + ")");
-
-			// create xAxis
-			var xAxis = d3.axisBottom(x).ticks(24);
-			// Add the x-axis.
-			graph.append("svg:g")
-			      .attr("class", "x-axis")
-			      .attr("transform", "translate(0," + h + ")")
-			      .call(xAxis);
-
-
-			// create yAxis
-			var yAxisLeft = d3.axisLeft(y).ticks(8);
-			// Add the y-axis to the left
-			graph.append("svg:g")
-			      .attr("class", "y-axis")
-			      .attr("transform", "translate(-25,0)")
-			      .call(yAxisLeft);
-			
-				// Ajout titres des axes
-			graph.append("text")  
-					.attr("font-size",22)			
-				  .attr("transform", "translate(0,-20)")
-				  .style("text-anchor", "middle")
-				  .text("Flux de sève");
-			
-			graph.append("text")   
-				.attr("font-size",22)			
-				  .attr("transform", "translate(320,280)")
-				  .style("text-anchor", "middle")
-				  .text("Heure");
-	
-  			// TRACE  la COURBE
-  			graph.append("svg:path")
-			.attr("d", line(data))
-			.attr("stroke", "green")
-			.attr("stroke-width",2 );
+		Courbe(data);
 	}
+}
+
+
+// Fonction qui trace la courbe "line" + les points "cir"
+function Courbe(Y){	
+	// Remise à zero de la courbe : 
+	var svg = d3.select("#graph");
+
+	// scaleY
+	var scaleY = d3.scaleLinear();
+	// J'inverse min et max car pour Y c'est inversé
+	scaleY.domain([15,0]);
+	scaleY.range([0,500]);
+
+	// Axe Y
+	var yAxis = d3.axisLeft(scaleY);
+	var gyAxis = svg.select("#axisX");
+	gyAxis.call(yAxis);
+	gyAxis.attr("font-size",24);
+	gyAxis.attr("transform","translate(50,50)");
+	
+	// scaleX
+	var scaleX = d3.scaleLinear();
+	scaleX.domain([0,24]);
+	scaleX.range([0,800]);
+	
+	// Axe X
+	var xAxis = d3.axisBottom(scaleX);
+	var gxAxis = svg.select("#axisY");
+	gxAxis.call(xAxis.ticks(24));
+	gxAxis.attr("font-size",24);
+	gxAxis.attr("transform","translate(50,550)");
+	
+	// Ajout titres des axes
+	var tmp ="";
+	tmp +='<text x="550" y="620" font-size="28" fill="black" style="text-anchor: middle"  >Heure</text>';
+	tmp += ' <text x="50" y="0" font-size="28" fill="black" style="text-anchor: middle"  >Flux de sève</text>';
+	var titre_axes = document.getElementById("texte");
+	titre_axes.innerHTML = tmp;	
+
+	// line
+	var lValues = d3.line();
+	lValues.x(function(d,i) { return scaleX(i/2) });
+	lValues.y(function(d) { return scaleY(d)});
+	var gLine = svg.select(".courbe")
+	.attr("transform", "translate(50,50)")
+	.attr("stroke", "green")
+	.attr("stroke-width",2 )
+	.attr("fill", "none")
+	.transition()
+	.duration(500)
+	.on("start", function(d){
+		var gPoints = document.getElementById("points");
+		gPoints.innerHTML = ""  ;	
+	})
+	.on("end", function(d){
+		// Ajout des points
+		cir ="";
+		for (j=0;j<Y.length;j++) {
+			cir +=' <circle transform = "translate(50,50)" onmouseover="drawInfoBox('+Y[j]+','+j+','+scaleX(j)+','+scaleY(Y[j])+')" onmouseleave="removeInfoBox()" 	cx="'+scaleX(j/2)+'" cy="'+scaleY(Y[j])+'" r="5" fill="green" />' ;
+		}
+		var gPoints = document.getElementById("points");
+		gPoints.innerHTML = cir  ;		
+		
+	})
+	.attr("d", lValues(Y));		
 }
 
 // Info box
 function drawInfoBox(datay,datax,X,Y){
-	var info = '<rect  x=800 y=100 height="70" width="250" fill="grey" opacity=0.5 "/>'
-	info += '<text  y=130 x =870 font-size="20" fill="black">'+'A '+(datax/2)+' Heure </text> ';
-	info += '<text  y=160 x=850 font-size="20" fill="black">Flux de sève = '+Math.round(datay*100)/100+'</text> ';
+	var info = '<rect  x=500 y=100 height="70" width="250" fill="grey" opacity=0.5 "/>'
+	info += '<text  y=130 x =570 font-size="20" fill="black">'+'A '+(datax/2)+' Heure </text> ';
+	info += '<text  y=160 x=550 font-size="20" fill="black">Flux de sève = '+Math.round(datay*100)/100+'</text> ';
 	var monSVGinfo = document.getElementById("infobox");
 	monSVGinfo.innerHTML = info  ; 	
 	//monSVGinfo.setAttribute("transform","translate("+(X-200)+","+(Y+100)+")");	
@@ -207,7 +202,7 @@ function sliders(nomX) {
 		var ID="";
 		var ID2 ="";
 		var sliderSX ="";
-			for (a=0;a<=13;a++) {
+			for (a=0;a<=14;a++) {
 				// pour transposer les valeurs des facteurs multiplicateurs dans le même ordre de grandeur que celui des modalités sans modifier les sliders (pour bien recupérer le facteur multiplicateur utilisé par l'équation)
 				// ... je dois stocker les différentes valeurs constitutant le slider dans un tableau, avec son minimum, son maximum, et toutes ses valeurs intérmédiaires qui dépendent du pas.
 				// cela me permettra de récupérer l'indice du tableau correspondant à chaque valeur, et de l'utiliser comme coefficient multiplicateur.
@@ -237,7 +232,7 @@ function sliders(nomX) {
 				sliderS1.innerHTML = sliderSX ;
 			}
 		var sliderSX ="";
-			for (a=14;a<=28;a++) {
+			for (a=15;a<=28;a++) {
 				var rangeValues = [];
 				var numberValues = (maxFact[a] - minFact[a])/step[a];
 				var i = 0;
@@ -267,7 +262,6 @@ function Change(ID,ID2,a) {
 	setGraph(factMult);
 } 
 
-
 function saveCurve(){
     // garde la trace de la courbe sélectionnée
     var dupplicated = false; // devient true si la courbe a déjà été sauvegardée
@@ -295,4 +289,3 @@ function resetCurve(){
         graph.removeChild(graph.lastChild);
     }  
 }
-
