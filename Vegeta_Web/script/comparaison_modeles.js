@@ -665,21 +665,21 @@ dicoNomTotal = {
 	"TS_3":"Temperature du sol (°C) après 3h",
 	"WD_1h30":"Direction du vent (Degre)",
 	"WS": "Vitesse du vent (m s"+"-1".sup()+")",
-	"CO2":"Concentration de CO2 (ppm)",
-	"FC_1h":"Flux CO2 (μmol CO2 m"+"-2".sup()+" s"+"-1".sup()+")",
+	"CO2":"Concentration de CO"+"2".sub()+" (ppm)",
+	"FC_1h":"Flux CO2 (μmol CO"+"2".sub()+" m"+"-2".sup()+" s"+"-1".sup()+")",
 	"H_1h30":"Flux de chaleur sensible (W m"+"-2".sup()+")",
-	"H2O_3h":"Eau (mmol H2O m"+"-2".sup()+"s"+"-1".sup()+")",
+	"H2O_3h":"Eau (mmol H"+"2".sub()+"O m"+"-2".sup()+"s"+"-1".sup()+")",
 	"LE_30m":"Flux de chaleur latente (W m"+"-2".sup()+")",
 	"SB":"Stock de chaleur dans la biomasse (W m"+"-2".sup()+")",
-	"SC_3h":"Flux de Stockage de CO2 (μmol CO2 m"+"-2".sup()+" s"+"-1".sup()+")",
+	"SC_3h":"Flux de Stockage de CO"+"2".sub()+" (μmol CO"+"2".sub()+" m"+"-2".sup()+" s"+"-1".sup()+")",
 	"SH_3h":"Flux de Stockage de chaleur sensible (W m"+"-2".sup()+")",
 	"SLE_3h":"Flux de stockage de chaleur latente (W m"+"-2".sup()+")",
 	"TAU_30m": "Momentum flux (Kg m"+"-1".sup()+"s"+"-2".sup()+")",
 	"USTAR_30m":"Vitesse de frottement (m s"+"-1".sup()+")",
 	"ZL_3h":"Paramètre de stabilité (sans unité)",
 	"G":"Flux de chaleur du sol (W m"+"-2".sup()+")",
-	"VPD":"Vitesse flux de seve  (mmol H2O m"+"-2".sup()+"s"+"-1".sup()+")"}
-
+	"VPD":"Déficit de pression de vapeur (kPa)"}
+	
 function sliders() {
 
 	d3.csv("data/puechabon/sliders/factMult_origin.csv", function(error,data){
