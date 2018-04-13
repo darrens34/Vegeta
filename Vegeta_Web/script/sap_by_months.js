@@ -8,9 +8,14 @@ function setGraph(){
 
     svg.append("text")
         .attr("text-anchor", "middle")  // this makes it easy to centre the text as the transform is applied to the anchor
-        .attr("transform", "translate(100,20)")  // text is drawn off the screen top left, move down and out and rotate
+        .attr("transform", "translate(100,15)")  // text is drawn off the screen top left, move down and out and rotate
 		.attr("font-size",22)
 		.text("Flux de sève");
+	svg.append("text")
+        .attr("text-anchor", "middle")  // this makes it easy to centre the text as the transform is applied to the anchor
+        .attr("transform", "translate(100,35)")  // text is drawn off the screen top left, move down and out and rotate
+		.attr("font-size",22)
+		.text("(mmol H2O m-2 s-1)");
 
     svg.append("text")
         .attr("text-anchor", "middle")  // this makes it easy to centre the text as the transform is applied to the anchor

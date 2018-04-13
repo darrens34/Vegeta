@@ -150,8 +150,9 @@ function Courbe(Y){
 	
 	// Ajout titres des axes
 	var tmp ="";
-	tmp +='<text x="550" y="620" font-size="28" fill="black" style="text-anchor: middle"  >Heure</text>';
+	tmp +='<text x="450" y="620" font-size="28" fill="black" style="text-anchor: middle"  >Heure</text>';
 	tmp += ' <text x="50" y="0" font-size="28" fill="black" style="text-anchor: middle"  >Flux de sève</text>';
+	tmp += ' <text x="80" y="40" font-size="28" fill="black" style="text-anchor: middle"  >(mmol H2O m-2 s-1)</text>';
 	var titre_axes = document.getElementById("texte");
 	titre_axes.innerHTML = tmp;	
 
@@ -202,9 +203,9 @@ function removeInfoBox(){
 // Fonction qui créer les SLIDERS
 dicoNom = {
 	"P_1h":"Précipitation (mm)",
-	"PPFD_IN_1h":"Densité de Flux Photon Photosynthetique (μmol m-2 s-1)",
-	"TS":"Temperature du sol (°C)",
-	"WD_1h30":"Direction du vent (Decimal degree)",
+	"PPFD_IN_1h":"Densité de Flux Photon Photosynthétique (μmol m-2 s-1)",
+	"TS":"Température du sol (°C)",
+	"WD_1h30":"Direction du vent (Degré)",
 	"WS":"Vitesse du vent (m s-1)",
 	"CO2":"Concentration de CO2 (ppm)",
 	"LE_30m":"Flux de chaleur latente (W m-2)",

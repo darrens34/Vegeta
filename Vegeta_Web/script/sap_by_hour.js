@@ -143,8 +143,9 @@ function Courbe(Y){
 	
 	// Ajout titres des axes
 	var tmp ="";
-	tmp +='<text x="550" y="620" font-size="28" fill="black" style="text-anchor: middle"  >Heure</text>';
+	tmp +='<text x="450" y="620" font-size="28" fill="black" style="text-anchor: middle"  >Heure</text>';
 	tmp += ' <text x="50" y="0" font-size="28" fill="black" style="text-anchor: middle"  >Flux de sève</text>';
+	tmp += ' <text x="80" y="40" font-size="28" fill="black" style="text-anchor: middle"  >(mmol H2O m-2 s-1)</text>';
 	var titre_axes = document.getElementById("texte");
 	titre_axes.innerHTML = tmp;	
 
@@ -194,14 +195,14 @@ function removeInfoBox(){
 // Fonction pour choisir le facteur multiplicatif associé a chaque X. De 0 à 4 (0.25 : divisé par 4 à 4 : multiplié par 4)	
 // Fonction qui créer les SLIDERS
 dicoNom = {
-	"PPFD_IN_1h":"Densité de Flux Photon Photosynthetique (μmol m"+"-2".sup()+" s"+"-1".sup()+")",
-	"TA":"Temperature de l'air (°C)",
-	"TS":"Temperature du sol (°C)",
+	"PPFD_IN_1h":"Densité de Flux Photon Photosynthétique (μmol m"+"-2".sup()+" s"+"-1".sup()+")",
+	"TA":"Température de l'air (°C)",
+	"TS":"Température du sol (°C)",
 	"WD_1h30":"Direction du vent (Degré)",
 	"CO2":"Concentration de CO2 (ppm)",
 	"FC_1h":"Flux CO2 (μmolCO"+"2".sub()+" m"+"-2".sup()+" s"+"-1".sup()+")",
 	"LE_30m":"Flux de chaleur latente (W m"+"-2".sup()+")",
-	"SH_3h":"Flux de Stockage de chaleur sensible (W m"+"-2".sup()+")",
+	"SH_3h":"Flux de stockage de chaleur sensible (W m"+"-2".sup()+")",
 	"ZL_3h":"Paramètre de stabilité (sans unité)",
 	"VPD":"Déficit de pression de vapeur (kPa)"
 	}

@@ -149,6 +149,7 @@ function Courbe(Y){
 	var tmp ="";
 	tmp +='<text x="550" y="620" font-size="28" fill="black" style="text-anchor: middle"  >Heure</text>';
 	tmp += ' <text x="50" y="0" font-size="28" fill="black" style="text-anchor: middle"  >Flux de sève</text>';
+	tmp += ' <text x="80" y="40" font-size="28" fill="black" style="text-anchor: middle"  >(mmol H2O m-2 s-1)</text>';
 	var titre_axes = document.getElementById("texte");
 	titre_axes.innerHTML = tmp;	
 
@@ -214,7 +215,7 @@ function Courbe(Y){
 		
 	legend.append("text")
 	  .attr("transform", "translate(600,50)")
-	  .text("Linéaire simple");
+	  .text("LM simple");
 	legend.append("text")
 	  .attr("transform", "translate(600,70)")
 	  .text("LM avec transformation");
@@ -410,6 +411,7 @@ function Courbe_trans(Y){
 	var tmp ="";
 	tmp +='<text x="550" y="620" font-size="28" fill="black" style="text-anchor: middle"  >Heure</text>';
 	tmp += ' <text x="50" y="0" font-size="28" fill="black" style="text-anchor: middle"  >Flux de sève</text>';
+	tmp += ' <text x="80" y="40" font-size="28" fill="black" style="text-anchor: middle"  >(mmol H2O m-2 s-1)</text>';
 	var titre_axes = document.getElementById("texte");
 	titre_axes.innerHTML = tmp;	
 
@@ -552,7 +554,7 @@ function Courbe_acp(Y){
 	var yAxis = d3.axisLeft(scaleY);
 	var gyAxis = svg.select("#axisX");
 	gyAxis.call(yAxis);
-	gyAxis.attr("font-size",24);
+	gyAxis.attr("font-size",28);
 	gyAxis.attr("transform","translate(50,50)");
 	
 	// scaleX
@@ -564,13 +566,14 @@ function Courbe_acp(Y){
 	var xAxis = d3.axisBottom(scaleX);
 	var gxAxis = svg.select("#axisY");
 	gxAxis.call(xAxis.ticks(24));
-	gxAxis.attr("font-size",24);
+	gxAxis.attr("font-size",28);
 	gxAxis.attr("transform","translate(50,550)");
 	
 	// Ajout titres des axes
 	var tmp ="";
 	tmp +='<text x="550" y="620" font-size="28" fill="black" style="text-anchor: middle"  >Heure</text>';
 	tmp += ' <text x="50" y="0" font-size="28" fill="black" style="text-anchor: middle"  >Flux de sève</text>';
+	tmp += ' <text x="80" y="40" font-size="28" fill="black" style="text-anchor: middle"  >(mmol H2O m-2 s-1)</text>';
 	var titre_axes = document.getElementById("texte");
 	titre_axes.innerHTML = tmp;	
 
@@ -650,23 +653,23 @@ function removeInfoBox(){
 // Fonction pour choisir le facteur multiplicatif associé a chaque X. De 0 à 4 (0.25 : divisé par 4 à 4 : multiplié par 4)	
 // Fonction qui créer les SLIDERS
 dicoNomTotal = {
-	"NETRAD_1h30":"Radiation nette (incluant radiation solaire et infrarouge) (W m"+"-2".sup()+")",
+	"NETRAD_1h30":"Radiation nette (W m"+"-2".sup()+")",
 	"P_1h":"Précipitation (mm)",
 	"PA_3h":"Pression athmosphérique (kPa)",
-	"PPFD_DIF_1h": "Densité de Flux Photon Photosynthetique diffuse incidente (400-700 nm) (μmol m"+"-2".sup()+" s"+"-1".sup()+")",
+	"PPFD_DIF_1h": "Densité de Flux Photon Photosynthetique diffuse incidente (μmol m"+"-2".sup()+" s"+"-1".sup()+")",
 	"PPFD_IN_1h":"Densité de Flux Photon Photosynthetique (μmol m"+"-2".sup()+" s"+"-1".sup()+")",
-	"PPFD_OUT_1h":"Densité de Flux Photon Photosynthetique réflechi (400-700 nm) (μmol m"+"-2".sup()+" s"+"-1".sup()+")",
+	"PPFD_OUT_1h":"Densité de Flux Photon Photosynthetique réflechi (μmol m"+"-2".sup()+" s"+"-1".sup()+")",
 	"RH":"Humidité relative (%)",
-	"SW_IN_1h":"Radiations des Ondes courtes incidentes (0.3 to 4.5 micron) (W m"+"-2".sup()+")",
-	"SW_OUT_30m":"Radiations des Ondes courtes sortantes (0.3 to 4.5 micron) (W m"+"-2".sup()+")",
-	"TA":"Temperature de l'air (°C)",
-	"TS":"Temperature du sol (°C)",
-	"TS_2": "Temperature du sol (°C) après 2h",
-	"TS_3":"Temperature du sol (°C) après 3h",
-	"WD_1h30":"Direction du vent (Degre)",
+	"SW_IN_1h":"Radiations des ondes courtes incidentes (W m"+"-2".sup()+")",
+	"SW_OUT_30m":"Radiations des ondes courtes sortantes (W m"+"-2".sup()+")",
+	"TA":"Température de l'air (°C)",
+	"TS":"Température du sol (°C)",
+	"TS_2": "Température du sol (°C) après 2h",
+	"TS_3":"Température du sol (°C) après 3h",
+	"WD_1h30":"Direction du vent (Degré)",
 	"WS": "Vitesse du vent (m s"+"-1".sup()+")",
 	"CO2":"Concentration de CO"+"2".sub()+" (ppm)",
-	"FC_1h":"Flux CO2 (μmol CO"+"2".sub()+" m"+"-2".sup()+" s"+"-1".sup()+")",
+	"FC_1h":"Flux CO"+"2".sub()+" (μmol CO"+"2".sub()+" m"+"-2".sup()+" s"+"-1".sup()+")",
 	"H_1h30":"Flux de chaleur sensible (W m"+"-2".sup()+")",
 	"H2O_3h":"Eau (mmol H"+"2".sub()+"O m"+"-2".sup()+"s"+"-1".sup()+")",
 	"LE_30m":"Flux de chaleur latente (W m"+"-2".sup()+")",
