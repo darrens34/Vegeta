@@ -274,6 +274,14 @@
   <p>Le RMSE associé aux prédictions pour le jeu de données test est de 0.96.</p>
 </div>
 
+<div class="container-fluid bg-1 ">
+  <h3>Détail du modèle concernant l'effet du VPD sur le flux de sève</h3>
+  <p>L'équation du modèle est la suivante : </p>
+	<p>Flux de sève = -0.018 + 0.0031 PPFD_IN_1h + 0.51 VPDt</p>
+  <p>Le VPD a été transformé pour que sa relation avec le flux de sève devienne linéaire :</p>
+  <p> VPDt = 8.5 / ( 1 + exp ((0.76-VPD) / 0.1)) </p>
+</div>
+
 <footer class="container-fluid bg-1 text-center" style="margin-bottom:40px; ">
 <a href="contact.html"><span class="glyphicon glyphicon-user"></span>Contact</a>
 </footer>
