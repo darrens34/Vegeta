@@ -5,7 +5,7 @@ var betaDict = {};
 var nbBeta = 29;
 
 function setGraph(){
-d3.queue()
+d3.queue(5)
     .defer(d3.csv, "data/puechabon/acp/X_par_heure.csv",d3.values)
     .defer(d3.csv, "data/puechabon/acp/data_stand.csv",d3.values)
     .defer(d3.csv, "data/puechabon/acp/vec_propre.csv",d3.values)
