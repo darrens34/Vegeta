@@ -23,7 +23,7 @@
  	
 </head>
 
-<body onload="readBetaFile();readTextFile();readBetaFile_trans();readTextFile_trans()">
+<body onload="readBetaFile();readTextFile();readBetaFile_trans();readTextFile_trans();setGraph_acp()">
 
 <nav class="navbar navbar-inverse navbar-fixed-top">
   <div class="container-fluid">
@@ -57,14 +57,12 @@
 
 
 <div class="jumbotron text-center">
-  <h1>Comparaison des modèles</h1>
-  <p>Evolution du flux sève sur une journée</p>
-  <p>Comparaison de trois modèles : modèle linéaire simple (courbe noire), modèle linéaire avec les variables transformées (courbe bleue), analyse sur composantes principales (courbe rouge).</p>
-   
+  <h1>Comparaison des trois modèles</h1>   
 </div>
     
 
- 	<div id="graphe">
+<div class="row">
+  <div class="col-sm-6">
      	<svg width="800" height="500" id ="graph">
       		<g transform="scale(0.7) translate(50,50)">
               <g id="axisX"></g>
@@ -72,31 +70,35 @@
               <g id="texte"> </g>
               <g id="points"> </g>
               <g id="points_trans"> </g>
+              <g id="points_acp"> </g>
               <g id="courbes" >
                   <path class = "courbe"></path>
               </g>
               <g id="courbes_trans" >
                 <path class = "courbe_trans"></path>
-            </g>
+              </g>
+              <g id="courbes_acp" >
+                <path class = "courbe_acp"></path>
+              </g>
           	  <g id="infobox" > </g>
         	</g>
       	</svg>
     </div>
+	
+	<div class="col-sm-6">
+		  <div id="box"> 
+			<div align='center'>    
+			  <button type="save" onclick="saveCurve(); saveCurve_trans(); saveCurve_acp()">Conserver Courbe</button>
+			  <button type="reset" onclick="resetCurve(); resetCurve_trans(); resetCurve_acp()">Supprimer Courbes</button>
+			</div>
+			 <div class="row">   
+			  <div id="sliderS1" class="col-sm-6"></div>
+			  <div id="sliderS2" class="col-sm-6"></div>
+			  </div>
+		   </div>   
+	</div>
+</div>		
     
-<div class="container-fluid bg-1 ">
-	 <div id="box">
-	 	 <div class="row">   
-	 	 	<div  class="col-sm-1"></div>
-			<div id="sliderS1" class="col-sm-5"></div>
-			<div id="sliderS2" class="col-sm-5"></div>
-			<div  class="col-sm-1"></div>
-    	</div>
-</div>
-</div>
-
-<button type="save" onclick="saveCurve(); saveCurve_trans()">Conserver Courbe</button>
-<button type="reset" onclick="resetCurve(); resetCurve_trans()">Supprimer Courbes</button>
- 
 <footer class="container-fluid bg- text-center" style="margin-bottom:80px; padding-top:100px; ">
 <a href="contact.html"><span class="glyphicon glyphicon-user"></span> Contact</a>
 </footer>

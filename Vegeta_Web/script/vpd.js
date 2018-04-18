@@ -127,6 +127,7 @@ function Courbe(Y){
 	var tmp ="";
 	tmp +='<text x="550" y="620" font-size="28" fill="black" style="text-anchor: middle"  >Heure</text>';
 	tmp += ' <text x="50" y="0" font-size="28" fill="black" style="text-anchor: middle"  >Flux de sève</text>';
+	tmp += ' <text x="80" y="40" font-size="28" fill="black" style="text-anchor: middle"  >(mmol H2O m-2 s-1)</text>';
 	var titre_axes = document.getElementById("texte");
 	titre_axes.innerHTML = tmp;	
 
@@ -134,28 +135,35 @@ function Courbe(Y){
 	var lValues = d3.line();
 	lValues.x(function(d,i) { return scaleX(i/2) });
 	lValues.y(function(d) { return scaleY(d)});
-	var gLine = svg.select(".courbe");
-	gLine.attr("transform", "translate(50,50)");
-	gLine.attr("stroke", "green");
-	gLine.attr("fill", "none");
-	gLine.attr("stroke-width",2 );
-	gLine.attr("d", lValues(Y));
-	
-	// Ajout des points
-	cir ="";
-	for (j=0;j<Y.length;j++) {
-		cir +=' <circle transform = "translate(50,50)" onmouseover="drawInfoBox('+Y[j]+','+j+','+scaleX(j)+','+scaleY(Y[j])+')" onmouseleave="removeInfoBox()" 	cx="'+scaleX(j/2)+'" cy="'+scaleY(Y[j])+'" r="5" fill="green" />' ;
-	}
-	var gPoints = document.getElementById("points");
-	gPoints.innerHTML = cir  ;			
+	var gLine = svg.select(".courbe")
+	.attr("transform", "translate(50,50)")
+	.attr("stroke", "green")
+	.attr("stroke-width",2 )
+	.attr("fill", "none")
+	.transition()
+	.duration(500)
+	.on("start", function(d){
+		var gPoints = document.getElementById("points");
+		gPoints.innerHTML = ""  ;	
+	})
+	.on("end", function(d){
+		// Ajout des points
+		cir ="";
+		for (j=0;j<Y.length;j++) {
+			cir +=' <circle transform = "translate(50,50)" onmouseover="drawInfoBox('+Y[j]+','+j+','+scaleX(j)+','+scaleY(Y[j])+')" onmouseleave="removeInfoBox()" 	cx="'+scaleX(j/2)+'" cy="'+scaleY(Y[j])+'" r="5" fill="green" />' ;
+		}
+		var gPoints = document.getElementById("points");
+		gPoints.innerHTML = cir  ;		
+	})
+	.attr("d", lValues(Y));	
 }
 
 
 // Info box
 function drawInfoBox(datay,datax,X,Y){
-	var info = '<rect  x=800 y=100 height="70" width="250" fill="grey" opacity=0.5 "/>'
-	info += '<text  y=130 x =870 font-size="20" fill="black">'+'A '+(datax/2)+' Heure </text> ';
-	info += '<text  y=160 x=850 font-size="20" fill="black">Flux de sève = '+Math.round(datay*100)/100+'</text> ';
+	var info = '<rect  x=500 y=100 height="70" width="250" fill="grey" opacity=0.5 "/>'
+	info += '<text  y=130 x =570 font-size="20" fill="black">'+'A '+(datax/2)+' Heure </text> ';
+	info += '<text  y=160 x=550 font-size="20" fill="black">Flux de sève = '+Math.round(datay*100)/100+'</text> ';
 	var monSVGinfo = document.getElementById("infobox");
 	monSVGinfo.innerHTML = info  ; 	
 	//monSVGinfo.setAttribute("transform","translate("+(X-200)+","+(Y+100)+")");	
