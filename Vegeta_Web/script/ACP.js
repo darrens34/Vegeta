@@ -13,7 +13,7 @@ function setGraph(){
 		.defer(d3.csv, "data/puechabon/SLIDERS/factMult_origin.csv",d3.values);
 	q.await(calcul);    
     
-    function calcul(error,X_par_heure,data_stand,vec_propre,beta_eq,factMult_origin){ 
+    function calcul(error,X_par_heure,data_stand,vec_propre,beta_eq,factMult_origin,callback){ 
 
 			for  (var i=0;i<28;i++) {
     			for  (var j=1;j<49;j++) {
