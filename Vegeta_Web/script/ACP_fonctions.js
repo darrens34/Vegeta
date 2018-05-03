@@ -1,123 +1,3 @@
-var dataDict = {};
-var nomX=[];
-var betaDict = {};
-var factMult=[1,1,1,1,1,1,1,1,1,1,1,1,1]; // Facteur multiplicatif des X
-var nbBeta = 13;
-
-// Fonction qui récupère les bétas
-function readBetaFile(){
-	var xhttp2 = new XMLHttpRequest();
-	xhttp2.open("GET","data/puechabon/reg_non_lin/beta_eq.csv", true);
-	xhttp2.onreadystatechange = function (){
-		if(xhttp2.readyState === 4){
-			var data2 = xhttp2.responseText;
-			var allTextLines2 = data2.match(/[^(\r\n|\t|,)]+/g);
-			for(i=0;i<(nbBeta*2);i+=2){
-				betaDict[allTextLines2[i]]= [allTextLines2[i+1]];	
-			}
-			
-		}
-	}
-	xhttp2.send();
-}
-
-// fonction qui récupère les données .CSV 
-// qui les nettoie, pour avoir un  un tableau des X variables pour chaque demi-heure 
-// et le nom des variables X 
-// et qui appelle la fonction EQ et Sliders
-function readTextFile(){
-	var xhttp = new XMLHttpRequest();
-	xhttp.open("GET", "data/puechabon/reg_non_lin/X_par_heure.csv", true);
-	xhttp.onreadystatechange = function (){
-		if(xhttp.readyState === 4){
-				var data = xhttp.responseText;
-				var allTextLines = data.match(/[^(\r\n|\t|,)]+/g);
-				for(i=0;i<nbBeta;i++){
-					for(j=1;j<=48;j++){
-						if ( !dataDict[allTextLines[(i*49)]]){
-							dataDict[allTextLines[(i*49)]]= [];
-						}
-						dataDict[allTextLines[(i*49)]].push(allTextLines[((i)*49)+j]);
-					}
-					nomX.push(allTextLines[(i*49)]);
-				}
-		EQ(dataDict,nomX,betaDict,factMult);
-		sliders(nomX);
-		}
-	}
-	xhttp.send();
-}
-
-// Fonction qui calcule les Y avec l'equation du modèle
-// qui prend comme entrée un tableau des X variables pour chaque demi heure 
-// qui prend comme 2ème entrée le nom des variables X
-function EQ(Donnee,nomX,betaDict,factMult){
-
-	d3.csv("data/puechabon/sliders/factMult_mod_nonlin.csv", function(error,data){
-		minFact = [];
-		maxFact = [];
-		step = [];
-		minVal = [];
-		maxVal = [];
-
-		data.forEach(function (d){
-			minFact.push(d.factMultMin);
-			maxFact.push(d.factMultMax);
-			step.push(d.step);
-			minVal.push(Number(d.minVal));
-			maxVal.push(Number(d.maxVal));
-		})
-
-		var dataX=[];
-		var Y=[];
-		for (i=0;i<48 ;i++) {
-			
-			dataX=[];
-			for (j=1;j<nomX.length;j++) {			
-						dataX.push(Number(Donnee[nomX[j]][i]));	
-			}
-			
-			// X maj apres les sliders (factMult)
-			values = []
-			for(k=0;k<factMult.length;k++){
-				if(dataX[k]*factMult[k] < minVal[k]){
-					values.push(minVal[k]);
-				}
-				else if(dataX[k]*factMult[k] > maxVal[k]){
-					values.push(maxVal[k]);
-				}
-				else{
-					values.push(dataX[k]*factMult[k])
-				}
-				
-			}
-			
-
-		
-			// Equation automatique :
-			Y[i]=(Number(betaDict["beta0"][0])+
-			betaDict[nomX[1]][0]*values[0]+
-			betaDict[nomX[2]][0]*values[1]+
-			betaDict[nomX[3]][0]*values[2]+
-			betaDict[nomX[4]][0]*values[3]+
-			betaDict[nomX[5]][0]*values[4]+
-			betaDict[nomX[6]][0]*(0.00000000002 * Math.exp (10000/values[5]))+
-			betaDict[nomX[7]][0]*( 9 / ( 1 + Math.exp ((92-values[6]) / 34)))+
-			betaDict[nomX[8]][0]*(9.5 / ( 1 + Math.exp ((8-values[7]) / 4)))+
-			betaDict[nomX[9]][0]*values[8]+
-			betaDict[nomX[10]][0]*values[9]+
-			betaDict[nomX[11]][0]*values[10]+
-			betaDict[nomX[12]][0]*(9 / ( 1 + Math.exp ((1.06-values[11]) / 0.33))) );
-			
-			if(Y[i] < 0){Y[i] = 0}; // Limite à O min
-			if(values[1] < 10){Y[i] = 0}; // Met a 0 qd pas de lumiere
-			Y[i]  = Y[i]*0.065; //Changement unités
-		}
-
-		Courbe(Y);
-	})
-}
-
 // Fonction qui trace la courbe "line" + les points "cir"
 function Courbe(Y){	
 	// Remise à zero de la courbe : 
@@ -133,7 +13,7 @@ function Courbe(Y){
 	var yAxis = d3.axisLeft(scaleY);
 	var gyAxis = svg.select("#axisX");
 	gyAxis.call(yAxis);
-	gyAxis.attr("font-size",28);
+	gyAxis.attr("font-size",24);
 	gyAxis.attr("transform","translate(50,50)");
 	
 	// scaleX
@@ -145,7 +25,7 @@ function Courbe(Y){
 	var xAxis = d3.axisBottom(scaleX);
 	var gxAxis = svg.select("#axisY");
 	gxAxis.call(xAxis.ticks(24));
-	gxAxis.attr("font-size",28);
+	gxAxis.attr("font-size",24);
 	gxAxis.attr("transform","translate(50,550)");
 	
 	// Ajout titres des axes
@@ -178,10 +58,10 @@ function Courbe(Y){
 		}
 		var gPoints = document.getElementById("points");
 		gPoints.innerHTML = cir  ;		
+		
 	})
 	.attr("d", lValues(Y));		
 }
-
 
 // Info box
 function drawInfoBox(datay,datax,X,Y){
@@ -201,23 +81,43 @@ function removeInfoBox(){
 // Fonction pour choisir le facteur multiplicatif associé a chaque X. De 0 à 4 (0.25 : divisé par 4 à 4 : multiplié par 4)	
 // Fonction qui créer les SLIDERS
 dicoNom = {
+	"NETRAD_1h30":"Radiation nette (W m"+"-2".sup()+")",
 	"P_1h":"Précipitation (mm)",
-	"PPFD_IN_1h":"Densité de Flux Photon Photosynthétique (μmol m-2 s-1)",
+	"PA_3h":"Pression athmosphérique (kPa)",
+	"PPFD_DIF_1h": "Densité de Flux Photon Photosynthétique diffuse incidente (μmol m"+"-2".sup()+" s"+"-1".sup()+")",
+	"PPFD_IN_1h":"Densité de Flux Photon Photosynthétique (μmol m"+"-2".sup()+" s"+"-1".sup()+")",
+	"PPFD_OUT_1h":"Densité de Flux Photon Photosynthétique réflechi (μmol m"+"-2".sup()+" s"+"-1".sup()+")",
+	"RH":"Humidité relative (%)",
+	"SW_IN_1h":"Radiations des ondes courtes incidentes (W m"+"-2".sup()+")",
+	"SW_OUT_30m":"Radiations des ondes courtes sortantes (W m"+"-2".sup()+")",
+	"TA":"Température de l'air (°C)",
 	"TS":"Température du sol (°C)",
+	"TS_2": "Température du sol (°C) après 2h",
+	"TS_3":"Température du sol (°C) après 3h",
 	"WD_1h30":"Direction du vent (Degré)",
-	"WS":"Vitesse du vent (m s-1)",
-	"CO2":"Concentration de CO2 (ppm)",
-	"LE_30m":"Flux de chaleur latente (W m-2)",
-	"SB":"Stock de chaleur dans la biomasse (W m-2)",	
-	"SH_3h":"Flux de Stockage de chaleur sensible (W m-2)",
-	"USTAR_30m":"Vitesse de frotement (m s-1)",
+	"WS": "Vitesse du vent (m s"+"-1".sup()+")",
+	"CO2":"Concentration de CO"+"2".sub()+" (ppm)",
+	"FC_1h":"Flux CO2 (μmol CO"+"2".sub()+" m"+"-2".sup()+" s"+"-1".sup()+")",
+	"H_1h30":"Flux de chaleur sensible (W m"+"-2".sup()+")",
+	"H2O_3h":"Eau (mmol H"+"2".sub()+"O m"+"-2".sup()+"s"+"-1".sup()+")",
+	"LE_30m":"Flux de chaleur latente (W m"+"-2".sup()+")",
+	"SB":"Stock de chaleur dans la biomasse (W m"+"-2".sup()+")",
+	"SC_3h":"Flux de Stockage de CO"+"2".sub()+" (μmol CO"+"2".sub()+" m"+"-2".sup()+" s"+"-1".sup()+")",
+	"SH_3h":"Flux de Stockage de chaleur sensible (W m"+"-2".sup()+")",
+	"SLE_3h":"Flux de stockage de chaleur latente (W m"+"-2".sup()+")",
+	"TAU_30m": "Momentum flux (Kg m"+"-1".sup()+"s"+"-2".sup()+")",
+	"USTAR_30m":"Vitesse de frottement (m s"+"-1".sup()+")",
 	"ZL_3h":"Paramètre de stabilité (sans unité)",
-	"VPD":"Déficit de pression de vapeur"
-	}
+	"G":"Flux de chaleur du sol (W m"+"-2".sup()+")",
+	"VPD":"Déficit de pression de vapeur (kPa)"}
+
+
 
 function sliders(nomX) {
 
-	d3.csv("data/puechabon/sliders/factMult_mod_nonlin.csv", function(error,data){
+	d3.csv("data/puechabon/sliders/factMult_origin.csv", function(error,data){
+		
+
 		minFact = [];
 		maxFact = [];
 		step = [];
@@ -235,7 +135,7 @@ function sliders(nomX) {
 		var ID="";
 		var ID2 ="";
 		var sliderSX ="";
-			for (a=0;a<=5;a++) {
+			for (a=0;a<=13;a++) {
 				// pour transposer les valeurs des facteurs multiplicateurs dans le même ordre de grandeur que celui des modalités sans modifier les sliders (pour bien recupérer le facteur multiplicateur utilisé par l'équation)
 				// ... je dois stocker les différentes valeurs constitutant le slider dans un tableau, avec son minimum, son maximum, et toutes ses valeurs intérmédiaires qui dépendent du pas.
 				// cela me permettra de récupérer l'indice du tableau correspondant à chaque valeur, et de l'utiliser comme coefficient multiplicateur.
@@ -258,15 +158,14 @@ function sliders(nomX) {
 				}
 				var ID = "VAL"+a;
 				var ID2 = "value"+a;
-				var b = (a+1);
 				printValue = parseFloat(minVal[a])+ parseFloat(rangeValues.indexOf(parseFloat(factMult[a]))*(maxVal[a] - minVal[a])/numberValues) // opération de translation
 				printValue = parseFloat(printValue.toFixed(2));
-				sliderSX +='<p>'+dicoNom[nomX[b]]+' :  <span id="'+ID2+'">'+ printValue +'</span></p><div class="slidecontainer"><p class ="baliseInf">'+minVal[a]+'</p><input oninput="Change('+ID+','+ID2+','+a+')"  type="range" min="'+minFact[a]+'" max="'+maxFact[a]+'" step="'+step[a]+'" value="'+factMult[a]+'" class="slider" id="'+ID+'"><p class = "baliseSup">'+maxVal[a]+'</p></div>';
+				sliderSX +='<p>'+dicoNom[nomX[a]]+' :  <span id="'+ID2+'">'+ printValue +'</span></p><div class="slidecontainer"><p class ="baliseInf">'+minVal[a]+'</p><input oninput="Change('+ID+','+ID2+','+a+')"  type="range" min="'+minFact[a]+'" max="'+maxFact[a]+'" step="'+step[a]+'" value="'+factMult[a]+'" class="slider" id="'+ID+'"><p class = "baliseSup">'+maxVal[a]+'</p></div>';
 				var sliderS1 = document.getElementById("sliderS1");
 				sliderS1.innerHTML = sliderSX ;
 			}
 		var sliderSX ="";
-			for (a=6;a<=11;a++) {
+			for (a=14;a<=28;a++) {
 				var rangeValues = [];
 				var numberValues = (maxFact[a] - minFact[a])/step[a];
 				var i = 0;
@@ -279,10 +178,9 @@ function sliders(nomX) {
 				}
 				var ID = "VAL"+a;
 				var ID2 = "value"+a;
-				var b = (a+1);
 				printValue = parseFloat(minVal[a])+ parseFloat(rangeValues.indexOf(parseFloat(factMult[a]))*(maxVal[a] - minVal[a])/numberValues)
 				printValue = parseFloat(printValue.toFixed(2));
-				sliderSX +='<p>'+dicoNom[nomX[b]]+' :  <span id="'+ID2+'">'+ printValue +'</span></p><div class="slidecontainer"><p class ="baliseInf">'+minVal[a]+'</p><input oninput="Change('+ID+','+ID2+','+a+')"  type="range" min="'+minFact[a]+'" max="'+maxFact[a]+'" step="'+step[a]+'" value="'+factMult[a]+'" class="slider" id="'+ID+'"><p class = "baliseSup">'+maxVal[a]+'</p></div>';
+				sliderSX +='<p>'+dicoNom[nomX[a]]+' :  <span id="'+ID2+'">'+ printValue +'</span></p><div class="slidecontainer"><p class ="baliseInf">'+minVal[a]+'</p><input oninput="Change('+ID+','+ID2+','+a+')"  type="range" min="'+minFact[a]+'" max="'+maxFact[a]+'" step="'+step[a]+'" value="'+factMult[a]+'" class="slider" id="'+ID+'"><p class = "baliseSup">'+maxVal[a]+'</p></div>';
 				var sliderS2 = document.getElementById("sliderS2");
 				sliderS2.innerHTML = sliderSX ;
 			}
@@ -294,7 +192,7 @@ function Change(ID,ID2,a) {
 	var VAL2= ID2 ; // et ou est ce qu'on l'affiche 
 	VAL2.innerHTML = VAL ;
 	factMult[a]=VAL ;
-	readTextFile(factMult);
+	setGraph(factMult);
 } 
 
 function saveCurve(){
